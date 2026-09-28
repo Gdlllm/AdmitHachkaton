@@ -1,0 +1,25 @@
+{
+  "name": "motion-capture-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "worker": "esbuild src/tracking/worker.js --bundle --format=iife --outfile=public/pose-worker.js",
+    "dev": "npm run worker && vite --host 127.0.0.1",
+    "build": "npm run worker && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test tests/*.test.js",
+    "test:browser": "node tests/browser.mjs",
+    "fixtures": "node scripts/fixtures.mjs",
+    "test:soak": "node tests/soak.mjs"
+  },
+  "dependencies": {
+    "@mediapipe/tasks-vision": "1.0.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "playwright": "1.62.1",
+    "vite": "^7.1.0"
+  }
+}

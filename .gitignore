@@ -1,0 +1,8 @@
+node_modules/
+dist/
+public/wasm/
+public/models/*.task
+public/pose-worker.js
+.DS_Store
+tests/artifacts/
+tests/fixtures/
