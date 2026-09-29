@@ -90,6 +90,59 @@ test('body overlay cannot manufacture a coarse face or hand from pose landmarks'
   assert.equal(canvas.calls.filter(c => c[0] === 'arc').length, 0);
 });
 
+test('same-frame surface uses the camera contain/mirror transform below landmarks and fades with tracking', () => {
+  for (const mirror of [false, true]) {
+    const canvas = mockCanvas(), context = canvas.getContext('2d');
+    const imageCalls = [], alphaStack = [];
+    context.globalAlpha = 1;
+    context.save = () => { alphaStack.push(context.globalAlpha); canvas.calls.push(['save']); };
+    context.restore = () => { context.globalAlpha = alphaStack.pop(); canvas.calls.push(['restore']); };
+    context.drawImage = (...args) => { imageCalls.push({ args, opacity: context.globalAlpha }); canvas.calls.push(['drawImage', ...args]); };
+    const renderer = new CaptureRenderer(canvas);
+    renderer.setSize(1000, 1000, 2);
+    renderer.drawBody = (_points, opacity) => canvas.calls.push(['body', opacity]);
+    renderer.drawFace = (_points, opacity) => canvas.calls.push(['face', opacity]);
+    let closed = 0;
+    const source = { width: 1920, height: 1080, close() { closed++; } };
+    const surfaceImage = { width: 960, height: 540, close() { closed++; } };
+    renderer.draw({ receivedAt: 100, source, surfaceImage }, { videoWidth: 1920, videoHeight: 1080, mirror, now: 430 });
+    assert.deepEqual(imageCalls.map(c => c.args[0]), [source, surfaceImage]);
+    assert.deepEqual(imageCalls[0].args.slice(1), [0, 0, 1000, 562.5]);
+    assert.deepEqual(imageCalls[1].args.slice(1), imageCalls[0].args.slice(1));
+    assert.equal(imageCalls[0].opacity, 1, 'source pixels remain unmodified');
+    assert.equal(imageCalls[1].opacity, .5, 'surface follows the landmark freshness opacity');
+    assert.deepEqual(canvas.calls.filter(c => c[0] === 'translate'), [
+      ['translate', mirror ? 1000 : 0, 218.75], ['translate', mirror ? 1000 : 0, 218.75],
+    ]);
+    assert.deepEqual(canvas.calls.filter(c => c[0] === 'scale'), [
+      ['scale', mirror ? -1 : 1, 1], ['scale', mirror ? -1 : 1, 1],
+    ]);
+    const surfaceIndex = canvas.calls.findIndex(c => c[0] === 'drawImage' && c[1] === surfaceImage);
+    assert.ok(canvas.calls.findIndex(c => c[0] === 'clip') < surfaceIndex);
+    assert.ok(surfaceIndex < canvas.calls.findIndex(c => c[0] === 'body'));
+    assert.equal(canvas.calls.find(c => c[0] === 'body')[1], .5);
+    assert.equal(context.globalAlpha, 1);
+    assert.equal(alphaStack.length, 0);
+    assert.equal(closed, 0, 'renderer never takes ownership of frame resources');
+  }
+});
+
+test('absent, empty and expired surfaces do not retain old geometry', () => {
+  const canvas = mockCanvas(), renderer = new CaptureRenderer(canvas);
+  renderer.setSize(500, 800);
+  const options = { videoWidth: 720, videoHeight: 1280, now: 100 };
+  const source = { width: 720, height: 1280 };
+  for (const surfaceImage of [undefined, { width: 0, height: 0 }, { width: NaN, height: 10 }]) {
+    canvas.calls.length = 0;
+    renderer.draw({ receivedAt: 100, source, surfaceImage }, options);
+    assert.deepEqual(canvas.calls.filter(c => c[0] === 'drawImage').map(c => c[1]), [source]);
+  }
+  canvas.calls.length = 0;
+  renderer.draw({ receivedAt: 100, source, surfaceImage: source }, { ...options, now: 1000 });
+  assert.equal(canvas.calls.filter(c => c[0] === 'drawImage').length, 0);
+  assert.ok(canvas.calls.some(c => c[0] === 'clearRect'));
+});
+
 test('missing points do not bridge adjacent hand bones', () => {
   const canvas = mockCanvas();
   const renderer = new CaptureRenderer(canvas);

@@ -3,6 +3,7 @@
  * benchmarks. Measurements are local throughput/continuity, not ground-truth accuracy.
  * PLAYWRIGHT_MODULE and CAPTURE_CHROME_PATH are optional explicit tool paths.
  * CAPTURE_FIXTURES_DIR supplies the same five public fixtures as browser.mjs.
+ * CAPTURE_SOAK_CLIPS optionally narrows a diagnostic run to comma-separated fixture names.
  */
 import assert from 'node:assert/strict';
 import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
@@ -14,7 +15,9 @@ const project = fileURLToPath(new URL('../', import.meta.url));
 const base = process.env.CAPTURE_BASE_URL ?? 'http://127.0.0.1:5173';
 const fixtures = process.env.CAPTURE_FIXTURES_DIR ?? path.join(project, 'tests/fixtures');
 const artifacts = process.env.CAPTURE_QA_OUT ?? path.join(project, 'tests/artifacts');
-const clips = ['body-motion.mp4', 'body-squats.mp4', 'hand-signs.mp4', 'face-turns.mp4', 'face-lighting.mp4'];
+const knownClips = ['body-motion.mp4', 'body-squats.mp4', 'hand-signs.mp4', 'face-turns.mp4', 'face-lighting.mp4'];
+const clips = process.env.CAPTURE_SOAK_CLIPS?.split(',').map(name => name.trim()).filter(Boolean) ?? knownClips;
+assert.ok(clips.length > 0 && clips.every(name => knownClips.includes(name)), 'CAPTURE_SOAK_CLIPS must name existing fixture clips');
 const playwright = process.env.PLAYWRIGHT_MODULE ? await import(pathToFileURL(process.env.PLAYWRIGHT_MODULE).href) : await import('playwright');
 let executablePath = process.env.CAPTURE_CHROME_PATH;
 if (!executablePath && process.platform === 'darwin') {
@@ -24,7 +27,8 @@ if (!executablePath && process.platform === 'darwin') {
 await mkdir(artifacts, { recursive: true });
 const report = {
   startedAt: new Date().toISOString(), base,
-  scope: 'Sustained real-time playback of five whole real videos, no seeks and no fixed frame cap. Observed throughput and continuity only; fixtures have no ground-truth landmarks or identities. The JavaScript heap metric covers the main renderer realm, not total process/GPU/worker memory.',
+  scope: 'Sustained real-time playback of the selected whole real videos, no seeks and no fixed frame cap. Observed throughput and continuity only; fixtures have no ground-truth landmarks or identities. The JavaScript heap metric covers the main renderer realm, not total process/GPU/worker memory.',
+  selectedClips: clips,
   hardware: { platform: process.platform, architecture: process.arch, osRelease: os.release(), cpu: os.cpus()[0]?.model, logicalCPUs: os.cpus().length, totalMemoryBytes: os.totalmem() },
   clips: [], pageErrors: [], screenshots: [],
 };
@@ -109,7 +113,29 @@ try {
       } else await route.fulfill({ contentType: 'video/mp4', body: bytes, headers: { 'Accept-Ranges': 'bytes' } });
     } catch { await route.fulfill({ status: 404, body: 'Fixture not found' }); }
   });
-  await page.goto(`${base}/?test=1`);
+  await page.addInitScript(() => {
+    const NativeWorker = window.Worker;
+    window.__soakRawCandidates = new Map();
+    window.Worker = class extends NativeWorker {
+      constructor(...args) {
+        super(...args);
+        // Registered before the application handler. Keep unmodified model
+        // coordinates; the subscription later decides whether output is false.
+        this.addEventListener('message', ({ data }) => {
+          if (!window.__soakCollectHand || data.type !== 'result' ||
+            (!data.pose?.landmarks?.length && !data.face?.landmarks?.length)) return;
+          window.__soakRawCandidates.set(data.frameId, structuredClone({
+            frameId: data.frameId, timestamp: data.timestamp, mediaTime: data.mediaTime,
+            sourceWidth: data.sourceWidth, sourceHeight: data.sourceHeight,
+            pose: data.pose, face: data.face, hands: data.hands,
+          }));
+          if (window.__soakRawCandidates.size > 16) window.__soakRawCandidates.delete(window.__soakRawCandidates.keys().next().value);
+        });
+      }
+    };
+  });
+  // Landmark regression scope; the body surface has its own suite (test:dense).
+  await page.goto(`${base}/?test=1&surface=0`);
   await page.waitForFunction(() => window.motionCapture?.subscribe);
   report.browser.environment = await page.evaluate(() => {
     const canvas = document.createElement('canvas'), gl = canvas.getContext('webgl2');
@@ -125,6 +151,8 @@ try {
       await page.evaluate(filename => {
         window.motionCapture.stop(); window.__soakUnsubscribe?.();
         window.__soakFrames = []; window.__soakMissingImages = []; window.__soakSeenFace = false;
+        window.__soakPhantoms = []; window.__soakRawCandidates.clear();
+        window.__soakCollectHand = filename === 'hand-signs.mp4';
         window.__soakUnsubscribe = window.motionCapture.subscribe(frame => {
           const pointsValid = point => point && point.drawConfidence > 0 && Number.isFinite(point.x) && Number.isFinite(point.y);
           const anchors = [];
@@ -147,6 +175,15 @@ try {
             badVisiblePoints: parts.flatMap(part => part.landmarks).filter(point => point.drawConfidence > 0 && (!Number.isFinite(point.x) || !Number.isFinite(point.y))).length,
           };
           window.__soakFrames.push(sample);
+          if (window.__soakCollectHand && (sample.poseCount || sample.faceCount) && window.__soakPhantoms.length < 8) {
+            const canvas = document.createElement('canvas'); canvas.width = frame.sourceWidth; canvas.height = frame.sourceHeight;
+            canvas.getContext('2d').drawImage(frame.source, 0, 0);
+            window.__soakPhantoms.push({
+              sample, raw: window.__soakRawCandidates.get(frame.frameId) ?? null,
+              output: structuredClone({ pose: frame.pose, face: frame.face, hands: frame.hands, tracking: frame.tracking }),
+              png: canvas.toDataURL('image/png'),
+            });
+          }
           if (sample.faceCount) window.__soakSeenFace = true;
           const lastImage = window.__soakMissingImages.at(-1);
           if (filename === 'face-turns.mp4' && !sample.faceCount && window.__soakSeenFace && window.__soakMissingImages.length < 3 && (!lastImage || sample.mediaTime - lastImage.mediaTime > 0.35)) {
@@ -167,8 +204,17 @@ try {
         const diagnostics = window.motionCapture.getDiagnostics();
         return diagnostics.state === 'error' || (document.getElementById('camera').ended && !diagnostics.inFlight);
       }, null, { timeout: clip.durationSeconds * 1000 + 60000 });
-      const result = await page.evaluate(() => ({ frames: window.__soakFrames, missingImages: window.__soakMissingImages, diagnostics: window.motionCapture.getDiagnostics(), ended: document.getElementById('camera').ended, mediaTime: document.getElementById('camera').currentTime, playbackQuality: (() => { const value = document.getElementById('camera').getVideoPlaybackQuality?.(); return value ? { totalVideoFrames: value.totalVideoFrames, droppedVideoFrames: value.droppedVideoFrames, corruptedVideoFrames: value.corruptedVideoFrames } : null; })() }));
+      const result = await page.evaluate(() => ({ frames: window.__soakFrames, missingImages: window.__soakMissingImages, phantoms: window.__soakPhantoms, diagnostics: window.motionCapture.getDiagnostics(), ended: document.getElementById('camera').ended, mediaTime: document.getElementById('camera').currentTime, playbackQuality: (() => { const value = document.getElementById('camera').getVideoPlaybackQuality?.(); return value ? { totalVideoFrames: value.totalVideoFrames, droppedVideoFrames: value.droppedVideoFrames, corruptedVideoFrames: value.corruptedVideoFrames } : null; })() }));
       clip.frames = result.frames; clip.diagnostics = result.diagnostics;
+      // Persist exact source + raw/processed geometry BEFORE assertions so a
+      // red run leaves enough evidence to reproduce and diagnose the failure.
+      clip.phantoms = [];
+      for (const [index, phantom] of result.phantoms.entries()) {
+        const { png, ...geometry } = phantom;
+        const imageFile = `soak-hand-phantom-${index + 1}.png`;
+        await writeFile(path.join(artifacts, imageFile), Buffer.from(png.split(',')[1], 'base64'));
+        clip.phantoms.push({ ...geometry, imageFile });
+      }
       assert.equal(result.ended, true, 'whole clip must reach its natural end');
       assert.ok(result.frames[0]?.mediaTime <= 0.05, 'model warmup must not skip the beginning of the video');
       assert.equal(result.diagnostics.state, 'running');

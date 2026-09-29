@@ -1,0 +1,1204 @@
+{
+  "schemaVersion": 1,
+  "coordinateSpace": "fixture-pixels",
+  "annotationPolicy": "Independent manual image annotations, not copied from any model. Sparse visible joint centres and silhouette boundary anchors only; no dense silhouette IoU or 3D ground truth is claimed. Coordinates refer to extracted PNG after the specified crop, with origin at top-left. Left/right are the subject's anatomical sides.",
+  "sources": {
+    "body-motion": {
+      "file": "body-motion.mp4",
+      "width": 576,
+      "height": 576,
+      "fps": 30,
+      "url": "https://raw.githubusercontent.com/tensorflow/tfjs-models/c731b9ebbd6f4c9e8bf99b0df76bbdbf9c25b07f/pose-detection/test_data/pose_1.mp4",
+      "sha256": "a581dd3c6495c4257a8f7756c6c59b445e8949eec0bc2637ba5283bfa7d71930"
+    },
+    "body-squats": {
+      "file": "body-squats.mp4",
+      "width": 720,
+      "height": 1280,
+      "fps": 5,
+      "url": "https://raw.githubusercontent.com/tensorflow/tfjs-models/c731b9ebbd6f4c9e8bf99b0df76bbdbf9c25b07f/pose-detection/test_data/pose_squats.mp4",
+      "sha256": "ea9151e447b301985d5d65666551ef863b369a2e0f3a71ddd58abef2e722f96a"
+    },
+    "hand-signs": {
+      "file": "hand-signs.mp4",
+      "width": 620,
+      "height": 1080,
+      "fps": 25,
+      "url": "https://raw.githubusercontent.com/tensorflow/tfjs-models/c731b9ebbd6f4c9e8bf99b0df76bbdbf9c25b07f/hand-pose-detection/test_data/asl_hand.25fps.mp4",
+      "sha256": "57c10fb1eb76639edf43e9675213dcc495c51851e32a3592cacaa9437be4f37e"
+    }
+  },
+  "frames": [
+    {
+      "id": "motion-front",
+      "source": "body-motion",
+      "frameIndex": 0,
+      "timestampSeconds": 0,
+      "image": "frames/motion-front.png",
+      "width": 576,
+      "height": 576,
+      "split": "calibration",
+      "expectation": {
+        "personPresent": true,
+        "bodyExtent": "full"
+      },
+      "joints": [
+        {
+          "name": "right_elbow",
+          "x": 226,
+          "y": 279,
+          "uncertaintyPx": 6,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_elbow",
+          "x": 345,
+          "y": 278,
+          "uncertaintyPx": 6,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "right_wrist",
+          "x": 211,
+          "y": 310,
+          "uncertaintyPx": 5,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_wrist",
+          "x": 361,
+          "y": 299,
+          "uncertaintyPx": 5,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "right_ankle",
+          "x": 262,
+          "y": 390,
+          "uncertaintyPx": 5,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_ankle",
+          "x": 301,
+          "y": 439,
+          "uncertaintyPx": 5,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        }
+      ],
+      "silhouette": [
+        {
+          "id": "boundary-1",
+          "x": 285,
+          "y": 183,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-2",
+          "x": 253,
+          "y": 227,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-3",
+          "x": 197,
+          "y": 332,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-4",
+          "x": 375,
+          "y": 316,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-5",
+          "x": 299,
+          "y": 453,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-6",
+          "x": 257,
+          "y": 398,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-7",
+          "x": 254,
+          "y": 349,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-8",
+          "x": 318,
+          "y": 347,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        }
+      ],
+      "personBounds": {
+        "x": 195,
+        "y": 182,
+        "width": 183,
+        "height": 274
+      },
+      "annotationReview": {
+        "annotator": "capture_stability",
+        "modelBlind": true,
+        "reviewedOnSourceImage": true,
+        "status": "overlay-reviewed",
+        "secondaryReviewer": "root",
+        "secondaryReview": "Visual review of sparse joint/boundary overlay; approximate 2D references, no subpixel accuracy claim."
+      },
+      "bbox": {
+        "x": 195,
+        "y": 182,
+        "width": 183,
+        "height": 274,
+        "provenance": "manual-oracle",
+        "usage": "Controlled regressor evaluation only; not a production person detector."
+      }
+    },
+    {
+      "id": "motion-step",
+      "source": "body-motion",
+      "frameIndex": 30,
+      "timestampSeconds": 1,
+      "image": "frames/motion-step.png",
+      "width": 576,
+      "height": 576,
+      "split": "evaluation",
+      "expectation": {
+        "personPresent": true,
+        "bodyExtent": "full"
+      },
+      "joints": [
+        {
+          "name": "right_elbow",
+          "x": 234,
+          "y": 282,
+          "uncertaintyPx": 6,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_elbow",
+          "x": 344,
+          "y": 280,
+          "uncertaintyPx": 6,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "right_wrist",
+          "x": 222,
+          "y": 306,
+          "uncertaintyPx": 5,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_wrist",
+          "x": 360,
+          "y": 303,
+          "uncertaintyPx": 5,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "right_ankle",
+          "x": 276,
+          "y": 378,
+          "uncertaintyPx": 5,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_ankle",
+          "x": 301,
+          "y": 443,
+          "uncertaintyPx": 5,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        }
+      ],
+      "silhouette": [
+        {
+          "id": "boundary-1",
+          "x": 278,
+          "y": 197,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-2",
+          "x": 251,
+          "y": 237,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-3",
+          "x": 216,
+          "y": 320,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-4",
+          "x": 374,
+          "y": 319,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-5",
+          "x": 303,
+          "y": 456,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-6",
+          "x": 272,
+          "y": 391,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-7",
+          "x": 260,
+          "y": 336,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-8",
+          "x": 317,
+          "y": 331,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        }
+      ],
+      "personBounds": {
+        "x": 214,
+        "y": 196,
+        "width": 161,
+        "height": 262
+      },
+      "annotationReview": {
+        "annotator": "capture_stability",
+        "modelBlind": true,
+        "reviewedOnSourceImage": true,
+        "status": "overlay-reviewed"
+      },
+      "bbox": {
+        "x": 214,
+        "y": 196,
+        "width": 161,
+        "height": 262,
+        "provenance": "manual-oracle",
+        "usage": "Controlled regressor evaluation only; not a production person detector."
+      }
+    },
+    {
+      "id": "motion-raised",
+      "source": "body-motion",
+      "frameIndex": 60,
+      "timestampSeconds": 2,
+      "image": "frames/motion-raised.png",
+      "width": 576,
+      "height": 576,
+      "split": "evaluation",
+      "expectation": {
+        "personPresent": true,
+        "bodyExtent": "full"
+      },
+      "joints": [
+        {
+          "name": "right_elbow",
+          "x": 246,
+          "y": 210,
+          "uncertaintyPx": 6,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_elbow",
+          "x": 318,
+          "y": 209,
+          "uncertaintyPx": 6,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "right_wrist",
+          "x": 248,
+          "y": 165,
+          "uncertaintyPx": 4,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_wrist",
+          "x": 329,
+          "y": 167,
+          "uncertaintyPx": 4,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "right_ankle",
+          "x": 275,
+          "y": 379,
+          "uncertaintyPx": 5,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_ankle",
+          "x": 300,
+          "y": 443,
+          "uncertaintyPx": 5,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        }
+      ],
+      "silhouette": [
+        {
+          "id": "boundary-1",
+          "x": 248,
+          "y": 134,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-2",
+          "x": 341,
+          "y": 138,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-3",
+          "x": 237,
+          "y": 190,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-4",
+          "x": 328,
+          "y": 193,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-5",
+          "x": 279,
+          "y": 194,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-6",
+          "x": 256,
+          "y": 327,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-7",
+          "x": 316,
+          "y": 330,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-8",
+          "x": 301,
+          "y": 456,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        }
+      ],
+      "personBounds": {
+        "x": 237,
+        "y": 132,
+        "width": 106,
+        "height": 326
+      },
+      "annotationReview": {
+        "annotator": "capture_stability",
+        "modelBlind": true,
+        "reviewedOnSourceImage": true,
+        "status": "overlay-reviewed"
+      },
+      "bbox": {
+        "x": 237,
+        "y": 132,
+        "width": 106,
+        "height": 326,
+        "provenance": "manual-oracle",
+        "usage": "Controlled regressor evaluation only; not a production person detector."
+      }
+    },
+    {
+      "id": "squat-standing",
+      "source": "body-squats",
+      "frameIndex": 0,
+      "timestampSeconds": 0,
+      "image": "frames/squat-standing.png",
+      "width": 720,
+      "height": 1280,
+      "split": "calibration",
+      "expectation": {
+        "personPresent": true,
+        "bodyExtent": "full"
+      },
+      "joints": [
+        {
+          "name": "right_elbow",
+          "x": 211,
+          "y": 465,
+          "uncertaintyPx": 10,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_elbow",
+          "x": 441,
+          "y": 468,
+          "uncertaintyPx": 10,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "right_wrist",
+          "x": 201,
+          "y": 575,
+          "uncertaintyPx": 8,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_wrist",
+          "x": 485,
+          "y": 569,
+          "uncertaintyPx": 8,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "right_ankle",
+          "x": 253,
+          "y": 955,
+          "uncertaintyPx": 10,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_ankle",
+          "x": 342,
+          "y": 951,
+          "uncertaintyPx": 10,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        }
+      ],
+      "silhouette": [
+        {
+          "id": "boundary-1",
+          "x": 338,
+          "y": 169,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-2",
+          "x": 285,
+          "y": 215,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-3",
+          "x": 263,
+          "y": 309,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-4",
+          "x": 179,
+          "y": 603,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-5",
+          "x": 518,
+          "y": 611,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-6",
+          "x": 237,
+          "y": 665,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-7",
+          "x": 408,
+          "y": 665,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-8",
+          "x": 256,
+          "y": 1020,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-9",
+          "x": 407,
+          "y": 1004,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        }
+      ],
+      "personBounds": {
+        "x": 178,
+        "y": 168,
+        "width": 342,
+        "height": 854
+      },
+      "annotationReview": {
+        "annotator": "capture_stability",
+        "modelBlind": true,
+        "reviewedOnSourceImage": true,
+        "status": "overlay-reviewed",
+        "secondaryReviewer": "root",
+        "secondaryReview": "Visual review of sparse joint/boundary overlay; approximate 2D references, no subpixel accuracy claim."
+      },
+      "bbox": {
+        "x": 178,
+        "y": 168,
+        "width": 342,
+        "height": 854,
+        "provenance": "manual-oracle",
+        "usage": "Controlled regressor evaluation only; not a production person detector."
+      }
+    },
+    {
+      "id": "squat-down",
+      "source": "body-squats",
+      "frameIndex": 15,
+      "timestampSeconds": 3,
+      "image": "frames/squat-down.png",
+      "width": 720,
+      "height": 1280,
+      "split": "evaluation",
+      "expectation": {
+        "personPresent": true,
+        "bodyExtent": "full"
+      },
+      "joints": [
+        {
+          "name": "right_elbow",
+          "x": 292,
+          "y": 463,
+          "uncertaintyPx": 10,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_elbow",
+          "x": 516,
+          "y": 481,
+          "uncertaintyPx": 10,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "right_wrist",
+          "x": 432,
+          "y": 410,
+          "uncertaintyPx": 10,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_wrist",
+          "x": 492,
+          "y": 433,
+          "uncertaintyPx": 8,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "right_ankle",
+          "x": 253,
+          "y": 955,
+          "uncertaintyPx": 10,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_ankle",
+          "x": 342,
+          "y": 951,
+          "uncertaintyPx": 10,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        }
+      ],
+      "silhouette": [
+        {
+          "id": "boundary-1",
+          "x": 362,
+          "y": 261,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-2",
+          "x": 309,
+          "y": 315,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-3",
+          "x": 260,
+          "y": 418,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-4",
+          "x": 542,
+          "y": 484,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-5",
+          "x": 204,
+          "y": 654,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-6",
+          "x": 419,
+          "y": 793,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-7",
+          "x": 240,
+          "y": 913,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-8",
+          "x": 255,
+          "y": 1020,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-9",
+          "x": 407,
+          "y": 1004,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        }
+      ],
+      "personBounds": {
+        "x": 202,
+        "y": 260,
+        "width": 343,
+        "height": 762
+      },
+      "annotationReview": {
+        "annotator": "capture_stability",
+        "modelBlind": true,
+        "reviewedOnSourceImage": true,
+        "status": "overlay-reviewed"
+      },
+      "bbox": {
+        "x": 202,
+        "y": 260,
+        "width": 343,
+        "height": 762,
+        "provenance": "manual-oracle",
+        "usage": "Controlled regressor evaluation only; not a production person detector."
+      }
+    },
+    {
+      "id": "squat-late",
+      "source": "body-squats",
+      "frameIndex": 37,
+      "timestampSeconds": 7.4,
+      "image": "frames/squat-late.png",
+      "width": 720,
+      "height": 1280,
+      "split": "evaluation",
+      "expectation": {
+        "personPresent": true,
+        "bodyExtent": "full"
+      },
+      "joints": [
+        {
+          "name": "right_elbow",
+          "x": 318,
+          "y": 604,
+          "uncertaintyPx": 10,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_elbow",
+          "x": 508,
+          "y": 605,
+          "uncertaintyPx": 10,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "right_wrist",
+          "x": 460,
+          "y": 538,
+          "uncertaintyPx": 10,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_wrist",
+          "x": 494,
+          "y": 557,
+          "uncertaintyPx": 8,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "right_ankle",
+          "x": 253,
+          "y": 955,
+          "uncertaintyPx": 10,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_ankle",
+          "x": 342,
+          "y": 951,
+          "uncertaintyPx": 10,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        }
+      ],
+      "silhouette": [
+        {
+          "id": "boundary-1",
+          "x": 366,
+          "y": 382,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-2",
+          "x": 318,
+          "y": 441,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-3",
+          "x": 272,
+          "y": 535,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-4",
+          "x": 535,
+          "y": 605,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-5",
+          "x": 182,
+          "y": 716,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-6",
+          "x": 433,
+          "y": 811,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-7",
+          "x": 240,
+          "y": 920,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-8",
+          "x": 255,
+          "y": 1020,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-9",
+          "x": 407,
+          "y": 1004,
+          "uncertaintyPx": 5,
+          "kind": "clothed-visible-boundary"
+        }
+      ],
+      "personBounds": {
+        "x": 180,
+        "y": 381,
+        "width": 359,
+        "height": 641
+      },
+      "annotationReview": {
+        "annotator": "capture_stability",
+        "modelBlind": true,
+        "reviewedOnSourceImage": true,
+        "status": "overlay-reviewed"
+      },
+      "bbox": {
+        "x": 180,
+        "y": 381,
+        "width": 359,
+        "height": 641,
+        "provenance": "manual-oracle",
+        "usage": "Controlled regressor evaluation only; not a production person detector."
+      }
+    },
+    {
+      "id": "partial-motion",
+      "source": "body-motion",
+      "frameIndex": 60,
+      "timestampSeconds": 2,
+      "crop": {
+        "x": 200,
+        "y": 170,
+        "width": 190,
+        "height": 200
+      },
+      "image": "frames/partial-motion.png",
+      "width": 190,
+      "height": 200,
+      "split": "evaluation",
+      "expectation": {
+        "personPresent": true,
+        "bodyExtent": "partial",
+        "unobservedPartsMustBeMarkedInferred": true
+      },
+      "joints": [
+        {
+          "name": "right_elbow",
+          "x": 46,
+          "y": 40,
+          "uncertaintyPx": 6,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_elbow",
+          "x": 118,
+          "y": 39,
+          "uncertaintyPx": 6,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_shoulder",
+          "x": 105,
+          "y": 80,
+          "uncertaintyPx": 7,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "right_shoulder",
+          "x": 58,
+          "y": 76,
+          "uncertaintyPx": 7,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        }
+      ],
+      "silhouette": [
+        {
+          "id": "boundary-1",
+          "x": 37,
+          "y": 20,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-2",
+          "x": 128,
+          "y": 23,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-3",
+          "x": 79,
+          "y": 24,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-4",
+          "x": 56,
+          "y": 157,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-5",
+          "x": 116,
+          "y": 160,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-6",
+          "x": 57,
+          "y": 85,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-7",
+          "x": 118,
+          "y": 125,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        }
+      ],
+      "personBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 190,
+        "height": 200
+      },
+      "annotationReview": {
+        "annotator": "capture_stability",
+        "modelBlind": true,
+        "reviewedOnSourceImage": true,
+        "status": "overlay-reviewed"
+      },
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 190,
+        "height": 200,
+        "provenance": "manual-oracle",
+        "usage": "Controlled regressor evaluation only; not a production person detector."
+      }
+    },
+    {
+      "id": "partial-squat",
+      "source": "body-squats",
+      "frameIndex": 0,
+      "timestampSeconds": 0,
+      "crop": {
+        "x": 100,
+        "y": 250,
+        "width": 520,
+        "height": 530
+      },
+      "image": "frames/partial-squat.png",
+      "width": 520,
+      "height": 530,
+      "split": "evaluation",
+      "expectation": {
+        "personPresent": true,
+        "bodyExtent": "partial",
+        "unobservedPartsMustBeMarkedInferred": true
+      },
+      "joints": [
+        {
+          "name": "right_elbow",
+          "x": 111,
+          "y": 215,
+          "uncertaintyPx": 10,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_elbow",
+          "x": 341,
+          "y": 218,
+          "uncertaintyPx": 10,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "right_wrist",
+          "x": 101,
+          "y": 325,
+          "uncertaintyPx": 8,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        },
+        {
+          "name": "left_wrist",
+          "x": 385,
+          "y": 319,
+          "uncertaintyPx": 8,
+          "visible": true,
+          "method": "manual-visible-joint-centre"
+        }
+      ],
+      "silhouette": [
+        {
+          "id": "boundary-1",
+          "x": 163,
+          "y": 59,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-2",
+          "x": 79,
+          "y": 353,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-3",
+          "x": 418,
+          "y": 361,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-4",
+          "x": 137,
+          "y": 415,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        },
+        {
+          "id": "boundary-5",
+          "x": 308,
+          "y": 415,
+          "uncertaintyPx": 3,
+          "kind": "clothed-visible-boundary"
+        }
+      ],
+      "personBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 520,
+        "height": 530
+      },
+      "annotationReview": {
+        "annotator": "capture_stability",
+        "modelBlind": true,
+        "reviewedOnSourceImage": true,
+        "status": "overlay-reviewed"
+      },
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 520,
+        "height": 530,
+        "provenance": "manual-oracle",
+        "usage": "Controlled regressor evaluation only; not a production person detector."
+      }
+    },
+    {
+      "id": "hand-only",
+      "source": "hand-signs",
+      "frameIndex": 313,
+      "timestampSeconds": 12.52,
+      "image": "frames/hand-only.png",
+      "width": 620,
+      "height": 1080,
+      "split": "regression",
+      "expectation": {
+        "personPresent": false,
+        "bodyExtent": "none",
+        "visibleHandPresent": true,
+        "bodyMeshMustBeAbsent": true
+      },
+      "joints": [],
+      "silhouette": [],
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 620,
+        "height": 1080,
+        "provenance": "full-frame-negative-probe",
+        "usage": "Evaluate raw regressor and independent runtime gate separately."
+      }
+    },
+    {
+      "id": "blank",
+      "generator": {
+        "type": "solid",
+        "rgb": [
+          17,
+          17,
+          17
+        ]
+      },
+      "image": "frames/blank.png",
+      "width": 640,
+      "height": 480,
+      "split": "regression",
+      "expectation": {
+        "personPresent": false,
+        "bodyExtent": "none",
+        "bodyMeshMustBeAbsent": true
+      },
+      "joints": [],
+      "silhouette": [],
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 640,
+        "height": 480,
+        "provenance": "full-frame-negative-probe",
+        "usage": "Evaluate raw regressor and independent runtime gate separately."
+      }
+    }
+  ]
+}

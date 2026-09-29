@@ -1,0 +1,167 @@
+{
+  "startedAt": "2026-09-28T20:48:00.153Z",
+  "kind": "Pure browser MHR decoder vs independently computed official PyTorch CPU outputs, not model accuracy",
+  "browser": "153.0.8010.53",
+  "loadMs": 91.30000001192093,
+  "cases": [
+    {
+      "name": "neutral",
+      "maxAbsoluteMeters": 5.960464477539062e-7,
+      "rmsMeters": 9.512178710234259e-8,
+      "skeletonMaxMeters": 1.1920928955078125e-7,
+      "keypointMaxMeters": 8.344650268554688e-7,
+      "fastVsFullMaxMeters": 0,
+      "decodeMs": 8.799999952316284
+    },
+    {
+      "name": "torso-bend",
+      "maxAbsoluteMeters": 7.152557373046875e-7,
+      "rmsMeters": 1.3074245768888336e-7,
+      "skeletonMaxMeters": 1.1920928955078125e-7,
+      "keypointMaxMeters": 7.152557373046875e-7,
+      "fastVsFullMaxMeters": 0,
+      "decodeMs": 7
+    },
+    {
+      "name": "torso-twist",
+      "maxAbsoluteMeters": 5.960464477539062e-7,
+      "rmsMeters": 1.2561858129890554e-7,
+      "skeletonMaxMeters": 1.1920928955078125e-7,
+      "keypointMaxMeters": 7.152557373046875e-7,
+      "fastVsFullMaxMeters": 0,
+      "decodeMs": 6.5
+    },
+    {
+      "name": "random-pose-shape-0",
+      "maxAbsoluteMeters": 7.152557373046875e-7,
+      "rmsMeters": 1.0932630551874646e-7,
+      "skeletonMaxMeters": 2.384185791015625e-7,
+      "keypointMaxMeters": 0.0000011003576219081879,
+      "fastVsFullMaxMeters": 0,
+      "decodeMs": 29.599999964237213
+    },
+    {
+      "name": "random-pose-shape-1",
+      "maxAbsoluteMeters": 8.344650268554688e-7,
+      "rmsMeters": 1.4439643882022416e-7,
+      "skeletonMaxMeters": 2.384185791015625e-7,
+      "keypointMaxMeters": 7.152557373046875e-7,
+      "fastVsFullMaxMeters": 0,
+      "decodeMs": 4.099999964237213
+    },
+    {
+      "name": "random-pose-shape-2",
+      "maxAbsoluteMeters": 5.960464477539062e-7,
+      "rmsMeters": 1.1224117918086343e-7,
+      "skeletonMaxMeters": 1.1920928955078125e-7,
+      "keypointMaxMeters": 0.0000011026859283447266,
+      "fastVsFullMaxMeters": 0,
+      "decodeMs": 5.400000035762787
+    },
+    {
+      "name": "measured-blank",
+      "maxAbsoluteMeters": 6.556510925292969e-7,
+      "rmsMeters": 1.480564714941587e-7,
+      "skeletonMaxMeters": 1.4901161193847656e-7,
+      "keypointMaxMeters": 6.556510925292969e-7,
+      "fastVsFullMaxMeters": 0,
+      "decodeMs": 2.300000011920929
+    },
+    {
+      "name": "measured-hand-only",
+      "maxAbsoluteMeters": 8.344650268554688e-7,
+      "rmsMeters": 1.5997291169296186e-7,
+      "skeletonMaxMeters": 1.4901161193847656e-7,
+      "keypointMaxMeters": 0.0000010132789611816406,
+      "fastVsFullMaxMeters": 0,
+      "decodeMs": 2.099999964237213
+    },
+    {
+      "name": "measured-motion-front",
+      "maxAbsoluteMeters": 5.960464477539062e-7,
+      "rmsMeters": 1.2093353121786652e-7,
+      "skeletonMaxMeters": 1.1920928955078125e-7,
+      "keypointMaxMeters": 4.76837158203125e-7,
+      "fastVsFullMaxMeters": 0,
+      "decodeMs": 2
+    },
+    {
+      "name": "measured-motion-raised",
+      "maxAbsoluteMeters": 7.152557373046875e-7,
+      "rmsMeters": 1.4777844707627952e-7,
+      "skeletonMaxMeters": 3.427267074584961e-7,
+      "keypointMaxMeters": 0.0000011920928955078125,
+      "fastVsFullMaxMeters": 0,
+      "decodeMs": 2.100000023841858
+    },
+    {
+      "name": "measured-motion-step",
+      "maxAbsoluteMeters": 6.556510925292969e-7,
+      "rmsMeters": 1.2946634025107067e-7,
+      "skeletonMaxMeters": 1.7881393432617188e-7,
+      "keypointMaxMeters": 5.364418029785156e-7,
+      "fastVsFullMaxMeters": 0,
+      "decodeMs": 2.100000023841858
+    },
+    {
+      "name": "measured-partial-motion",
+      "maxAbsoluteMeters": 7.152557373046875e-7,
+      "rmsMeters": 1.4889323954495437e-7,
+      "skeletonMaxMeters": 2.384185791015625e-7,
+      "keypointMaxMeters": 0.0000011920928955078125,
+      "fastVsFullMaxMeters": 0,
+      "decodeMs": 2.100000023841858
+    },
+    {
+      "name": "measured-partial-squat",
+      "maxAbsoluteMeters": 5.960464477539062e-7,
+      "rmsMeters": 1.3910750090811812e-7,
+      "skeletonMaxMeters": 1.7881393432617188e-7,
+      "keypointMaxMeters": 4.76837158203125e-7,
+      "fastVsFullMaxMeters": 0,
+      "decodeMs": 2
+    },
+    {
+      "name": "measured-squat-down",
+      "maxAbsoluteMeters": 5.960464477539062e-7,
+      "rmsMeters": 1.1841352119557285e-7,
+      "skeletonMaxMeters": 1.4901161193847656e-7,
+      "keypointMaxMeters": 7.152557373046875e-7,
+      "fastVsFullMaxMeters": 0,
+      "decodeMs": 2.300000011920929
+    },
+    {
+      "name": "measured-squat-late",
+      "maxAbsoluteMeters": 5.960464477539062e-7,
+      "rmsMeters": 1.246429200908372e-7,
+      "skeletonMaxMeters": 1.7881393432617188e-7,
+      "keypointMaxMeters": 5.960464477539062e-7,
+      "fastVsFullMaxMeters": 0,
+      "decodeMs": 2.100000023841858
+    },
+    {
+      "name": "measured-squat-standing",
+      "maxAbsoluteMeters": 6.556510925292969e-7,
+      "rmsMeters": 1.386698360792608e-7,
+      "skeletonMaxMeters": 1.7881393432617188e-7,
+      "keypointMaxMeters": 5.960464477539062e-7,
+      "fastVsFullMaxMeters": 0,
+      "decodeMs": 2
+    }
+  ],
+  "benchmarkP50Ms": 2,
+  "benchmarkP95Ms": 2.100000023841858,
+  "fkBenchmarkP50Ms": 0.02,
+  "fkBenchmarkP95Ms": 0.02200000047683716,
+  "metadata": {
+    "vertexCount": 4899,
+    "triangleCount": 9794,
+    "jointCount": 127,
+    "compressedBytes": 7442328,
+    "uncompressedBytes": 20130952
+  },
+  "hardwareConcurrency": 8,
+  "pageErrors": [],
+  "passed": true,
+  "finishedAt": "2026-09-28T20:48:01.481Z"
+}

@@ -1,0 +1,9 @@
+# Source attribution
+
+This JavaScript port follows Meta's official MHR character forward computation and Momentum skeleton/skinning mathematics. The browser export preserves the original float32 values, storing exact nonzero corrective and parameter-transform entries sparsely. JavaScript uses float64 intermediates and float32 output arrays; numerical equivalence is tested against the official CPU implementation.
+
+- **MHR**: Meta Platforms, Inc. and affiliates. [Source at d96fafa33bbf018647c70c3525e91f53e79d2a14](https://github.com/facebookresearch/MHR/tree/d96fafa33bbf018647c70c3525e91f53e79d2a14), [release v1.0.1 assets](https://github.com/facebookresearch/MHR/releases/tag/v1.0.1). Apache-2.0; full text in `LICENSE-MHR.txt`. The manifest records the SHA-256 hashes of the four original asset entries and the exported binary.
+- **Momentum / PyMomentum**: Meta Platforms, Inc. and affiliates. [Official project](https://github.com/facebookresearch/momentum). Reference package `pymomentum-cpu==0.1.114.post0`; MIT license in `LICENSE-MOMENTUM.txt`.
+- **InstantHMR**: [Source at 36ae38720c0008f822dc1cb278b4a41b23d76e01](https://github.com/mohamdev/InstantHMR/tree/36ae38720c0008f822dc1cb278b4a41b23d76e01). The `mhr_j127_to_kp70.npy` learned linear regressor and its official keypoint names are copied from this pinned repository. Repository license is in `LICENSE-INSTANTHMR.txt`; keypoint-regressor provenance and SHA-256 are in the manifest. This notice does not change the separate licensing of InstantHMR neural weights, which belongs to the inference component.
+
+Changes: port of the forward computation to browser JavaScript; lossless binary array export; sparse storage; explicit unit/axis conversion; separate FK-only entry point; numerical equivalence test fixtures. No claim is made that inferred geometry is measured 3D ground truth.

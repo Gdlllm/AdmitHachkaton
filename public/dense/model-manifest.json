@@ -1,0 +1,8 @@
+{
+  "name": "InstantHMR",
+  "url": "https://huggingface.co/momolesang/InstantHMR/resolve/3504446fc31e7f76fdb1cd7e463189e7cf0fdd0f/instanthmr.onnx",
+  "revision": "3504446fc31e7f76fdb1cd7e463189e7cf0fdd0f",
+  "bytes": 80961622,
+  "sha256": "f717558094f57d7c9cd084d7981874dbcc3f08e7308501eb98c12844e2cce3b7",
+  "sourceCommit": "36ae38720c0008f822dc1cb278b4a41b23d76e01"
+}

@@ -1,0 +1,80 @@
+{
+  "scope": "Compact status-only copy of default-mode regression results; no personal landmarks, frames, screenshots or detailed fixture reports are included.",
+  "startedAt": "2026-09-28T21:13:52.351Z",
+  "finishedAt": "2026-09-28T21:14:11.405Z",
+  "passed": true,
+  "testCount": 17,
+  "passedCount": 17,
+  "pageErrorCount": 0,
+  "tests": [
+    {
+      "name": "test mode is idle, camera-only UI has no visible controls or text",
+      "passed": true
+    },
+    {
+      "name": "real body motion yields a 33-point pose with finite timestamped output",
+      "passed": true
+    },
+    {
+      "name": "real hand motion yields complete 21-point hand detections",
+      "passed": true
+    },
+    {
+      "name": "real squat sequence continues to produce full body landmarks",
+      "passed": true
+    },
+    {
+      "name": "real face-turns.mp4 yields a dense finite face through sampled clip positions",
+      "passed": true
+    },
+    {
+      "name": "real face-lighting.mp4 yields a dense finite face through sampled clip positions",
+      "passed": true
+    },
+    {
+      "name": "two mirrored crops of a real hand are detected as two independent 21-point hands",
+      "passed": true
+    },
+    {
+      "name": "user close-up yields dense 478-point face and detailed hand",
+      "passed": true
+    },
+    {
+      "name": "blank frames remove all stale person geometry",
+      "passed": true
+    },
+    {
+      "name": "stop releases every supplied stream track and coordinator",
+      "passed": true
+    },
+    {
+      "name": "stop during startup cancels cleanly without leaking workers or a camera track",
+      "passed": true
+    },
+    {
+      "name": "stop resolves a pending permission start immediately and stops a late camera stream",
+      "passed": true
+    },
+    {
+      "name": "a subscriber can stop capture during delivery without reviving a stopped session",
+      "passed": true
+    },
+    {
+      "name": "rapid replacement keeps only the newest source and one coordinator",
+      "passed": true
+    },
+    {
+      "name": "pagehide stops capture and releases supplied stream tracks",
+      "passed": true
+    },
+    {
+      "name": "unavailable video has a recoverable error and releases resources",
+      "passed": true
+    },
+    {
+      "name": "no uncaught page exceptions occurred",
+      "passed": true
+    }
+  ],
+  "sourceReportSHA256": "2eb28eb1d74889411605f99314edabe98c53d484669ef4c3c38e0986293629d7"
+}

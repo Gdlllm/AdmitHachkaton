@@ -11,8 +11,11 @@ const files = [
 ];
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 await mkdir(`${root}public/models`, { recursive: true });
-// WASM comes from the exact package version in package-lock.json.
-await cp(`${root}node_modules/@mediapipe/tasks-vision/wasm`, `${root}public/wasm`, { recursive: true });
+// WASM comes from the exact package version in package-lock.json. The workers
+// load the classic SIMD build (non-SIMD for old browsers), never the ES-module one.
+await cp(`${root}node_modules/@mediapipe/tasks-vision/wasm`, `${root}public/wasm`, { recursive: true,
+  filter: source => !source.includes('vision_wasm_module_internal') });
+for (const name of ['vision_wasm_module_internal.js', 'vision_wasm_module_internal.wasm']) await rm(`${root}public/wasm/${name}`, { force: true });
 for (const [name, remotePath, sha256] of files) {
   const path = `${root}public/models/${name}`;
   try {

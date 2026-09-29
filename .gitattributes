@@ -1,0 +1,4 @@
+# Numeric model exports and recorded validation data, not handwritten code.
+public/dense/mhr-lod3.json linguist-generated=true
+tests/dense-assets/reference.json linguist-generated=true
+docs/evidence/dense/*.json linguist-generated=true

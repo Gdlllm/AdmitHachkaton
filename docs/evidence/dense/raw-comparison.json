@@ -1,0 +1,5879 @@
+{
+  "annotationFreeze": {
+    "frozenAt": "2026-09-28T20:40:05.973Z",
+    "manifestSHA256": "443f29b05ca69c1f80cfd1e9d97c7c83c123aff3105715f47f28e7841c8399e8",
+    "modelBlind": true,
+    "note": "Manual coordinates frozen before annotator inspected any model output. Any correction after this point must cite a visible source-image error and be separately logged."
+  },
+  "scope": "Offline comparison against independent approximate visible 2D annotations. Candidate uses manual-oracle crop; baseline uses its own full-frame detector. This is not an equal-detection pipeline comparison.",
+  "metrics": {
+    "instantDirect2d": {
+      "annotated": 44,
+      "matched": 44,
+      "meanErrorPx": 9.522740610734798,
+      "meanExcessBeyondAnnotationPx": 3.6867488904834773,
+      "meanNormalizedError": 0.022972636541624337,
+      "note": "Mixed source resolutions; use per-frame values and normalized errors alongside this pooled diagnostic."
+    },
+    "instantProjected3d": {
+      "annotated": 44,
+      "matched": 44,
+      "meanErrorPx": 17.175663722738364,
+      "meanExcessBeyondAnnotationPx": 10.399900523488736,
+      "meanNormalizedError": 0.044864368248652926,
+      "note": "Mixed source resolutions; use per-frame values and normalized errors alongside this pooled diagnostic."
+    },
+    "poseFull2d": {
+      "annotated": 44,
+      "matched": 44,
+      "meanErrorPx": 8.961600908526583,
+      "meanExcessBeyondAnnotationPx": 2.8016568052884105,
+      "meanNormalizedError": 0.022029986563399287,
+      "note": "Mixed source resolutions; use per-frame values and normalized errors alongside this pooled diagnostic."
+    },
+    "decodedRigProjected70": {
+      "annotated": 44,
+      "matched": 44,
+      "meanErrorPx": 18.01262571807825,
+      "meanExcessBeyondAnnotationPx": 11.088369187155143,
+      "meanNormalizedError": 0.046671426017522215,
+      "note": "Mixed source resolutions; use per-frame values and normalized errors alongside this pooled diagnostic."
+    }
+  },
+  "rows": [
+    {
+      "id": "motion-front",
+      "bodyExtent": "full",
+      "annotated": 6,
+      "direct2dErrorPx": 10.032906853217776,
+      "projected3dErrorPx": 18.613011399840104,
+      "baselineErrorPx": 8.125503270843852,
+      "decodedRigErrorPx": 19.94713421437149,
+      "direct2dMatched": 6,
+      "projected3dMatched": 6,
+      "baselineMatched": 6,
+      "candidateRawBody": true,
+      "baselineRawBody": true,
+      "runtimeGateTested": false,
+      "vertexCount": 4899,
+      "candidateTimings": {
+        "preprocessMs": 3.425000011920929,
+        "inferenceMs": 38.8299999833107,
+        "postprocessMs": 0.04500001668930054,
+        "totalMs": 65.07499998807907,
+        "decodeMs": 22.2950000166893,
+        "decoderMs": 22.2950000166893
+      },
+      "baselineInferenceMs": 22.05000001192093,
+      "note": null
+    },
+    {
+      "id": "motion-step",
+      "bodyExtent": "full",
+      "annotated": 6,
+      "direct2dErrorPx": 8.085334124520026,
+      "projected3dErrorPx": 14.571813186277256,
+      "baselineErrorPx": 9.50656081573243,
+      "decodedRigErrorPx": 14.052657575311335,
+      "direct2dMatched": 6,
+      "projected3dMatched": 6,
+      "baselineMatched": 6,
+      "candidateRawBody": true,
+      "baselineRawBody": true,
+      "runtimeGateTested": false,
+      "vertexCount": 4899,
+      "candidateTimings": {
+        "preprocessMs": 2.699999988079071,
+        "inferenceMs": 37.42500001192093,
+        "postprocessMs": 0.034999966621398926,
+        "totalMs": 42.77999997138977,
+        "decodeMs": 2.1649999618530273,
+        "decoderMs": 2.1649999618530273
+      },
+      "baselineInferenceMs": 21.589999973773956,
+      "note": null
+    },
+    {
+      "id": "motion-raised",
+      "bodyExtent": "full",
+      "annotated": 6,
+      "direct2dErrorPx": 11.3583596810499,
+      "projected3dErrorPx": 32.90935106438369,
+      "baselineErrorPx": 9.928860538544464,
+      "decodedRigErrorPx": 34.21019618499087,
+      "direct2dMatched": 6,
+      "projected3dMatched": 6,
+      "baselineMatched": 6,
+      "candidateRawBody": true,
+      "baselineRawBody": true,
+      "runtimeGateTested": false,
+      "vertexCount": 4899,
+      "candidateTimings": {
+        "preprocessMs": 3.0799999833106995,
+        "inferenceMs": 40.235000014305115,
+        "postprocessMs": 0.029999971389770508,
+        "totalMs": 45.90499997138977,
+        "decodeMs": 2.159999966621399,
+        "decoderMs": 2.159999966621399
+      },
+      "baselineInferenceMs": 21.55000001192093,
+      "note": null
+    },
+    {
+      "id": "squat-standing",
+      "bodyExtent": "full",
+      "annotated": 6,
+      "direct2dErrorPx": 5.514288995315145,
+      "projected3dErrorPx": 8.53425822530595,
+      "baselineErrorPx": 6.415033335727489,
+      "decodedRigErrorPx": 11.620797147790013,
+      "direct2dMatched": 6,
+      "projected3dMatched": 6,
+      "baselineMatched": 6,
+      "candidateRawBody": true,
+      "baselineRawBody": true,
+      "runtimeGateTested": false,
+      "vertexCount": 4899,
+      "candidateTimings": {
+        "preprocessMs": 3.6649999618530273,
+        "inferenceMs": 41.905000030994415,
+        "postprocessMs": 0.014999985694885254,
+        "totalMs": 48.03999996185303,
+        "decodeMs": 2.0700000524520874,
+        "decoderMs": 2.0700000524520874
+      },
+      "baselineInferenceMs": 25.430000007152557,
+      "note": null
+    },
+    {
+      "id": "squat-down",
+      "bodyExtent": "full",
+      "annotated": 6,
+      "direct2dErrorPx": 15.366197606943436,
+      "projected3dErrorPx": 18.70173093170403,
+      "baselineErrorPx": 11.602723906130924,
+      "decodedRigErrorPx": 21.513540976538305,
+      "direct2dMatched": 6,
+      "projected3dMatched": 6,
+      "baselineMatched": 6,
+      "candidateRawBody": true,
+      "baselineRawBody": true,
+      "runtimeGateTested": false,
+      "vertexCount": 4899,
+      "candidateTimings": {
+        "preprocessMs": 3.409999966621399,
+        "inferenceMs": 43.94499999284744,
+        "postprocessMs": 0.025000035762786865,
+        "totalMs": 50.125,
+        "decodeMs": 2.240000009536743,
+        "decoderMs": 2.240000009536743
+      },
+      "baselineInferenceMs": 23.649999976158142,
+      "note": null
+    },
+    {
+      "id": "squat-late",
+      "bodyExtent": "full",
+      "annotated": 6,
+      "direct2dErrorPx": 12.348292604649755,
+      "projected3dErrorPx": 19.066898719786852,
+      "baselineErrorPx": 11.026432040094233,
+      "decodedRigErrorPx": 17.6663998861502,
+      "direct2dMatched": 6,
+      "projected3dMatched": 6,
+      "baselineMatched": 6,
+      "candidateRawBody": true,
+      "baselineRawBody": true,
+      "runtimeGateTested": false,
+      "vertexCount": 4899,
+      "candidateTimings": {
+        "preprocessMs": 14.129999995231628,
+        "inferenceMs": 38.6599999666214,
+        "postprocessMs": 0.025000035762786865,
+        "totalMs": 55.564999997615814,
+        "decodeMs": 2.2149999737739563,
+        "decoderMs": 2.2149999737739563
+      },
+      "baselineInferenceMs": 24.694999992847443,
+      "note": null
+    },
+    {
+      "id": "partial-motion",
+      "bodyExtent": "partial",
+      "annotated": 4,
+      "direct2dErrorPx": 3.2821541243230183,
+      "projected3dErrorPx": 7.056510168053228,
+      "baselineErrorPx": 3.864985590386227,
+      "decodedRigErrorPx": 8.09362248034409,
+      "direct2dMatched": 4,
+      "projected3dMatched": 4,
+      "baselineMatched": 4,
+      "candidateRawBody": true,
+      "baselineRawBody": true,
+      "runtimeGateTested": false,
+      "vertexCount": 4899,
+      "candidateTimings": {
+        "preprocessMs": 1.625,
+        "inferenceMs": 38.2849999666214,
+        "postprocessMs": 0.030000030994415283,
+        "totalMs": 42.339999973773956,
+        "decodeMs": 2.1100000143051147,
+        "decoderMs": 2.1100000143051147
+      },
+      "baselineInferenceMs": 19.594999969005585,
+      "note": null
+    },
+    {
+      "id": "partial-squat",
+      "bodyExtent": "partial",
+      "annotated": 4,
+      "direct2dErrorPx": 7.409922795215717,
+      "projected3dErrorPx": 13.280195491121948,
+      "baselineErrorPx": 9.804953542796085,
+      "decodedRigErrorPx": 11.529171440788387,
+      "direct2dMatched": 4,
+      "projected3dMatched": 4,
+      "baselineMatched": 4,
+      "candidateRawBody": true,
+      "baselineRawBody": true,
+      "runtimeGateTested": false,
+      "vertexCount": 4899,
+      "candidateTimings": {
+        "preprocessMs": 2.1299999952316284,
+        "inferenceMs": 38.64999997615814,
+        "postprocessMs": 0.02499997615814209,
+        "totalMs": 43.2049999833107,
+        "decodeMs": 2.0449999570846558,
+        "decoderMs": 2.0449999570846558
+      },
+      "baselineInferenceMs": 21.355000019073486,
+      "note": null
+    },
+    {
+      "id": "hand-only",
+      "bodyExtent": "none",
+      "annotated": 0,
+      "direct2dErrorPx": null,
+      "projected3dErrorPx": null,
+      "baselineErrorPx": null,
+      "decodedRigErrorPx": null,
+      "direct2dMatched": 0,
+      "projected3dMatched": 0,
+      "baselineMatched": 0,
+      "candidateRawBody": true,
+      "baselineRawBody": true,
+      "runtimeGateTested": false,
+      "vertexCount": 4899,
+      "candidateTimings": {
+        "preprocessMs": 3.050000011920929,
+        "inferenceMs": 41.83499997854233,
+        "postprocessMs": 0.030000030994415283,
+        "totalMs": 47.42500001192093,
+        "decodeMs": 2.1299999952316284,
+        "decoderMs": 2.1299999952316284
+      },
+      "baselineInferenceMs": 22.600000023841858,
+      "note": "Raw regressor probe; independent runtime gate untested."
+    },
+    {
+      "id": "blank",
+      "bodyExtent": "none",
+      "annotated": 0,
+      "direct2dErrorPx": null,
+      "projected3dErrorPx": null,
+      "baselineErrorPx": null,
+      "decodedRigErrorPx": null,
+      "direct2dMatched": 0,
+      "projected3dMatched": 0,
+      "baselineMatched": 0,
+      "candidateRawBody": true,
+      "baselineRawBody": false,
+      "runtimeGateTested": false,
+      "vertexCount": 4899,
+      "candidateTimings": {
+        "preprocessMs": 1.899999976158142,
+        "inferenceMs": 39.730000019073486,
+        "postprocessMs": 0.029999971389770508,
+        "totalMs": 44.27500003576279,
+        "decodeMs": 2.1200000047683716,
+        "decoderMs": 2.1200000047683716
+      },
+      "baselineInferenceMs": 10.25,
+      "note": "Raw regressor probe; independent runtime gate untested."
+    }
+  ],
+  "candidate": {
+    "schemaVersion": 1,
+    "model": "InstantHMR + MHR mesh; manual-oracle input crops",
+    "scope": "Sparse manual 2D annotations on fixed public frames. No 3D accuracy or temporal identity claim.",
+    "duplicateIds": [],
+    "missingFixtureIds": [],
+    "frames": [
+      {
+        "id": "motion-front",
+        "split": "calibration",
+        "sourceDimensions": {
+          "width": 576,
+          "height": 576
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 10.032906853217776,
+          "medianErrorPx": 10.23272752128477,
+          "p95ErrorPx": 15.208487349330115,
+          "meanExcessBeyondAnnotationPx": 5.064628721524319,
+          "pckAt005VisiblePersonHeight": 0.8333333333333334,
+          "normalizationPx": 274,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 226,
+                "y": 279
+              },
+              "predicted": {
+                "x": 232.87734375,
+                "y": 269.5515625
+              },
+              "errorPx": 11.686352221590381,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 5.686352221590381,
+              "normalizedError": 0.04265092051675322
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 345,
+                "y": 278
+              },
+              "predicted": {
+                "x": 336.6708984375,
+                "y": 267.5447265625
+              },
+              "errorPx": 13.367373544991299,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 7.367373544991299,
+              "normalizedError": 0.04878603483573467
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 211,
+                "y": 310
+              },
+              "predicted": {
+                "x": 207.27011718749998,
+                "y": 303.22626953125
+              },
+              "errorPx": 7.732751790808691,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 2.732751790808691,
+              "normalizedError": 0.028221721864265296
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 361,
+                "y": 299
+              },
+              "predicted": {
+                "x": 363.8033203125,
+                "y": 298.81123046875
+              },
+              "errorPx": 2.809668790160739,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.010254265657520944
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 262,
+                "y": 390
+              },
+              "predicted": {
+                "x": 263.26083984375,
+                "y": 374.228125
+              },
+              "errorPx": 15.822191950776388,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 10.822191950776388,
+              "normalizedError": 0.05774522609772404
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 301,
+                "y": 439
+              },
+              "predicted": {
+                "x": 299.14306640625,
+                "y": 430.41953125
+              },
+              "errorPx": 8.77910282097916,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 3.77910282097916,
+              "normalizedError": 0.03204052124444949
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 18.613011399840104,
+          "medianErrorPx": 21.694707755332054,
+          "p95ErrorPx": 24.135743785613876,
+          "meanExcessBeyondAnnotationPx": 13.27967806650677,
+          "pckAt005VisiblePersonHeight": 0.3333333333333333,
+          "normalizationPx": 274,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 226,
+                "y": 279
+              },
+              "predicted": {
+                "x": 223.29537476099625,
+                "y": 255.21491006180972
+              },
+              "errorPx": 23.93836880514745,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 17.93836880514745,
+              "normalizedError": 0.08736630950783741
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 345,
+                "y": 278
+              },
+              "predicted": {
+                "x": 349.47640390464665,
+                "y": 254.5781890995031
+              },
+              "errorPx": 23.845742130958538,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 17.845742130958538,
+              "normalizedError": 0.08702825595240342
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 211,
+                "y": 310
+              },
+              "predicted": {
+                "x": 192.4466967247387,
+                "y": 294.46007543425617
+              },
+              "errorPx": 24.20153544576935,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 19.20153544576935,
+              "normalizedError": 0.08832677169988813
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 361,
+                "y": 299
+              },
+              "predicted": {
+                "x": 379.200625564478,
+                "y": 291.880140574823
+              },
+              "errorPx": 19.543673379705574,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 14.543673379705574,
+              "normalizedError": 0.07132727510841451
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 262,
+                "y": 390
+              },
+              "predicted": {
+                "x": 259.35496797667327,
+                "y": 379.3524871683263
+              },
+              "errorPx": 10.971131386738543,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 5.971131386738543,
+              "normalizedError": 0.04004062549904578
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 301,
+                "y": 439
+              },
+              "predicted": {
+                "x": 299.646648601848,
+                "y": 448.07728474786677
+              },
+              "errorPx": 9.177617250721157,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 4.177617250721157,
+              "normalizedError": 0.033494953469785246
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 8,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 3.425000011920929,
+          "inferenceMs": 38.8299999833107,
+          "postprocessMs": 0.04500001668930054,
+          "totalMs": 65.07499998807907,
+          "decodeMs": 22.2950000166893,
+          "decoderMs": 22.2950000166893
+        },
+        "candidateModel": "InstantHMR",
+        "vertexCount": 4899
+      },
+      {
+        "id": "motion-step",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 576,
+          "height": 576
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 8.085334124520026,
+          "medianErrorPx": 7.785966263132045,
+          "p95ErrorPx": 14.594709085930862,
+          "meanExcessBeyondAnnotationPx": 3.6586653127019075,
+          "pckAt005VisiblePersonHeight": 0.8333333333333334,
+          "normalizationPx": 262,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 234,
+                "y": 282
+              },
+              "predicted": {
+                "x": 236.1640625,
+                "y": 281.6361328125
+              },
+              "errorPx": 2.1944397540250207,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.008375724252003896
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 344,
+                "y": 280
+              },
+              "predicted": {
+                "x": 329.4248046875,
+                "y": 274.7279296875
+              },
+              "errorPx": 15.499388496888049,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 9.499388496888049,
+              "normalizedError": 0.059157971362168126
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 222,
+                "y": 306
+              },
+              "predicted": {
+                "x": 224.2666015625,
+                "y": 303.512109375
+              },
+              "errorPx": 3.3655731168836933,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.01284569891940341
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 360,
+                "y": 303
+              },
+              "predicted": {
+                "x": 356.78896484375,
+                "y": 296.930126953125
+              },
+              "errorPx": 6.866884707045312,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 1.8668847070453118,
+              "normalizedError": 0.026209483614676763
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 276,
+                "y": 378
+              },
+              "predicted": {
+                "x": 280.8275146484375,
+                "y": 367.1443359375
+              },
+              "errorPx": 11.880670853059305,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 6.880670853059305,
+              "normalizedError": 0.04534607195824162
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 301,
+                "y": 443
+              },
+              "predicted": {
+                "x": 301.465771484375,
+                "y": 434.307421875
+              },
+              "errorPx": 8.705047819218779,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 3.7050478192187786,
+              "normalizedError": 0.03322537335579687
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 14.571813186277256,
+          "medianErrorPx": 14.970998472993493,
+          "p95ErrorPx": 19.66456876578577,
+          "meanExcessBeyondAnnotationPx": 9.24563024649716,
+          "pckAt005VisiblePersonHeight": 0.16666666666666666,
+          "normalizationPx": 262,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 234,
+                "y": 282
+              },
+              "predicted": {
+                "x": 227.54210301730697,
+                "y": 268.6653291316368
+              },
+              "errorPx": 14.816135818986353,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 8.816135818986353,
+              "normalizedError": 0.05655013671368837
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 344,
+                "y": 280
+              },
+              "predicted": {
+                "x": 338.97426795488985,
+                "y": 260.7124959196748
+              },
+              "errorPx": 19.93152769452982,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 13.93152769452982,
+              "normalizedError": 0.07607453318522832
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 222,
+                "y": 306
+              },
+              "predicted": {
+                "x": 214.67083713171922,
+                "y": 292.7684072582503
+              },
+              "errorPx": 15.125861127000633,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 10.125861127000633,
+              "normalizedError": 0.057732294377865014
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 360,
+                "y": 303
+              },
+              "predicted": {
+                "x": 370.16578479384793,
+                "y": 287.10988689075356
+              },
+              "errorPx": 18.863691979553618,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 13.863691979553618,
+              "normalizedError": 0.07199882434944128
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 276,
+                "y": 378
+              },
+              "predicted": {
+                "x": 280.3286780063587,
+                "y": 364.9632917943072
+              },
+              "errorPx": 13.736564858912539,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 8.736564858912539,
+              "normalizedError": 0.05242963686607839
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 301,
+                "y": 443
+              },
+              "predicted": {
+                "x": 301.94193560375413,
+                "y": 447.8667827481605
+              },
+              "errorPx": 4.957097638680572,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.018920219994964012
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 8,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 2.699999988079071,
+          "inferenceMs": 37.42500001192093,
+          "postprocessMs": 0.034999966621398926,
+          "totalMs": 42.77999997138977,
+          "decodeMs": 2.1649999618530273,
+          "decoderMs": 2.1649999618530273
+        },
+        "candidateModel": "InstantHMR",
+        "vertexCount": 4899
+      },
+      {
+        "id": "motion-raised",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 576,
+          "height": 576
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 11.3583596810499,
+          "medianErrorPx": 9.485438029869208,
+          "p95ErrorPx": 19.367296192366528,
+          "meanExcessBeyondAnnotationPx": 6.3583596810499,
+          "pckAt005VisiblePersonHeight": 0.8333333333333334,
+          "normalizationPx": 326,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 246,
+                "y": 210
+              },
+              "predicted": {
+                "x": 247.761669921875,
+                "y": 198.82363281250002
+              },
+              "errorPx": 11.314356562503466,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 5.314356562503466,
+              "normalizedError": 0.03470661522240327
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 318,
+                "y": 209
+              },
+              "predicted": {
+                "x": 312.87412109375,
+                "y": 203.3125
+              },
+              "errorPx": 7.65651949723495,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 1.6565194972349504,
+              "normalizedError": 0.023486256126487578
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 248,
+                "y": 165
+              },
+              "predicted": {
+                "x": 250.65078125,
+                "y": 159.37890625
+              },
+              "errorPx": 6.214767588706805,
+              "annotationUncertaintyPx": 4,
+              "excessBeyondAnnotationPx": 2.2147675887068052,
+              "normalizedError": 0.019063704259836826
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 329,
+                "y": 167
+              },
+              "predicted": {
+                "x": 325.122998046875,
+                "y": 161.5755859375
+              },
+              "errorPx": 6.667489187541499,
+              "annotationUncertaintyPx": 4,
+              "excessBeyondAnnotationPx": 2.6674891875414994,
+              "normalizedError": 0.020452420820679447
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 275,
+                "y": 379
+              },
+              "predicted": {
+                "x": 282.05494384765626,
+                "y": 398.339453125
+              },
+              "errorPx": 20.58607975957672,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 15.58607975957672,
+              "normalizedError": 0.06314748392508196
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 300,
+                "y": 443
+              },
+              "predicted": {
+                "x": 305.3648193359375,
+                "y": 428.2333984375
+              },
+              "errorPx": 15.710945490735956,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 10.710945490735956,
+              "normalizedError": 0.04819308432741091
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 32.90935106438369,
+          "medianErrorPx": 35.24040997940361,
+          "p95ErrorPx": 40.04321498336305,
+          "meanExcessBeyondAnnotationPx": 27.90935106438369,
+          "pckAt005VisiblePersonHeight": 0.16666666666666666,
+          "normalizationPx": 326,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 246,
+                "y": 210
+              },
+              "predicted": {
+                "x": 241.6855068945572,
+                "y": 175.8290094871199
+              },
+              "errorPx": 34.4422914944441,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 28.4422914944441,
+              "normalizedError": 0.10565120090320276
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 318,
+                "y": 209
+              },
+              "predicted": {
+                "x": 324.97466995636705,
+                "y": 178.3301808566083
+              },
+              "errorPx": 31.4528826546726,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 25.4528826546726,
+              "normalizedError": 0.09648123513703251
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 248,
+                "y": 165
+              },
+              "predicted": {
+                "x": 247.80096751956202,
+                "y": 128.96202114506917
+              },
+              "errorPx": 36.03852846436312,
+              "annotationUncertaintyPx": 4,
+              "excessBeyondAnnotationPx": 32.03852846436312,
+              "normalizedError": 0.11054763332626723
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 329,
+                "y": 167
+              },
+              "predicted": {
+                "x": 338.74018180027247,
+                "y": 127.92731785165572
+              },
+              "errorPx": 40.26841978235428,
+              "annotationUncertaintyPx": 4,
+              "excessBeyondAnnotationPx": 36.26841978235428,
+              "normalizedError": 0.12352276006857141
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 275,
+                "y": 379
+              },
+              "predicted": {
+                "x": 290.3146245865358,
+                "y": 415.2666547906332
+              },
+              "errorPx": 39.367600586389365,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 34.367600586389365,
+              "normalizedError": 0.12075951100119438
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 300,
+                "y": 443
+              },
+              "predicted": {
+                "x": 312.1839155291502,
+                "y": 453.19457601079705
+              },
+              "errorPx": 15.886383404078687,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 10.886383404078687,
+              "normalizedError": 0.04873123743582419
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 8,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 3.0799999833106995,
+          "inferenceMs": 40.235000014305115,
+          "postprocessMs": 0.029999971389770508,
+          "totalMs": 45.90499997138977,
+          "decodeMs": 2.159999966621399,
+          "decoderMs": 2.159999966621399
+        },
+        "candidateModel": "InstantHMR",
+        "vertexCount": 4899
+      },
+      {
+        "id": "squat-standing",
+        "split": "calibration",
+        "sourceDimensions": {
+          "width": 720,
+          "height": 1280
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 5.514288995315145,
+          "medianErrorPx": 6.283890440213746,
+          "p95ErrorPx": 7.272515711185341,
+          "meanExcessBeyondAnnotationPx": 0,
+          "pckAt005VisiblePersonHeight": 1,
+          "normalizationPx": 854,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 211,
+                "y": 465
+              },
+              "predicted": {
+                "x": 215.27060546875003,
+                "y": 461.1455078125
+              },
+              "errorPx": 5.752841132276837,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.0067363479300665535
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 441,
+                "y": 468
+              },
+              "predicted": {
+                "x": 442.510498046875,
+                "y": 467.087646484375
+              },
+              "errorPx": 1.7646510383320795,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.0020663361104591095
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 201,
+                "y": 575
+              },
+              "predicted": {
+                "x": 196.75615234375,
+                "y": 569.667724609375
+              },
+              "errorPx": 6.814939748150655,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.00798002312429819
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 485,
+                "y": 569
+              },
+              "predicted": {
+                "x": 491.86152343749995,
+                "y": 568.5105712890625
+              },
+              "errorPx": 6.878956632110074,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.008054984346733109
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 253,
+                "y": 955
+              },
+              "predicted": {
+                "x": 255.05166015625002,
+                "y": 951.0279296875
+              },
+              "errorPx": 4.470643350144126,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.005234945374876026
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 342,
+                "y": 951
+              },
+              "predicted": {
+                "x": 334.7075927734375,
+                "y": 952.27890625
+              },
+              "errorPx": 7.403702070877097,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.008669440364024703
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 8.53425822530595,
+          "medianErrorPx": 7.404179892913775,
+          "p95ErrorPx": 13.115162810401591,
+          "meanExcessBeyondAnnotationPx": 1.3030493458355126,
+          "pckAt005VisiblePersonHeight": 1,
+          "normalizationPx": 854,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 211,
+                "y": 465
+              },
+              "predicted": {
+                "x": 223.41459120867202,
+                "y": 466.4338395020239
+              },
+              "errorPx": 12.497118491716432,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 2.4971184917164315,
+              "normalizedError": 0.014633628210440786
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 441,
+                "y": 468
+              },
+              "predicted": {
+                "x": 445.73245148985524,
+                "y": 471.23887998449
+              },
+              "errorPx": 5.73467005657369,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.00671507032385678
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 201,
+                "y": 575
+              },
+              "predicted": {
+                "x": 205.84421004999442,
+                "y": 574.9886125450456
+              },
+              "errorPx": 4.844223434421377,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.0056723927803529
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 485,
+                "y": 569
+              },
+              "predicted": {
+                "x": 497.4284891665486,
+                "y": 573.7944164652968
+              },
+              "errorPx": 13.321177583296643,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 5.3211775832966435,
+              "normalizedError": 0.015598568598708014
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 253,
+                "y": 955
+              },
+              "predicted": {
+                "x": 259.57556829051725,
+                "y": 954.0460641556754
+              },
+              "errorPx": 6.644403053573988,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.007780331444466029
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 342,
+                "y": 951
+              },
+              "predicted": {
+                "x": 336.4404101141226,
+                "y": 956.9783902370921
+              },
+              "errorPx": 8.163956732253562,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.00955966830474656
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 9,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 3.6649999618530273,
+          "inferenceMs": 41.905000030994415,
+          "postprocessMs": 0.014999985694885254,
+          "totalMs": 48.03999996185303,
+          "decodeMs": 2.0700000524520874,
+          "decoderMs": 2.0700000524520874
+        },
+        "candidateModel": "InstantHMR",
+        "vertexCount": 4899
+      },
+      {
+        "id": "squat-down",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 720,
+          "height": 1280
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 15.366197606943436,
+          "medianErrorPx": 15.689494193275522,
+          "p95ErrorPx": 28.20384966330932,
+          "meanExcessBeyondAnnotationPx": 6.959591273146024,
+          "pckAt005VisiblePersonHeight": 1,
+          "normalizationPx": 762,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 292,
+                "y": 463
+              },
+              "predicted": {
+                "x": 293.746728515625,
+                "y": 480.4888671875
+              },
+              "errorPx": 17.575879380825043,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 7.575879380825043,
+              "normalizedError": 0.023065458505019742
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 516,
+                "y": 481
+              },
+              "predicted": {
+                "x": 510.01259765624997,
+                "y": 493.4369140625
+              },
+              "errorPx": 13.803109005726,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 3.803109005726,
+              "normalizedError": 0.018114316280480314
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 432,
+                "y": 410
+              },
+              "predicted": {
+                "x": 405.75849609375,
+                "y": 426.9107421875
+              },
+              "errorPx": 31.218419700456092,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 21.218419700456092,
+              "normalizedError": 0.040969054725007996
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 492,
+                "y": 433
+              },
+              "predicted": {
+                "x": 490.36728515625003,
+                "y": 432.491796875
+              },
+              "errorPx": 1.7099789990702412,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.0022440669279137023
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 253,
+                "y": 955
+              },
+              "predicted": {
+                "x": 258.9767578125,
+                "y": 936.7958984375
+              },
+              "errorPx": 19.160139551869,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 9.160139551869001,
+              "normalizedError": 0.025144540094316273
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 342,
+                "y": 951
+              },
+              "predicted": {
+                "x": 340.3206298828125,
+                "y": 959.5666015625
+              },
+              "errorPx": 8.729659003714234,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.01145624541169847
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 18.70173093170403,
+          "medianErrorPx": 17.534808141497635,
+          "p95ErrorPx": 27.16465790912393,
+          "meanExcessBeyondAnnotationPx": 9.035064265037365,
+          "pckAt005VisiblePersonHeight": 1,
+          "normalizationPx": 762,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 292,
+                "y": 463
+              },
+              "predicted": {
+                "x": 309.98315712872943,
+                "y": 481.4164142034256
+              },
+              "errorPx": 25.74020692280284,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 15.740206922802841,
+              "normalizedError": 0.03377979911128982
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 516,
+                "y": 481
+              },
+              "predicted": {
+                "x": 522.8203308864403,
+                "y": 494.89958053652515
+              },
+              "errorPx": 15.482740470985101,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 5.482740470985101,
+              "normalizedError": 0.020318557048536877
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 432,
+                "y": 410
+              },
+              "predicted": {
+                "x": 418.9481640883134,
+                "y": 424.60463225861974
+              },
+              "errorPx": 19.58687581201017,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 9.58687581201017,
+              "normalizedError": 0.02570456143308421
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 492,
+                "y": 433
+              },
+              "predicted": {
+                "x": 502.9235092011131,
+                "y": 430.1993171350192
+              },
+              "errorPx": 11.276829243054094,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 3.2768292430540935,
+              "normalizedError": 0.014798988507945005
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 253,
+                "y": 955
+              },
+              "predicted": {
+                "x": 265.7312500697914,
+                "y": 930.4672495496229
+              },
+              "errorPx": 27.639474904564295,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 17.639474904564295,
+              "normalizedError": 0.036272276777643435
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 342,
+                "y": 951
+              },
+              "predicted": {
+                "x": 350.6724557469939,
+                "y": 959.9802680939788
+              },
+              "errorPx": 12.484258236807689,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 2.4842582368076886,
+              "normalizedError": 0.01638354099318594
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 9,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 3.409999966621399,
+          "inferenceMs": 43.94499999284744,
+          "postprocessMs": 0.025000035762786865,
+          "totalMs": 50.125,
+          "decodeMs": 2.240000009536743,
+          "decoderMs": 2.240000009536743
+        },
+        "candidateModel": "InstantHMR",
+        "vertexCount": 4899
+      },
+      {
+        "id": "squat-late",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 720,
+          "height": 1280
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 12.348292604649755,
+          "medianErrorPx": 12.019119016839676,
+          "p95ErrorPx": 26.119724290494567,
+          "meanExcessBeyondAnnotationPx": 4.946081494886693,
+          "pckAt005VisiblePersonHeight": 1,
+          "normalizationPx": 641,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 318,
+                "y": 604
+              },
+              "predicted": {
+                "x": 324.59398193359374,
+                "y": 610.3734619140625
+              },
+              "errorPx": 9.170693240457148,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.01430685372926232
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 508,
+                "y": 605
+              },
+              "predicted": {
+                "x": 500.53251953125,
+                "y": 617.9790771484375
+              },
+              "errorPx": 14.973967683157799,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 4.973967683157799,
+              "normalizedError": 0.023360323998686115
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 460,
+                "y": 538
+              },
+              "predicted": {
+                "x": 433.866015625,
+                "y": 552.3923828125
+              },
+              "errorPx": 29.834976492940154,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 19.834976492940154,
+              "normalizedError": 0.046544425105990876
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 494,
+                "y": 557
+              },
+              "predicted": {
+                "x": 492.64521484375,
+                "y": 553.70693359375
+              },
+              "errorPx": 3.5608607352110035,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.005555164953527307
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 253,
+                "y": 955
+              },
+              "predicted": {
+                "x": 267.3406005859375,
+                "y": 951.07685546875
+              },
+              "errorPx": 14.867544793222205,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 4.867544793222205,
+              "normalizedError": 0.023194297649332615
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 342,
+                "y": 951
+              },
+              "predicted": {
+                "x": 343.13853759765624,
+                "y": 949.7623046875001
+              },
+              "errorPx": 1.681712682910219,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.0026235767284090777
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 19.066898719786852,
+          "medianErrorPx": 19.63662125783798,
+          "p95ErrorPx": 29.373324348703235,
+          "meanExcessBeyondAnnotationPx": 10.298637498376452,
+          "pckAt005VisiblePersonHeight": 1,
+          "normalizationPx": 641,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 318,
+                "y": 604
+              },
+              "predicted": {
+                "x": 332.42814627666957,
+                "y": 590.409405949607
+              },
+              "errorPx": 19.821091080552307,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 9.821091080552307,
+              "normalizedError": 0.030922138971220446
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 508,
+                "y": 605
+              },
+              "predicted": {
+                "x": 506.23121615939993,
+                "y": 600.7432976753289
+              },
+              "errorPx": 4.6095673284624255,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.00719121268090862
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 460,
+                "y": 538
+              },
+              "predicted": {
+                "x": 444.81719056344485,
+                "y": 534.4497184099353
+              },
+              "errorPx": 15.592376398596228,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 5.592376398596228,
+              "normalizedError": 0.024325080185017518
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 494,
+                "y": 557
+              },
+              "predicted": {
+                "x": 499.99910522834716,
+                "y": 538.4960292933057
+              },
+              "errorPx": 19.45215143512365,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 11.45215143512365,
+              "normalizedError": 0.030346570101596956
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 253,
+                "y": 955
+              },
+              "predicted": {
+                "x": 268.76645777805516,
+                "y": 927.9800252006521
+              },
+              "errorPx": 31.28354565941321,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 21.28354565941321,
+              "normalizedError": 0.04880428340002061
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 342,
+                "y": 951
+              },
+              "predicted": {
+                "x": 344.56467254474387,
+                "y": 927.4968545443032
+              },
+              "errorPx": 23.642660416573314,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 13.642660416573314,
+              "normalizedError": 0.03688402561087881
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 9,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 14.129999995231628,
+          "inferenceMs": 38.6599999666214,
+          "postprocessMs": 0.025000035762786865,
+          "totalMs": 55.564999997615814,
+          "decodeMs": 2.2149999737739563,
+          "decoderMs": 2.2149999737739563
+        },
+        "candidateModel": "InstantHMR",
+        "vertexCount": 4899
+      },
+      {
+        "id": "partial-motion",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 190,
+          "height": 200
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 4,
+          "matched": 4,
+          "missing": 0,
+          "meanErrorPx": 3.2821541243230183,
+          "medianErrorPx": 3.677743790355409,
+          "p95ErrorPx": 5.5464159480016475,
+          "meanExcessBeyondAnnotationPx": 0,
+          "pckAt005VisiblePersonHeight": 1,
+          "normalizationPx": 200,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 46,
+                "y": 40
+              },
+              "predicted": {
+                "x": 45.986328125,
+                "y": 39.8828125
+              },
+              "errorPx": 0.11798233055108559,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.000589911652755428
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 118,
+                "y": 39
+              },
+              "predicted": {
+                "x": 119.7265625,
+                "y": 40.703125
+              },
+              "errorPx": 2.425211914870791,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.012126059574353955
+            },
+            {
+              "name": "left_shoulder",
+              "valid": true,
+              "expected": {
+                "x": 105,
+                "y": 80
+              },
+              "predicted": {
+                "x": 102.481689453125,
+                "y": 74.9365234375
+              },
+              "errorPx": 5.6551465860301695,
+              "annotationUncertaintyPx": 7,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.028275732930150847
+            },
+            {
+              "name": "right_shoulder",
+              "valid": true,
+              "expected": {
+                "x": 58,
+                "y": 76
+              },
+              "predicted": {
+                "x": 62.890625,
+                "y": 75.3759765625
+              },
+              "errorPx": 4.930275665840027,
+              "annotationUncertaintyPx": 7,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.024651378329200134
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 4,
+          "matched": 4,
+          "missing": 0,
+          "meanErrorPx": 7.056510168053228,
+          "medianErrorPx": 7.290208089848996,
+          "p95ErrorPx": 10.024841904763004,
+          "meanExcessBeyondAnnotationPx": 1.475979489791314,
+          "pckAt005VisiblePersonHeight": 0.75,
+          "normalizationPx": 200,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 46,
+                "y": 40
+              },
+              "predicted": {
+                "x": 39.472890409724364,
+                "y": 34.82058601521244
+              },
+              "errorPx": 8.33243594810552,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 2.3324359481055197,
+              "normalizedError": 0.0416621797405276
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 118,
+                "y": 39
+              },
+              "predicted": {
+                "x": 119.98886813914945,
+                "y": 33.07702266596887
+              },
+              "errorPx": 6.247980231592471,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 0.24798023159247062,
+              "normalizedError": 0.031239901157962352
+            },
+            {
+              "name": "left_shoulder",
+              "valid": true,
+              "expected": {
+                "x": 105,
+                "y": 80
+              },
+              "predicted": {
+                "x": 101.88015984395626,
+                "y": 70.15920295954638
+              },
+              "errorPx": 10.323501779467266,
+              "annotationUncertaintyPx": 7,
+              "excessBeyondAnnotationPx": 3.323501779467266,
+              "normalizedError": 0.05161750889733633
+            },
+            {
+              "name": "right_shoulder",
+              "valid": true,
+              "expected": {
+                "x": 58,
+                "y": 76
+              },
+              "predicted": {
+                "x": 59.40745957186241,
+                "y": 72.99075476670312
+              },
+              "errorPx": 3.322122713047656,
+              "annotationUncertaintyPx": 7,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.01661061356523828
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 7,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": true,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 1.625,
+          "inferenceMs": 38.2849999666214,
+          "postprocessMs": 0.030000030994415283,
+          "totalMs": 42.339999973773956,
+          "decodeMs": 2.1100000143051147,
+          "decoderMs": 2.1100000143051147
+        },
+        "candidateModel": "InstantHMR",
+        "vertexCount": 4899
+      },
+      {
+        "id": "partial-squat",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 520,
+          "height": 530
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 4,
+          "matched": 4,
+          "missing": 0,
+          "meanErrorPx": 7.409922795215717,
+          "medianErrorPx": 7.878328429738841,
+          "p95ErrorPx": 9.600257243183748,
+          "meanExcessBeyondAnnotationPx": 0.07324807035498271,
+          "pckAt005VisiblePersonHeight": 1,
+          "normalizationPx": 530,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 111,
+                "y": 215
+              },
+              "predicted": {
+                "x": 113.34423828125,
+                "y": 205.45263671875
+              },
+              "errorPx": 9.8309510599656,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.018548964264086035
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 341,
+                "y": 218
+              },
+              "predicted": {
+                "x": 335.812255859375,
+                "y": 212.634033203125
+              },
+              "errorPx": 7.463664578057751,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.014082385996335378
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 101,
+                "y": 325
+              },
+              "predicted": {
+                "x": 98.0498046875,
+                "y": 317.24951171875
+              },
+              "errorPx": 8.29299228141993,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 0.29299228141993083,
+              "normalizedError": 0.015647155247962133
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 385,
+                "y": 319
+              },
+              "predicted": {
+                "x": 388.48876953125,
+                "y": 316.93896484375
+              },
+              "errorPx": 4.052083261419588,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.007645440115886015
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 4,
+          "matched": 4,
+          "missing": 0,
+          "meanErrorPx": 13.280195491121948,
+          "medianErrorPx": 11.714936606213854,
+          "p95ErrorPx": 24.189695051489323,
+          "meanExcessBeyondAnnotationPx": 6.3158105386293375,
+          "pckAt005VisiblePersonHeight": 1,
+          "normalizationPx": 530,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 111,
+                "y": 215
+              },
+              "predicted": {
+                "x": 107.2201108415259,
+                "y": 208.08436646977128
+              },
+              "errorPx": 7.881214955498536,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.01487021689716705
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 341,
+                "y": 218
+              },
+              "predicted": {
+                "x": 344.8629884223229,
+                "y": 218.94259206303153
+              },
+              "errorPx": 3.976324854471905,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.007502499725418689
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 101,
+                "y": 325
+              },
+              "predicted": {
+                "x": 90.69163215942805,
+                "y": 336.6403748244734
+              },
+              "errorPx": 15.548658256929173,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 7.548658256929173,
+              "normalizedError": 0.02933709105080976
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 385,
+                "y": 319
+              },
+              "predicted": {
+                "x": 403.81374476179997,
+                "y": 336.5294846776494
+              },
+              "errorPx": 25.714583897588177,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 17.714583897588177,
+              "normalizedError": 0.04851808282563807
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 5,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": true,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 2.1299999952316284,
+          "inferenceMs": 38.64999997615814,
+          "postprocessMs": 0.02499997615814209,
+          "totalMs": 43.2049999833107,
+          "decodeMs": 2.0449999570846558,
+          "decoderMs": 2.0449999570846558
+        },
+        "candidateModel": "InstantHMR",
+        "vertexCount": 4899
+      },
+      {
+        "id": "hand-only",
+        "split": "regression",
+        "sourceDimensions": {
+          "width": 620,
+          "height": 1080
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 0,
+          "matched": 0,
+          "missing": 0,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": null,
+          "normalizationPx": 1080,
+          "pairs": []
+        },
+        "projected3d": {
+          "annotated": 0,
+          "matched": 0,
+          "missing": 0,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": null,
+          "normalizationPx": 1080,
+          "pairs": []
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 0,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": true,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": "Unconditional crop regressors may always output a candidate; evaluate independent runtime gating separately."
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 3.050000011920929,
+          "inferenceMs": 41.83499997854233,
+          "postprocessMs": 0.030000030994415283,
+          "totalMs": 47.42500001192093,
+          "decodeMs": 2.1299999952316284,
+          "decoderMs": 2.1299999952316284
+        },
+        "candidateModel": "InstantHMR",
+        "vertexCount": 4899
+      },
+      {
+        "id": "blank",
+        "split": "regression",
+        "sourceDimensions": {
+          "width": 640,
+          "height": 480
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 0,
+          "matched": 0,
+          "missing": 0,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": null,
+          "normalizationPx": 480,
+          "pairs": []
+        },
+        "projected3d": {
+          "annotated": 0,
+          "matched": 0,
+          "missing": 0,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": null,
+          "normalizationPx": 480,
+          "pairs": []
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 0,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": true,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": "Unconditional crop regressors may always output a candidate; evaluate independent runtime gating separately."
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 1.899999976158142,
+          "inferenceMs": 39.730000019073486,
+          "postprocessMs": 0.029999971389770508,
+          "totalMs": 44.27500003576279,
+          "decodeMs": 2.1200000047683716,
+          "decoderMs": 2.1200000047683716
+        },
+        "candidateModel": "InstantHMR",
+        "vertexCount": 4899
+      }
+    ],
+    "timings": {
+      "preprocessMs": {
+        "samples": 10,
+        "p50Ms": 3.064999997615814,
+        "p95Ms": 9.420749980211248
+      },
+      "inferenceMs": {
+        "samples": 10,
+        "p50Ms": 39.28000000119209,
+        "p95Ms": 43.02700001001358
+      },
+      "postprocessMs": {
+        "samples": 10,
+        "p50Ms": 0.029999971389770508,
+        "p95Ms": 0.0404999941587448
+      },
+      "decoderMs": {
+        "samples": 10,
+        "p50Ms": 2.1449999809265137,
+        "p95Ms": 13.270250013470628
+      },
+      "renderMs": {
+        "samples": 0,
+        "p50Ms": null,
+        "p95Ms": null
+      },
+      "totalMs": {
+        "samples": 10,
+        "p50Ms": 46.66499999165535,
+        "p95Ms": 60.795499992370594
+      },
+      "endToEndMs": {
+        "samples": 0,
+        "p50Ms": null,
+        "p95Ms": null
+      }
+    },
+    "resources": {
+      "observed": true,
+      "evidence": {
+        "method": "Saved browser harness cleanup observations; worker counts were not independently enumerated.",
+        "afterStop": {
+          "sessionsReleased": true,
+          "openServers": 0,
+          "activeStreams": 0
+        },
+        "browserClosed": true,
+        "originalCleanup": {
+          "disposed": true,
+          "browserClosed": true,
+          "serverStopped": true
+        }
+      },
+      "violations": []
+    },
+    "hardViolationCount": 0,
+    "runtimeNegativeGateFullyEvaluated": false,
+    "note": "A clean contract/finite check is not an accuracy pass. Review joint errors, missing points, independent gate evidence, partial policy and overlays before accepting."
+  },
+  "baseline": {
+    "schemaVersion": 1,
+    "model": "Pose Full IMAGE full-frame; no production fusion",
+    "scope": "Sparse manual 2D annotations on fixed public frames. No 3D accuracy or temporal identity claim.",
+    "duplicateIds": [],
+    "missingFixtureIds": [],
+    "frames": [
+      {
+        "id": "motion-front",
+        "split": "calibration",
+        "sourceDimensions": {
+          "width": 576,
+          "height": 576
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 8.125503270843852,
+          "medianErrorPx": 9.16817849039364,
+          "p95ErrorPx": 12.671654545251902,
+          "meanExcessBeyondAnnotationPx": 3.330137581961626,
+          "pckAt005VisiblePersonHeight": 1,
+          "normalizationPx": 274,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 226,
+                "y": 279
+              },
+              "predicted": {
+                "x": 230.55149459838867,
+                "y": 270.9858169555664,
+                "z": -0.250803142786026,
+                "visibility": 0.9886682629585266
+              },
+              "errorPx": 9.216465317509101,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 3.216465317509101,
+              "normalizedError": 0.03363673473543467
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 345,
+                "y": 278
+              },
+              "predicted": {
+                "x": 338.5276336669922,
+                "y": 266.1286926269531,
+                "z": -0.29202917218208313,
+                "visibility": 0.9947595000267029
+              },
+              "errorPx": 13.521074835012566,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 7.521074835012566,
+              "normalizedError": 0.049346988448950975
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 211,
+                "y": 310
+              },
+              "predicted": {
+                "x": 208.53032684326172,
+                "y": 309.1553421020508,
+                "z": -0.34028705954551697,
+                "visibility": 0.9462003111839294
+              },
+              "errorPx": 2.6101211591957987,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.009525989632101455
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 361,
+                "y": 299
+              },
+              "predicted": {
+                "x": 359.4220848083496,
+                "y": 295.14863204956055,
+                "z": -0.40398749709129333,
+                "visibility": 0.9735944867134094
+              },
+              "errorPx": 4.1620729740975575,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.015190047350721013
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 262,
+                "y": 390
+              },
+              "predicted": {
+                "x": 263.15752601623535,
+                "y": 379.94300079345703,
+                "z": 0.6607194542884827,
+                "visibility": 0.9530133008956909
+              },
+              "errorPx": 10.123393675969911,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 5.123393675969911,
+              "normalizedError": 0.03694669224806537
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 301,
+                "y": 439
+              },
+              "predicted": {
+                "x": 301.2721710205078,
+                "y": 429.88417053222656,
+                "z": 0.06566520035266876,
+                "visibility": 0.9986329674720764
+              },
+              "errorPx": 9.119891663278178,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 4.119891663278178,
+              "normalizedError": 0.03328427614335101
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 0,
+          "missing": 6,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": 0,
+          "normalizationPx": 274,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_ankle",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_ankle",
+              "valid": false,
+              "reason": "missing"
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 8,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "inferenceMs": 22.05000001192093
+        },
+        "candidateModel": "MediaPipe Pose Full IMAGE; full-frame detector, unmodified output",
+        "vertexCount": 0
+      },
+      {
+        "id": "motion-step",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 576,
+          "height": 576
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 9.50656081573243,
+          "medianErrorPx": 10.365175194270972,
+          "p95ErrorPx": 13.376750620270915,
+          "meanExcessBeyondAnnotationPx": 4.449606370158972,
+          "pckAt005VisiblePersonHeight": 0.5,
+          "normalizationPx": 262,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 234,
+                "y": 282
+              },
+              "predicted": {
+                "x": 237.27263832092285,
+                "y": 279.1468563079834,
+                "z": -0.17028185725212097,
+                "visibility": 0.9392480850219727
+              },
+              "errorPx": 4.341726673440749,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.016571475852827287
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 344,
+                "y": 280
+              },
+              "predicted": {
+                "x": 332.35383224487305,
+                "y": 273.7979393005371,
+                "z": -0.2604938745498657,
+                "visibility": 0.9887987971305847
+              },
+              "errorPx": 13.194649684640396,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 7.194649684640396,
+              "normalizedError": 0.05036125833832212
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 222,
+                "y": 306
+              },
+              "predicted": {
+                "x": 225.24920082092285,
+                "y": 301.8812942504883,
+                "z": -0.3218807578086853,
+                "visibility": 0.8652240633964539
+              },
+              "errorPx": 5.246050230959156,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 0.24605023095915612,
+              "normalizedError": 0.020023092484576933
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 360,
+                "y": 303
+              },
+              "predicted": {
+                "x": 353.78956604003906,
+                "y": 291.134090423584,
+                "z": -0.4483911097049713,
+                "visibility": 0.9776712656021118
+              },
+              "errorPx": 13.392882439815464,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 8.392882439815464,
+              "normalizedError": 0.05111787190769261
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 276,
+                "y": 378
+              },
+              "predicted": {
+                "x": 278.09558486938477,
+                "y": 364.83741760253906,
+                "z": 0.3864704370498657,
+                "visibility": 0.9396923184394836
+              },
+              "errorPx": 13.32835516163727,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 8.32835516163727,
+              "normalizedError": 0.0508715845864018
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 301,
+                "y": 443
+              },
+              "predicted": {
+                "x": 302.7689208984375,
+                "y": 435.6748580932617,
+                "z": 0.2686343193054199,
+                "visibility": 0.9968273043632507
+              },
+              "errorPx": 7.535700703901547,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 2.535700703901547,
+              "normalizedError": 0.028762216427105143
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 0,
+          "missing": 6,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": 0,
+          "normalizationPx": 262,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_ankle",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_ankle",
+              "valid": false,
+              "reason": "missing"
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 8,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "inferenceMs": 21.589999973773956
+        },
+        "candidateModel": "MediaPipe Pose Full IMAGE; full-frame detector, unmodified output",
+        "vertexCount": 0
+      },
+      {
+        "id": "motion-raised",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 576,
+          "height": 576
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 9.928860538544464,
+          "medianErrorPx": 8.510800590455517,
+          "p95ErrorPx": 15.748913672771,
+          "meanExcessBeyondAnnotationPx": 4.928860538544463,
+          "pckAt005VisiblePersonHeight": 0.8333333333333334,
+          "normalizationPx": 326,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 246,
+                "y": 210
+              },
+              "predicted": {
+                "x": 247.82438850402832,
+                "y": 199.61615753173828,
+                "z": -0.4013131558895111,
+                "visibility": 0.9893474578857422
+              },
+              "errorPx": 10.542892289087769,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 4.542892289087769,
+              "normalizedError": 0.03234016039597475
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 318,
+                "y": 209
+              },
+              "predicted": {
+                "x": 319.7347640991211,
+                "y": 202.23200225830078,
+                "z": -0.3990732729434967,
+                "visibility": 0.9896317720413208
+              },
+              "errorPx": 6.986787524409566,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 0.9867875244095661,
+              "normalizedError": 0.021431863571808485
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 248,
+                "y": 165
+              },
+              "predicted": {
+                "x": 250.38401412963867,
+                "y": 157.8493137359619,
+                "z": -0.49352186918258667,
+                "visibility": 0.9727790951728821
+              },
+              "errorPx": 7.537628102859665,
+              "annotationUncertaintyPx": 4,
+              "excessBeyondAnnotationPx": 3.5376281028596646,
+              "normalizedError": 0.023121558597729033
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 329,
+                "y": 167
+              },
+              "predicted": {
+                "x": 331.16871643066406,
+                "y": 159.3688087463379,
+                "z": -0.4920285940170288,
+                "visibility": 0.9643214344978333
+              },
+              "errorPx": 7.933373236310098,
+              "annotationUncertaintyPx": 4,
+              "excessBeyondAnnotationPx": 3.933373236310098,
+              "normalizedError": 0.024335500724877602
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 275,
+                "y": 379
+              },
+              "predicted": {
+                "x": 273.8176803588867,
+                "y": 361.5557670593262,
+                "z": 0.7499889731407166,
+                "visibility": 0.7077078223228455
+              },
+              "errorPx": 17.484254133998743,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 12.484254133998743,
+              "normalizedError": 0.053632681392634184
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 300,
+                "y": 443
+              },
+              "predicted": {
+                "x": 301.5975036621094,
+                "y": 434.0532760620117,
+                "z": 0.13495321571826935,
+                "visibility": 0.9867772459983826
+              },
+              "errorPx": 9.088227944600938,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 4.088227944600938,
+              "normalizedError": 0.027877999830064226
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 0,
+          "missing": 6,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": 0,
+          "normalizationPx": 326,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_ankle",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_ankle",
+              "valid": false,
+              "reason": "missing"
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 8,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "inferenceMs": 21.55000001192093
+        },
+        "candidateModel": "MediaPipe Pose Full IMAGE; full-frame detector, unmodified output",
+        "vertexCount": 0
+      },
+      {
+        "id": "squat-standing",
+        "split": "calibration",
+        "sourceDimensions": {
+          "width": 720,
+          "height": 1280
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 6.415033335727489,
+          "medianErrorPx": 6.216951078953043,
+          "p95ErrorPx": 8.472747999640823,
+          "meanExcessBeyondAnnotationPx": 0.12154269987361548,
+          "pckAt005VisiblePersonHeight": 1,
+          "normalizationPx": 854,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 211,
+                "y": 465
+              },
+              "predicted": {
+                "x": 213.39566946029663,
+                "y": 459.4178771972656,
+                "z": -0.1816127598285675,
+                "visibility": 0.9973887801170349
+              },
+              "errorPx": 6.074481636140241,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.007112976154730962
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 441,
+                "y": 468
+              },
+              "predicted": {
+                "x": 434.9922037124634,
+                "y": 467.4350357055664,
+                "z": 0.20397619903087616,
+                "visibility": 0.9656413197517395
+              },
+              "errorPx": 6.034302021487131,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.007065927425628959
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 201,
+                "y": 575
+              },
+              "predicted": {
+                "x": 196.03568315505981,
+                "y": 567.8197860717773,
+                "z": -0.302627831697464,
+                "visibility": 0.9926542043685913
+              },
+              "errorPx": 8.729256199241693,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 0.7292561992416928,
+              "normalizedError": 0.010221611474521889
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 485,
+                "y": 569
+              },
+              "predicted": {
+                "x": 481.5602445602417,
+                "y": 570.0260162353516,
+                "z": 0.034176383167505264,
+                "visibility": 0.9853278994560242
+              },
+              "errorPx": 3.5895162348918013,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.0042031806029178
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 253,
+                "y": 955
+              },
+              "predicted": {
+                "x": 260.7025194168091,
+                "y": 954.8958587646484,
+                "z": -0.024955974891781807,
+                "visibility": 0.961243748664856
+              },
+              "errorPx": 7.7032234008382146,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.009020167916672383
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 342,
+                "y": 951
+              },
+              "predicted": {
+                "x": 346.02187156677246,
+                "y": 955.9261322021484,
+                "z": 0.17629243433475494,
+                "visibility": 0.9216402173042297
+              },
+              "errorPx": 6.359420521765846,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.007446628245627454
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 0,
+          "missing": 6,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": 0,
+          "normalizationPx": 854,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_ankle",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_ankle",
+              "valid": false,
+              "reason": "missing"
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 9,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "inferenceMs": 25.430000007152557
+        },
+        "candidateModel": "MediaPipe Pose Full IMAGE; full-frame detector, unmodified output",
+        "vertexCount": 0
+      },
+      {
+        "id": "squat-down",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 720,
+          "height": 1280
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 11.602723906130924,
+          "medianErrorPx": 9.441858006530218,
+          "p95ErrorPx": 22.0144517312727,
+          "meanExcessBeyondAnnotationPx": 3.174057341447537,
+          "pckAt005VisiblePersonHeight": 1,
+          "normalizationPx": 762,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 292,
+                "y": 463
+              },
+              "predicted": {
+                "x": 314.5936131477356,
+                "y": 473.49029541015625,
+                "z": -0.7426744103431702,
+                "visibility": 0.9982109069824219
+              },
+              "errorPx": 24.91019174679063,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 14.91019174679063,
+              "normalizedError": 0.03269054035011894
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 516,
+                "y": 481
+              },
+              "predicted": {
+                "x": 521.1247158050537,
+                "y": 493.3025360107422,
+                "z": -0.4107917845249176,
+                "visibility": 0.9901401400566101
+              },
+              "errorPx": 13.327231684718909,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 3.3272316847189085,
+              "normalizedError": 0.0174898053605235
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 432,
+                "y": 410
+              },
+              "predicted": {
+                "x": 422.01898097991943,
+                "y": 414.1435241699219,
+                "z": -0.85407555103302,
+                "visibility": 0.9902915358543396
+              },
+              "errorPx": 10.806920617175681,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0.8069206171756811,
+              "normalizedError": 0.014182310521227927
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 492,
+                "y": 433
+              },
+              "predicted": {
+                "x": 498.70041847229004,
+                "y": 430.7819366455078,
+                "z": -0.9004927277565002,
+                "visibility": 0.9012274742126465
+              },
+              "errorPx": 7.058003453409946,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.0092624717236351
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 253,
+                "y": 955
+              },
+              "predicted": {
+                "x": 260.8193778991699,
+                "y": 952.9771423339844,
+                "z": -0.3885778486728668,
+                "visibility": 0.9634374976158142
+              },
+              "errorPx": 8.076795395884757,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.010599469023470809
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 342,
+                "y": 951
+              },
+              "predicted": {
+                "x": 346.14649772644043,
+                "y": 954.5170593261719,
+                "z": -0.15732097625732422,
+                "visibility": 0.9260365962982178
+              },
+              "errorPx": 5.437200538805628,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.0071354337779601425
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 0,
+          "missing": 6,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": 0,
+          "normalizationPx": 762,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_ankle",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_ankle",
+              "valid": false,
+              "reason": "missing"
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 9,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "inferenceMs": 23.649999976158142
+        },
+        "candidateModel": "MediaPipe Pose Full IMAGE; full-frame detector, unmodified output",
+        "vertexCount": 0
+      },
+      {
+        "id": "squat-late",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 720,
+          "height": 1280
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 11.026432040094233,
+          "medianErrorPx": 11.10631883971,
+          "p95ErrorPx": 16.182404751754635,
+          "meanExcessBeyondAnnotationPx": 2.6498178296820374,
+          "pckAt005VisiblePersonHeight": 1,
+          "normalizationPx": 641,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 318,
+                "y": 604
+              },
+              "predicted": {
+                "x": 334.3855690956116,
+                "y": 606.1163330078125,
+                "z": -0.6081351637840271,
+                "visibility": 0.9948000907897949
+              },
+              "errorPx": 16.52167485417316,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 6.52167485417316,
+              "normalizedError": 0.02577484376626078
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 508,
+                "y": 605
+              },
+              "predicted": {
+                "x": 504.8484706878662,
+                "y": 617.1530914306641,
+                "z": -0.3625643849372864,
+                "visibility": 0.973036527633667
+              },
+              "errorPx": 12.555069427419298,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 2.5550694274192978,
+              "normalizedError": 0.01958669177444508
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 460,
+                "y": 538
+              },
+              "predicted": {
+                "x": 445.17828941345215,
+                "y": 534.7934722900391,
+                "z": -0.594814121723175,
+                "visibility": 0.9840323328971863
+              },
+              "errorPx": 15.164594444499068,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 5.164594444499068,
+              "normalizedError": 0.023657713641964225
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 494,
+                "y": 557
+              },
+              "predicted": {
+                "x": 498.7247943878174,
+                "y": 548.5771179199219,
+                "z": -0.835751473903656,
+                "visibility": 0.859663724899292
+              },
+              "errorPx": 9.657568252000699,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 1.657568252000699,
+              "normalizedError": 0.01506640912948627
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 253,
+                "y": 955
+              },
+              "predicted": {
+                "x": 259.637553691864,
+                "y": 960.2347564697266,
+                "z": -0.5377652645111084,
+                "visibility": 0.9959927201271057
+              },
+              "errorPx": 8.453389516029752,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.013187815157612717
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 342,
+                "y": 951
+              },
+              "predicted": {
+                "x": 344.0588164329529,
+                "y": 954.2014312744141,
+                "z": -0.3393973410129547,
+                "visibility": 0.9860979318618774
+              },
+              "errorPx": 3.8062957464434204,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.005938058886807208
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 0,
+          "missing": 6,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": 0,
+          "normalizationPx": 641,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_ankle",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_ankle",
+              "valid": false,
+              "reason": "missing"
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 9,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "inferenceMs": 24.694999992847443
+        },
+        "candidateModel": "MediaPipe Pose Full IMAGE; full-frame detector, unmodified output",
+        "vertexCount": 0
+      },
+      {
+        "id": "partial-motion",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 190,
+          "height": 200
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 4,
+          "matched": 4,
+          "missing": 0,
+          "meanErrorPx": 3.864985590386227,
+          "medianErrorPx": 3.430010496666126,
+          "p95ErrorPx": 6.710357793045885,
+          "meanExcessBeyondAnnotationPx": 0.2663891597805885,
+          "pckAt005VisiblePersonHeight": 1,
+          "normalizationPx": 200,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 46,
+                "y": 40
+              },
+              "predicted": {
+                "x": 45.48075929284096,
+                "y": 32.953548431396484,
+                "z": -0.7480480074882507,
+                "visibility": 0.9878058433532715
+              },
+              "errorPx": 7.065556639122354,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 1.065556639122354,
+              "normalizedError": 0.03532778319561177
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 118,
+                "y": 39
+              },
+              "predicted": {
+                "x": 116.00523352622986,
+                "y": 39.8349404335022,
+                "z": -0.6815298199653625,
+                "visibility": 0.9848109483718872
+              },
+              "errorPx": 2.1624566613863507,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.010812283306931753
+            },
+            {
+              "name": "left_shoulder",
+              "valid": true,
+              "expected": {
+                "x": 105,
+                "y": 80
+              },
+              "predicted": {
+                "x": 103.7482225894928,
+                "y": 75.47228932380676,
+                "z": -0.41235655546188354,
+                "visibility": 0.9959456324577332
+              },
+              "errorPx": 4.697564331945901,
+              "annotationUncertaintyPx": 7,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.023487821659729503
+            },
+            {
+              "name": "right_shoulder",
+              "valid": true,
+              "expected": {
+                "x": 58,
+                "y": 76
+              },
+              "predicted": {
+                "x": 58.9770832657814,
+                "y": 74.81696009635925,
+                "z": -0.434905081987381,
+                "visibility": 0.9914886951446533
+              },
+              "errorPx": 1.534364729090303,
+              "annotationUncertaintyPx": 7,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.0076718236454515155
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 4,
+          "matched": 0,
+          "missing": 4,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": 0,
+          "normalizationPx": 200,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_shoulder",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_shoulder",
+              "valid": false,
+              "reason": "missing"
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 7,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": true,
+          "policy": null
+        },
+        "timings": {
+          "inferenceMs": 19.594999969005585
+        },
+        "candidateModel": "MediaPipe Pose Full IMAGE; full-frame detector, unmodified output",
+        "vertexCount": 0
+      },
+      {
+        "id": "partial-squat",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 520,
+          "height": 530
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 4,
+          "matched": 4,
+          "missing": 0,
+          "meanErrorPx": 9.804953542796085,
+          "medianErrorPx": 9.766423783987225,
+          "p95ErrorPx": 14.530028209844803,
+          "meanExcessBeyondAnnotationPx": 2.5708021558895506,
+          "pckAt005VisiblePersonHeight": 1,
+          "normalizationPx": 530,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 111,
+                "y": 215
+              },
+              "predicted": {
+                "x": 118.35766851902008,
+                "y": 203.57793867588043,
+                "z": 0.012460440397262573,
+                "visibility": 0.9902161359786987
+              },
+              "errorPx": 13.586713028828099,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 3.5867130288280986,
+              "normalizedError": 0.02563530760156245
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 341,
+                "y": 218
+              },
+              "predicted": {
+                "x": 336.1004948616028,
+                "y": 218.9484989643097,
+                "z": 0.22332480549812317,
+                "visibility": 0.9912208914756775
+              },
+              "errorPx": 4.99047100847979,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.009415983034867528
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 101,
+                "y": 325
+              },
+              "predicted": {
+                "x": 96.06880187988281,
+                "y": 311.1554968357086,
+                "z": -0.1169595941901207,
+                "visibility": 0.9774571061134338
+              },
+              "errorPx": 14.696495594730104,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 6.696495594730104,
+              "normalizedError": 0.027729236971188877
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 385,
+                "y": 319
+              },
+              "predicted": {
+                "x": 388.37831020355225,
+                "y": 323.8932132720947,
+                "z": 0.08156471699476242,
+                "visibility": 0.9884918928146362
+              },
+              "errorPx": 5.946134539146352,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.011219121771974249
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 4,
+          "matched": 0,
+          "missing": 4,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": 0,
+          "normalizationPx": 530,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_wrist",
+              "valid": false,
+              "reason": "missing"
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 5,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": true,
+          "policy": null
+        },
+        "timings": {
+          "inferenceMs": 21.355000019073486
+        },
+        "candidateModel": "MediaPipe Pose Full IMAGE; full-frame detector, unmodified output",
+        "vertexCount": 0
+      },
+      {
+        "id": "hand-only",
+        "split": "regression",
+        "sourceDimensions": {
+          "width": 620,
+          "height": 1080
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 0,
+          "matched": 0,
+          "missing": 0,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": null,
+          "normalizationPx": 1080,
+          "pairs": []
+        },
+        "projected3d": {
+          "annotated": 0,
+          "matched": 0,
+          "missing": 0,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": null,
+          "normalizationPx": 1080,
+          "pairs": []
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 0,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": true,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": "Unconditional crop regressors may always output a candidate; evaluate independent runtime gating separately."
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "inferenceMs": 22.600000023841858
+        },
+        "candidateModel": "MediaPipe Pose Full IMAGE; full-frame detector, unmodified output",
+        "vertexCount": 0
+      },
+      {
+        "id": "blank",
+        "split": "regression",
+        "sourceDimensions": {
+          "width": 640,
+          "height": 480
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 0,
+          "matched": 0,
+          "missing": 0,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": null,
+          "normalizationPx": 480,
+          "pairs": []
+        },
+        "projected3d": {
+          "annotated": 0,
+          "matched": 0,
+          "missing": 0,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": null,
+          "normalizationPx": 480,
+          "pairs": []
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 0,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": true,
+          "rawCandidatePresent": false,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": "Unconditional crop regressors may always output a candidate; evaluate independent runtime gating separately."
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "inferenceMs": 10.25
+        },
+        "candidateModel": "MediaPipe Pose Full IMAGE; full-frame detector, unmodified output",
+        "vertexCount": 0
+      }
+    ],
+    "timings": {
+      "preprocessMs": {
+        "samples": 0,
+        "p50Ms": null,
+        "p95Ms": null
+      },
+      "inferenceMs": {
+        "samples": 10,
+        "p50Ms": 21.819999992847443,
+        "p95Ms": 25.099250000715255
+      },
+      "postprocessMs": {
+        "samples": 0,
+        "p50Ms": null,
+        "p95Ms": null
+      },
+      "decoderMs": {
+        "samples": 0,
+        "p50Ms": null,
+        "p95Ms": null
+      },
+      "renderMs": {
+        "samples": 0,
+        "p50Ms": null,
+        "p95Ms": null
+      },
+      "totalMs": {
+        "samples": 0,
+        "p50Ms": null,
+        "p95Ms": null
+      },
+      "endToEndMs": {
+        "samples": 0,
+        "p50Ms": null,
+        "p95Ms": null
+      }
+    },
+    "resources": {
+      "observed": true,
+      "evidence": {
+        "method": "Saved browser harness cleanup observations; worker counts were not independently enumerated.",
+        "afterStop": {
+          "sessionsReleased": true,
+          "openServers": 0,
+          "activeStreams": 0
+        },
+        "browserClosed": true,
+        "originalCleanup": {
+          "disposed": true,
+          "browserClosed": true,
+          "serverStopped": true
+        }
+      },
+      "violations": []
+    },
+    "hardViolationCount": 0,
+    "runtimeNegativeGateFullyEvaluated": false,
+    "note": "A clean contract/finite check is not an accuracy pass. Review joint errors, missing points, independent gate evidence, partial policy and overlays before accepting."
+  },
+  "decodedRig": {
+    "schemaVersion": 1,
+    "model": "Decoded MHR rig + approximate upstream70 mapping, not independent learned image70 head",
+    "scope": "Sparse manual 2D annotations on fixed public frames. No 3D accuracy or temporal identity claim.",
+    "duplicateIds": [],
+    "missingFixtureIds": [],
+    "frames": [
+      {
+        "id": "motion-front",
+        "split": "calibration",
+        "sourceDimensions": {
+          "width": 576,
+          "height": 576
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 0,
+          "missing": 6,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": 0,
+          "normalizationPx": 274,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_ankle",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_ankle",
+              "valid": false,
+              "reason": "missing"
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 19.94713421437149,
+          "medianErrorPx": 23.922935533131568,
+          "p95ErrorPx": 25.700027037672335,
+          "meanExcessBeyondAnnotationPx": 14.61380088103816,
+          "pckAt005VisiblePersonHeight": 0.3333333333333333,
+          "normalizationPx": 274,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 226,
+                "y": 279
+              },
+              "predicted": {
+                "x": 224.34615046752566,
+                "y": 254.7014164288771
+              },
+              "errorPx": 24.354802028325107,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 18.354802028325107,
+              "normalizedError": 0.08888613878950768
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 345,
+                "y": 278
+              },
+              "predicted": {
+                "x": 348.6584798621687,
+                "y": 252.11740124302258
+              },
+              "errorPx": 26.139881279695643,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 20.139881279695643,
+              "normalizedError": 0.09540102656823228
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 211,
+                "y": 310
+              },
+              "predicted": {
+                "x": 193.439705744091,
+                "y": 293.0871910761338
+              },
+              "errorPx": 24.380464311602406,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 19.380464311602406,
+              "normalizedError": 0.08897979675767302
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 361,
+                "y": 299
+              },
+              "predicted": {
+                "x": 381.5841178049259,
+                "y": 287.68079425321264
+              },
+              "errorPx": 23.49106903793803,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 18.49106903793803,
+              "normalizedError": 0.08573382860561324
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 262,
+                "y": 390
+              },
+              "predicted": {
+                "x": 258.3097999848394,
+                "y": 380.39804129794527
+              },
+              "errorPx": 10.286650916010315,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 5.286650916010315,
+              "normalizedError": 0.03754252159127852
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 301,
+                "y": 439
+              },
+              "predicted": {
+                "x": 303.93059921895497,
+                "y": 449.633490215492
+              },
+              "errorPx": 11.029937712657448,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 6.029937712657448,
+              "normalizedError": 0.04025524712648704
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 8,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 3.425000011920929,
+          "inferenceMs": 38.8299999833107,
+          "postprocessMs": 0.04500001668930054,
+          "totalMs": 65.07499998807907,
+          "decodeMs": 22.2950000166893,
+          "decoderMs": 22.2950000166893
+        },
+        "candidateModel": "MHR decoded rig projected through upstream approximate 70x127 linear regressor",
+        "vertexCount": 4899
+      },
+      {
+        "id": "motion-step",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 576,
+          "height": 576
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 0,
+          "missing": 6,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": 0,
+          "normalizationPx": 262,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_ankle",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_ankle",
+              "valid": false,
+              "reason": "missing"
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 14.052657575311335,
+          "medianErrorPx": 13.76611996454118,
+          "p95ErrorPx": 18.52488291705243,
+          "meanExcessBeyondAnnotationPx": 8.719324241977999,
+          "pckAt005VisiblePersonHeight": 0.3333333333333333,
+          "normalizationPx": 262,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 234,
+                "y": 282
+              },
+              "predicted": {
+                "x": 228.54905614734653,
+                "y": 269.4185643127736
+              },
+              "errorPx": 13.711502938649543,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 7.711502938649543,
+              "normalizedError": 0.05233398068186849
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 344,
+                "y": 280
+              },
+              "predicted": {
+                "x": 338.3134588804936,
+                "y": 261.92782146274465
+              },
+              "errorPx": 18.945722128920554,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 12.945722128920554,
+              "normalizedError": 0.07231191652259754
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 222,
+                "y": 306
+              },
+              "predicted": {
+                "x": 213.43161637987865,
+                "y": 295.1558507435044
+              },
+              "errorPx": 13.820736990432813,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 8.820736990432813,
+              "normalizedError": 0.05275090454363669
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 360,
+                "y": 303
+              },
+              "predicted": {
+                "x": 369.8317284773421,
+                "y": 288.811047598291
+              },
+              "errorPx": 17.262365281448055,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 12.262365281448055,
+              "normalizedError": 0.06588689038720631
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 276,
+                "y": 378
+              },
+              "predicted": {
+                "x": 269.2630569959137,
+                "y": 371.7178305558391
+              },
+              "errorPx": 9.211517462690725,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 4.2115174626907255,
+              "normalizedError": 0.0351584635980562
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 301,
+                "y": 443
+              },
+              "predicted": {
+                "x": 311.09252086869327,
+                "y": 448.2233902871699
+              },
+              "errorPx": 11.364100649726304,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 6.3641006497263035,
+              "normalizedError": 0.04337442996078742
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 8,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 2.699999988079071,
+          "inferenceMs": 37.42500001192093,
+          "postprocessMs": 0.034999966621398926,
+          "totalMs": 42.77999997138977,
+          "decodeMs": 2.1649999618530273,
+          "decoderMs": 2.1649999618530273
+        },
+        "candidateModel": "MHR decoded rig projected through upstream approximate 70x127 linear regressor",
+        "vertexCount": 4899
+      },
+      {
+        "id": "motion-raised",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 576,
+          "height": 576
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 0,
+          "missing": 6,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": 0,
+          "normalizationPx": 326,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_ankle",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_ankle",
+              "valid": false,
+              "reason": "missing"
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 34.21019618499087,
+          "medianErrorPx": 35.55425724301509,
+          "p95ErrorPx": 46.39525356359806,
+          "meanExcessBeyondAnnotationPx": 29.210196184990867,
+          "pckAt005VisiblePersonHeight": 0.16666666666666666,
+          "normalizationPx": 326,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 246,
+                "y": 210
+              },
+              "predicted": {
+                "x": 235.93422953603948,
+                "y": 177.8866985084279
+              },
+              "errorPx": 33.65388339733984,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 27.65388339733984,
+              "normalizedError": 0.10323277115748417
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 318,
+                "y": 209
+              },
+              "predicted": {
+                "x": 323.3016408133238,
+                "y": 178.13201989772125
+              },
+              "errorPx": 31.319955154951572,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 25.319955154951572,
+              "normalizedError": 0.0960734820704036
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 248,
+                "y": 165
+              },
+              "predicted": {
+                "x": 240.70891144297428,
+                "y": 128.26188059190432
+              },
+              "errorPx": 37.45463108869033,
+              "annotationUncertaintyPx": 4,
+              "excessBeyondAnnotationPx": 33.45463108869033,
+              "normalizedError": 0.11489150640702554
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 329,
+                "y": 167
+              },
+              "predicted": {
+                "x": 329.89967110361346,
+                "y": 128.73819712110077
+              },
+              "errorPx": 38.27237865142978,
+              "annotationUncertaintyPx": 4,
+              "excessBeyondAnnotationPx": 34.27237865142978,
+              "normalizedError": 0.1173999345135883
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 275,
+                "y": 379
+              },
+              "predicted": {
+                "x": 290.2521842182446,
+                "y": 425.6740137220809
+              },
+              "errorPx": 49.102878534320816,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 44.102878534320816,
+              "normalizedError": 0.15062232679239515
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 300,
+                "y": 443
+              },
+              "predicted": {
+                "x": 306.8795208377799,
+                "y": 456.84214442564985
+              },
+              "errorPx": 15.45745028321286,
+              "annotationUncertaintyPx": 5,
+              "excessBeyondAnnotationPx": 10.45745028321286,
+              "normalizedError": 0.04741549166629712
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 8,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 3.0799999833106995,
+          "inferenceMs": 40.235000014305115,
+          "postprocessMs": 0.029999971389770508,
+          "totalMs": 45.90499997138977,
+          "decodeMs": 2.159999966621399,
+          "decoderMs": 2.159999966621399
+        },
+        "candidateModel": "MHR decoded rig projected through upstream approximate 70x127 linear regressor",
+        "vertexCount": 4899
+      },
+      {
+        "id": "squat-standing",
+        "split": "calibration",
+        "sourceDimensions": {
+          "width": 720,
+          "height": 1280
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 0,
+          "missing": 6,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": 0,
+          "normalizationPx": 854,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_ankle",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_ankle",
+              "valid": false,
+              "reason": "missing"
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 11.620797147790013,
+          "medianErrorPx": 11.880995498020429,
+          "p95ErrorPx": 15.151517225314642,
+          "meanExcessBeyondAnnotationPx": 2.5228878883986483,
+          "pckAt005VisiblePersonHeight": 1,
+          "normalizationPx": 854,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 211,
+                "y": 465
+              },
+              "predicted": {
+                "x": 223.49318242093045,
+                "y": 465.5643744316108
+              },
+              "errorPx": 12.505923616498771,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 2.5059236164987713,
+              "normalizedError": 0.014643938661005588
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 441,
+                "y": 468
+              },
+              "predicted": {
+                "x": 451.83652226202406,
+                "y": 471.0444766573992
+              },
+              "errorPx": 11.256067379542088,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 1.2560673795420882,
+              "normalizedError": 0.013180406767613687
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 201,
+                "y": 575
+              },
+              "predicted": {
+                "x": 207.99901602673523,
+                "y": 576.9864283475554
+              },
+              "errorPx": 7.275446578902784,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.00851925828911333
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 485,
+                "y": 569
+              },
+              "predicted": {
+                "x": 497.286981777709,
+                "y": 575.1940983682725
+              },
+              "errorPx": 13.75997005089726,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 5.759970050897261,
+              "normalizedError": 0.016112377108778993
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 253,
+                "y": 955
+              },
+              "predicted": {
+                "x": 267.794105872661,
+                "y": 959.9974088881061
+              },
+              "errorPx": 15.615366283453769,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 5.615366283453769,
+              "normalizedError": 0.01828497222886858
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 342,
+                "y": 951
+              },
+              "predicted": {
+                "x": 339.83549953757466,
+                "y": 960.0569558320765
+              },
+              "errorPx": 9.3120089774454,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.01090399177686815
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 9,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 3.6649999618530273,
+          "inferenceMs": 41.905000030994415,
+          "postprocessMs": 0.014999985694885254,
+          "totalMs": 48.03999996185303,
+          "decodeMs": 2.0700000524520874,
+          "decoderMs": 2.0700000524520874
+        },
+        "candidateModel": "MHR decoded rig projected through upstream approximate 70x127 linear regressor",
+        "vertexCount": 4899
+      },
+      {
+        "id": "squat-down",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 720,
+          "height": 1280
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 0,
+          "missing": 6,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": 0,
+          "normalizationPx": 762,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_ankle",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_ankle",
+              "valid": false,
+              "reason": "missing"
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 21.513540976538305,
+          "medianErrorPx": 21.951811066946405,
+          "p95ErrorPx": 35.69662197094084,
+          "meanExcessBeyondAnnotationPx": 12.927977455161782,
+          "pckAt005VisiblePersonHeight": 0.8333333333333334,
+          "normalizationPx": 762,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 292,
+                "y": 463
+              },
+              "predicted": {
+                "x": 311.714727838906,
+                "y": 496.2665780890362
+              },
+              "errorPx": 38.66957087318245,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 28.66957087318245,
+              "normalizedError": 0.05074746833750978
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 516,
+                "y": 481
+              },
+              "predicted": {
+                "x": 518.7479004235333,
+                "y": 499.3153657306581
+              },
+              "errorPx": 18.52035578992528,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 8.52035578992528,
+              "normalizedError": 0.024304928858169657
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 432,
+                "y": 410
+              },
+              "predicted": {
+                "x": 422.1365943572714,
+                "y": 434.8950291670415
+              },
+              "errorPx": 26.777775264215997,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 16.777775264215997,
+              "normalizedError": 0.03514143735461417
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 492,
+                "y": 433
+              },
+              "predicted": {
+                "x": 490.8760938551362,
+                "y": 431.9865122512293
+              },
+              "errorPx": 1.513381128259108,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.001986064472780982
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 253,
+                "y": 955
+              },
+              "predicted": {
+                "x": 262.1155214683434,
+                "y": 931.3099709023192
+              },
+              "errorPx": 25.383266343967527,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 15.383266343967527,
+              "normalizedError": 0.03331137315481303
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 342,
+                "y": 951
+              },
+              "predicted": {
+                "x": 357.3258282866287,
+                "y": 960.8475531961728
+              },
+              "errorPx": 18.216896459679447,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 8.216896459679447,
+              "normalizedError": 0.02390668826729586
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 9,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 3.409999966621399,
+          "inferenceMs": 43.94499999284744,
+          "postprocessMs": 0.025000035762786865,
+          "totalMs": 50.125,
+          "decodeMs": 2.240000009536743,
+          "decoderMs": 2.240000009536743
+        },
+        "candidateModel": "MHR decoded rig projected through upstream approximate 70x127 linear regressor",
+        "vertexCount": 4899
+      },
+      {
+        "id": "squat-late",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 720,
+          "height": 1280
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 6,
+          "matched": 0,
+          "missing": 6,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": 0,
+          "normalizationPx": 641,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_ankle",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_ankle",
+              "valid": false,
+              "reason": "missing"
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 6,
+          "matched": 6,
+          "missing": 0,
+          "meanErrorPx": 17.6663998861502,
+          "medianErrorPx": 17.286542059131385,
+          "p95ErrorPx": 31.998476874235124,
+          "meanExcessBeyondAnnotationPx": 9.107447293141647,
+          "pckAt005VisiblePersonHeight": 0.8333333333333334,
+          "normalizationPx": 641,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 318,
+                "y": 604
+              },
+              "predicted": {
+                "x": 334.89266988775165,
+                "y": 605.0095852708275
+              },
+              "errorPx": 16.922811774513814,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 6.922811774513814,
+              "normalizedError": 0.02640064239393731
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 508,
+                "y": 605
+              },
+              "predicted": {
+                "x": 505.04614286910635,
+                "y": 603.4118765493249
+              },
+              "errorPx": 3.353715558051311,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.005232005550782077
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 460,
+                "y": 538
+              },
+              "predicted": {
+                "x": 447.60069087275,
+                "y": 540.7619498019645
+              },
+              "errorPx": 12.703197768344653,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 2.703197768344653,
+              "normalizedError": 0.019817781229866854
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 494,
+                "y": 557
+              },
+              "predicted": {
+                "x": 491.99180448885477,
+                "y": 538.0504640720984
+              },
+              "errorPx": 19.055649059893426,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 11.055649059893426,
+              "normalizedError": 0.029728001653499883
+            },
+            {
+              "name": "right_ankle",
+              "valid": true,
+              "expected": {
+                "x": 253,
+                "y": 955
+              },
+              "predicted": {
+                "x": 267.37201868059446,
+                "y": 921.6524199400405
+              },
+              "errorPx": 36.312752812349025,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 26.312752812349025,
+              "normalizedError": 0.056650160393680225
+            },
+            {
+              "name": "left_ankle",
+              "valid": true,
+              "expected": {
+                "x": 342,
+                "y": 951
+              },
+              "predicted": {
+                "x": 349.23771657869423,
+                "y": 934.9019388578934
+              },
+              "errorPx": 17.650272343748956,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 7.650272343748956,
+              "normalizedError": 0.027535526277299462
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 9,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 14.129999995231628,
+          "inferenceMs": 38.6599999666214,
+          "postprocessMs": 0.025000035762786865,
+          "totalMs": 55.564999997615814,
+          "decodeMs": 2.2149999737739563,
+          "decoderMs": 2.2149999737739563
+        },
+        "candidateModel": "MHR decoded rig projected through upstream approximate 70x127 linear regressor",
+        "vertexCount": 4899
+      },
+      {
+        "id": "partial-motion",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 190,
+          "height": 200
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 4,
+          "matched": 0,
+          "missing": 4,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": 0,
+          "normalizationPx": 200,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_shoulder",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_shoulder",
+              "valid": false,
+              "reason": "missing"
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 4,
+          "matched": 4,
+          "missing": 0,
+          "meanErrorPx": 8.09362248034409,
+          "medianErrorPx": 7.011758685619888,
+          "p95ErrorPx": 13.606601245256869,
+          "meanExcessBeyondAnnotationPx": 2.6835628769864677,
+          "pckAt005VisiblePersonHeight": 0.75,
+          "normalizationPx": 200,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 46,
+                "y": 40
+              },
+              "predicted": {
+                "x": 31.649885745672698,
+                "y": 39.76182036061602
+              },
+              "errorPx": 14.352090741521415,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 8.352090741521415,
+              "normalizedError": 0.07176045370760707
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 118,
+                "y": 39
+              },
+              "predicted": {
+                "x": 121.01383792473024,
+                "y": 35.4702730847103
+              },
+              "errorPx": 4.641356604815322,
+              "annotationUncertaintyPx": 6,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.02320678302407661
+            },
+            {
+              "name": "left_shoulder",
+              "valid": true,
+              "expected": {
+                "x": 105,
+                "y": 80
+              },
+              "predicted": {
+                "x": 100.96491093545599,
+                "y": 71.52987621765587
+              },
+              "errorPx": 9.382160766424455,
+              "annotationUncertaintyPx": 7,
+              "excessBeyondAnnotationPx": 2.3821607664244553,
+              "normalizedError": 0.046910803832122275
+            },
+            {
+              "name": "right_shoulder",
+              "valid": true,
+              "expected": {
+                "x": 58,
+                "y": 76
+              },
+              "predicted": {
+                "x": 58.95545079814421,
+                "y": 72.11693812931098
+              },
+              "errorPx": 3.998881808615168,
+              "annotationUncertaintyPx": 7,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.01999440904307584
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 7,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": true,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 1.625,
+          "inferenceMs": 38.2849999666214,
+          "postprocessMs": 0.030000030994415283,
+          "totalMs": 42.339999973773956,
+          "decodeMs": 2.1100000143051147,
+          "decoderMs": 2.1100000143051147
+        },
+        "candidateModel": "MHR decoded rig projected through upstream approximate 70x127 linear regressor",
+        "vertexCount": 4899
+      },
+      {
+        "id": "partial-squat",
+        "split": "evaluation",
+        "sourceDimensions": {
+          "width": 520,
+          "height": 530
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 4,
+          "matched": 0,
+          "missing": 4,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": 0,
+          "normalizationPx": 530,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_elbow",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "right_wrist",
+              "valid": false,
+              "reason": "missing"
+            },
+            {
+              "name": "left_wrist",
+              "valid": false,
+              "reason": "missing"
+            }
+          ]
+        },
+        "projected3d": {
+          "annotated": 4,
+          "matched": 4,
+          "missing": 0,
+          "meanErrorPx": 11.529171440788387,
+          "medianErrorPx": 11.86816179361507,
+          "p95ErrorPx": 15.427955565112176,
+          "meanExcessBeyondAnnotationPx": 3.6360472646564492,
+          "pckAt005VisiblePersonHeight": 1,
+          "normalizationPx": 530,
+          "pairs": [
+            {
+              "name": "right_elbow",
+              "valid": true,
+              "expected": {
+                "x": 111,
+                "y": 215
+              },
+              "predicted": {
+                "x": 109.9087433705543,
+                "y": 206.3819273301916
+              },
+              "errorPx": 8.686887680487636,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.016390354114127616
+            },
+            {
+              "name": "left_elbow",
+              "valid": true,
+              "expected": {
+                "x": 341,
+                "y": 218
+              },
+              "predicted": {
+                "x": 346.6387161216629,
+                "y": 214.04822924105645
+              },
+              "errorPx": 6.885609024040116,
+              "annotationUncertaintyPx": 10,
+              "excessBeyondAnnotationPx": 0,
+              "normalizedError": 0.012991715139698332
+            },
+            {
+              "name": "right_wrist",
+              "valid": true,
+              "expected": {
+                "x": 101,
+                "y": 325
+              },
+              "predicted": {
+                "x": 94.57597397332313,
+                "y": 338.6094603390336
+              },
+              "errorPx": 15.0494359067425,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 7.0494359067425005,
+              "normalizedError": 0.0283951620881934
+            },
+            {
+              "name": "left_wrist",
+              "valid": true,
+              "expected": {
+                "x": 385,
+                "y": 319
+              },
+              "predicted": {
+                "x": 397.75415796538135,
+                "y": 327.798797067321
+              },
+              "errorPx": 15.494753151883296,
+              "annotationUncertaintyPx": 8,
+              "excessBeyondAnnotationPx": 7.494753151883296,
+              "normalizedError": 0.02923538330544018
+            }
+          ]
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 5,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": false,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": null
+        },
+        "partial": {
+          "isPartial": true,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 2.1299999952316284,
+          "inferenceMs": 38.64999997615814,
+          "postprocessMs": 0.02499997615814209,
+          "totalMs": 43.2049999833107,
+          "decodeMs": 2.0449999570846558,
+          "decoderMs": 2.0449999570846558
+        },
+        "candidateModel": "MHR decoded rig projected through upstream approximate 70x127 linear regressor",
+        "vertexCount": 4899
+      },
+      {
+        "id": "hand-only",
+        "split": "regression",
+        "sourceDimensions": {
+          "width": 620,
+          "height": 1080
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 0,
+          "matched": 0,
+          "missing": 0,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": null,
+          "normalizationPx": 1080,
+          "pairs": []
+        },
+        "projected3d": {
+          "annotated": 0,
+          "matched": 0,
+          "missing": 0,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": null,
+          "normalizationPx": 1080,
+          "pairs": []
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 0,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": true,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": "Unconditional crop regressors may always output a candidate; evaluate independent runtime gating separately."
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 3.050000011920929,
+          "inferenceMs": 41.83499997854233,
+          "postprocessMs": 0.030000030994415283,
+          "totalMs": 47.42500001192093,
+          "decodeMs": 2.1299999952316284,
+          "decoderMs": 2.1299999952316284
+        },
+        "candidateModel": "MHR decoded rig projected through upstream approximate 70x127 linear regressor",
+        "vertexCount": 4899
+      },
+      {
+        "id": "blank",
+        "split": "regression",
+        "sourceDimensions": {
+          "width": 640,
+          "height": 480
+        },
+        "violations": [],
+        "nonFinite": {
+          "joints2d": 0,
+          "projectedJoints2d": 0,
+          "joints3d": 0,
+          "joints3dCamera": 0,
+          "vertices": 0,
+          "projectedVertices": 0
+        },
+        "direct2d": {
+          "annotated": 0,
+          "matched": 0,
+          "missing": 0,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": null,
+          "normalizationPx": 480,
+          "pairs": []
+        },
+        "projected3d": {
+          "annotated": 0,
+          "matched": 0,
+          "missing": 0,
+          "meanErrorPx": null,
+          "medianErrorPx": null,
+          "p95ErrorPx": null,
+          "meanExcessBeyondAnnotationPx": null,
+          "pckAt005VisiblePersonHeight": null,
+          "normalizationPx": 480,
+          "pairs": []
+        },
+        "silhouette": {
+          "available": false,
+          "annotated": 0,
+          "reason": "No projected boundary supplied; vertices alone are not a silhouette."
+        },
+        "negative": {
+          "isNegative": true,
+          "rawCandidatePresent": true,
+          "runtimeDecisionKnown": false,
+          "runtimeBodyVisible": null,
+          "rawInterpretation": "Unconditional crop regressors may always output a candidate; evaluate independent runtime gating separately."
+        },
+        "partial": {
+          "isPartial": false,
+          "policy": null
+        },
+        "timings": {
+          "preprocessMs": 1.899999976158142,
+          "inferenceMs": 39.730000019073486,
+          "postprocessMs": 0.029999971389770508,
+          "totalMs": 44.27500003576279,
+          "decodeMs": 2.1200000047683716,
+          "decoderMs": 2.1200000047683716
+        },
+        "candidateModel": "MHR decoded rig projected through upstream approximate 70x127 linear regressor",
+        "vertexCount": 4899
+      }
+    ],
+    "timings": {
+      "preprocessMs": {
+        "samples": 10,
+        "p50Ms": 3.064999997615814,
+        "p95Ms": 9.420749980211248
+      },
+      "inferenceMs": {
+        "samples": 10,
+        "p50Ms": 39.28000000119209,
+        "p95Ms": 43.02700001001358
+      },
+      "postprocessMs": {
+        "samples": 10,
+        "p50Ms": 0.029999971389770508,
+        "p95Ms": 0.0404999941587448
+      },
+      "decoderMs": {
+        "samples": 10,
+        "p50Ms": 2.1449999809265137,
+        "p95Ms": 13.270250013470628
+      },
+      "renderMs": {
+        "samples": 0,
+        "p50Ms": null,
+        "p95Ms": null
+      },
+      "totalMs": {
+        "samples": 10,
+        "p50Ms": 46.66499999165535,
+        "p95Ms": 60.795499992370594
+      },
+      "endToEndMs": {
+        "samples": 0,
+        "p50Ms": null,
+        "p95Ms": null
+      }
+    },
+    "resources": {
+      "observed": true,
+      "evidence": {
+        "method": "Saved browser harness cleanup observations; worker counts were not independently enumerated.",
+        "afterStop": {
+          "sessionsReleased": true,
+          "openServers": 0,
+          "activeStreams": 0
+        },
+        "browserClosed": true,
+        "originalCleanup": {
+          "disposed": true,
+          "browserClosed": true,
+          "serverStopped": true
+        }
+      },
+      "violations": []
+    },
+    "hardViolationCount": 0,
+    "runtimeNegativeGateFullyEvaluated": false,
+    "note": "A clean contract/finite check is not an accuracy pass. Review joint errors, missing points, independent gate evidence, partial policy and overlays before accepting."
+  },
+  "decodedMapping": {
+    "shape": [
+      70,
+      127
+    ],
+    "source": {
+      "repository": "https://github.com/mohamdev/InstantHMR",
+      "commit": "36ae38720c0008f822dc1cb278b4a41b23d76e01",
+      "file": "instanthmr_distill_train/assets/mhr_j127_to_kp70.npy",
+      "sha256": "d0a64adcec183a892167ea1df1657a8c819fcddbc721f6b8a46f6336ea90292a",
+      "kind": "dense linear regression from 127 rig positions, not a direct joint lookup"
+    },
+    "assetSHA256": "eba865d2b2a0637245971732ec7b93b991d55be53fd261998d54df3e44313335",
+    "note": "Linear regressor, not a selection of 70 observed vertices/joints. Applied offline to saved decoded127 positions; no inference rerun."
+  },
+  "limitations": [
+    "No temporal identity or live camera test.",
+    "No 3D ground truth.",
+    "No dense clothed mask: sparse contour anchors cannot establish mesh surface accuracy.",
+    "No automatic body acceptance gate evaluated in this run."
+  ]
+}

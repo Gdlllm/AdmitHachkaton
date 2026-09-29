@@ -1,0 +1,78 @@
+{
+  "scope": "Measured prototype and integrated-video QA evidence. No private camera images or personal landmark arrays are included. PNG is from the public TFJS body-motion fixture. Filenames under work describe original experiment locations, not required runtime paths.",
+  "files": [
+    {
+      "file": "fixture-manifest.json",
+      "source": "work/body-mesh-prototype/tests/fixture-manifest.json",
+      "bytes": 30146,
+      "sha256": "443f29b05ca69c1f80cfd1e9d97c7c83c123aff3105715f47f28e7841c8399e8"
+    },
+    {
+      "file": "annotation-freeze.json",
+      "source": "work/body-mesh-prototype/tests/annotation-freeze.json",
+      "bytes": 336,
+      "sha256": "3df7b094ef3250d3d492c34748e856f4478ef8f10d87394692dc5fddd39f43c3"
+    },
+    {
+      "file": "independent-comparison.json",
+      "source": "work/body-mesh-prototype/tests/artifacts/automatic/independent-comparison.json",
+      "bytes": 85657,
+      "sha256": "df695a300ead81839cefeb23abb054d1020cd505a27f99bb78cb4559c2fd5304"
+    },
+    {
+      "file": "raw-comparison.json",
+      "source": "work/body-mesh-prototype/tests/artifacts/surface/comparison.json",
+      "bytes": 183200,
+      "sha256": "f3c1e3f1bdafce62f9dd44abbcfb88103e2343be4d4ae84a1044b3da56819d0f"
+    },
+    {
+      "file": "body-gate-audit.json",
+      "source": "work/body-mesh-prototype/tests/artifacts/body-gate-audit.json",
+      "bytes": 61500,
+      "sha256": "b7fb62fbb84d88072580bb537e9462b2581bea8cdbf0bf29cf411f2b26e58760"
+    },
+    {
+      "file": "decoder-browser-report.json",
+      "source": "work/body-mesh-prototype/tests/artifacts/decoder-browser-report.json",
+      "bytes": 5485,
+      "sha256": "aa3d43902d7771af4ffeeebe9a50ceda1f7a3450e53c70d211a684569f6a324e"
+    },
+    {
+      "file": "sampled-video-report.json",
+      "source": "work/body-mesh-prototype/tests/artifacts/video-sequence/report.json",
+      "bytes": 224949,
+      "sha256": "a1c21e0f70fa24c3b13992ad2d26bc71da65d0c4ab803691f5621b7365f3ed40"
+    },
+    {
+      "file": "automatic-runtime-report.json",
+      "source": "work/body-mesh-prototype/tests/artifacts/automatic/report.json",
+      "bytes": 49833,
+      "sha256": "a3aff86f36d24c50a562e53c47135b3f9b2b73fa4797583911553e8fbc0418e2"
+    },
+    {
+      "file": "production-video-report.json",
+      "source": "outputs/motion-lab/tests/artifacts/dense/report.json",
+      "bytes": 607702,
+      "sha256": "eb5d6bb2585c2b4d1994fc58b5d5596b7cf02fd7a809197022a30932b3dab46a"
+    },
+    {
+      "file": "production-motion.png",
+      "source": "outputs/motion-lab/tests/artifacts/dense/body-motion.mp4.png",
+      "bytes": 506322,
+      "sha256": "9528975a4ca1a5d207c91d6fd74ecdc1561df6d740b7701bfa7f0b2a3f8d01c6"
+    },
+    {
+      "file": "default-regression-summary.json",
+      "source": "Derived status-only summary of outputs/motion-lab/tests/artifacts/default-regression/browser-report.json",
+      "bytes": 2438,
+      "sha256": "4236ae8e07f95daec63bb158e2a8dbef6b39dbf8e5956367444772daa47f9c70"
+    },
+    {
+      "file": "built-preview-report.json",
+      "source": "outputs/motion-lab/tests/artifacts/dense-built/report.json",
+      "bytes": 210022,
+      "sha256": "068e1d77bb5f9c24a32900312a3d0992ceecba0fa6ace14ea4aaeeca3f59348c"
+    }
+  ],
+  "totalBytes": 1967590
+}

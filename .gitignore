@@ -3,6 +3,8 @@ dist/
 public/wasm/
 public/models/*.task
 public/pose-worker.js
+public/dense/instanthmr.onnx
+public/dense/ort/
 .DS_Store
 tests/artifacts/
 tests/fixtures/

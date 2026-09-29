@@ -44,6 +44,7 @@ export class CaptureSession {
     this.video.removeAttribute('src'); this.video.load();
     this.video.onended = null; this.video.onplay = null;
     this.currentFrame?.source?.close(); this.currentFrame = null;
+    this.pendingPrevious?.source?.close(); this.pendingPrevious = null;
     this.pending?.resolve(null); this.pending = null;
     this.inFlight = false; this.workerCount = 0; this.activeFrameId = null; this.modelsReady = false;
     this.state = 'idle';
@@ -164,7 +165,9 @@ export class CaptureSession {
       latencyMs: receivedAt - data.timestamp, mediaTime: data.mediaTime ?? this.lastMediaTime,
       sourceFrameId: this.activeSourceFrameId };
     const previous = this.currentFrame;
+    this.pendingPrevious = previous;
     this.currentFrame = frame;
+    this.inFlight = true;
     this.frameCount++; this.source.width = width; this.source.height = height;
     this.samples.push({ latencyMs: frame.latencyMs, inferenceMs: data.inferenceMs });
     if (this.samples.length > 180) this.samples.shift();
@@ -173,17 +176,31 @@ export class CaptureSession {
       poseCount: frame.pose?.landmarks?.length ?? 0, faceCount: frame.face?.landmarks?.length ?? 0,
       handCounts: (frame.hands ?? []).map(hand => hand.landmarks.length),
       inferenceMs: data.inferenceMs, latencyMs: frame.latencyMs, timings: data.timings };
-    try { this.onFrame(frame); } catch (error) { previous?.source?.close(); this.fail(error, token); return; }
-    previous?.source?.close();
-    // A frame subscriber may synchronously stop or replace this session.
-    if (token !== this.generation) return;
-    if (this.state !== 'running') {
-      clearTimeout(this.startTimer); this.setState('running'); this.pending?.resolve(this.getDiagnostics()); this.pending = null;
-    }
-    if (this.videoWarmup) {
-      this.videoWarmup = false;
-      this.video.play().then(() => this.schedule(token)).catch(error => this.fail(error, token));
-    } else this.schedule(token);
+    const complete = () => {
+      if (this.pendingPrevious === previous) { previous?.source?.close(); this.pendingPrevious = null; }
+      // An asynchronous extension or subscriber may stop/replace this session.
+      if (token !== this.generation) return;
+      this.inFlight = false; clearTimeout(this.frameTimer);
+      if (this.state !== 'running') {
+        clearTimeout(this.startTimer); this.setState('running'); this.pending?.resolve(this.getDiagnostics()); this.pending = null;
+      }
+      if (this.videoWarmup) {
+        this.videoWarmup = false;
+        this.video.play().then(() => this.schedule(token)).catch(error => this.fail(error, token));
+      } else this.schedule(token);
+    };
+    try {
+      const processing = this.onFrame(frame);
+      if (processing && typeof processing.then === 'function') {
+        // Keep the canonical bitmap alive and the single-frame barrier closed
+        // until every optional surface model has used the exact same image.
+        if (token === this.generation) {
+          this.inFlight = true;
+          this.frameTimer = setTimeout(() => this.fail(new Error('Обработка поверхности не ответила вовремя.'), token), 15000);
+        }
+        Promise.resolve(processing).then(complete, error => { this.fail(error, token); });
+      } else complete();
+    } catch (error) { this.fail(error, token); }
   }
 
   schedule(token) {

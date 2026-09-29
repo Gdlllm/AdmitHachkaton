@@ -24,7 +24,7 @@ if (!executablePath && process.platform === 'darwin') {
 }
 await mkdir(artifacts, { recursive: true });
 const report = {
-  startedAt: new Date().toISOString(), passed: false, phases: [], pageErrors: [],
+  startedAt: new Date().toISOString(), passed: false, phases: [], pageErrors: [], rawPhantoms: [],
   scope: 'Diagnostic on a composed fixed-resolution stream of real fixture videos. Counts and reacquisition delay do not measure ground-truth accuracy.',
   input: { width: 1280, height: 720, fps: 15, samplesPerPhase: 24,
     note: 'Hand video is cropped for close-up; body and face videos use aspect-preserving contain. A 24px corner marker identifies each returned source frame.' },
@@ -56,7 +56,38 @@ try {
         headers: { 'Accept-Ranges': 'bytes', 'Content-Range': `bytes ${start}-${end}/${bytes.length}` } });
     } else await route.fulfill({ status: 200, contentType: 'video/mp4', body: bytes, headers: { 'Accept-Ranges': 'bytes' } });
   });
-  await page.goto(`${base}/?test=1`);
+  await page.addInitScript(() => {
+    const NativeWorker = window.Worker;
+    window.__transitionRaw = new Map();
+    // Capture before the application's message handler performs fusion. Keep a
+    // bounded set of raw candidates; save them only if the public output fails.
+    window.Worker = class extends NativeWorker {
+      constructor(...args) {
+        super(...args);
+        this.addEventListener('message', ({ data }) => {
+          if (data.type !== 'result' || !data.source ||
+            (!data.pose?.landmarks?.length && !data.face?.landmarks?.length)) return;
+          const probe = document.createElement('canvas'); probe.width = probe.height = 1;
+          const ctx = probe.getContext('2d', { willReadFrequently: true });
+          ctx.drawImage(data.source, 12, 12, 1, 1, 0, 0, 1, 1);
+          const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
+          if (!(r > g * 2 && r > b * 2)) return;
+          const snapshot = document.createElement('canvas');
+          snapshot.width = data.source.width; snapshot.height = data.source.height;
+          snapshot.getContext('2d').drawImage(data.source, 0, 0);
+          window.__transitionRaw.set(data.frameId, {
+            frameId: data.frameId, timestamp: data.timestamp, mediaTime: data.mediaTime,
+            sourceWidth: data.sourceWidth, sourceHeight: data.sourceHeight,
+            pose: data.pose, face: data.face, hands: data.hands,
+            png: snapshot.toDataURL('image/png'),
+          });
+          if (window.__transitionRaw.size > 32) window.__transitionRaw.delete(window.__transitionRaw.keys().next().value);
+        });
+      }
+    };
+  });
+  // Landmark regression scope; the body surface has its own suite (test:dense).
+  await page.goto(`${base}/?test=1&surface=0`);
   await page.waitForFunction(() => window.motionCapture?.subscribe);
   await page.evaluate(async () => {
     const names = { hand: 'hand-signs.mp4', body: 'body-squats.mp4', face: 'face-turns.mp4' };
@@ -138,9 +169,23 @@ try {
     report.phases.push(phase);
     console.log(JSON.stringify({ ...phase, frames: undefined }));
     await page.screenshot({ path: path.join(artifacts, `transition-${name}.png`) });
+    if (name === 'hand' && (phase.poseFrames || phase.faceFrames)) {
+      const failingIds = frames.filter(frame => frame.pose || frame.face).map(frame => frame.frameId);
+      const raw = await page.evaluate(ids => ids.map(id => window.__transitionRaw.get(id)).filter(Boolean), failingIds);
+      for (const frame of raw) {
+        const { png, ...geometry } = frame;
+        const imageFile = `transition-phantom-${frame.frameId}.png`;
+        await writeFile(path.join(artifacts, imageFile), Buffer.from(png.split(',')[1], 'base64'));
+        report.rawPhantoms.push({ ...geometry, imageFile });
+      }
+    }
     assert.ok(frames.every(frame => frame.width === 1280 && frame.height === 720), 'source size must remain constant');
     assert.equal(data.diagnostics.generation, initial.generation, 'the session must never restart between phases');
     assert.deepEqual(await workerTargets(), report.workerIds, 'the same workers must survive all scene changes');
+    if (name === 'hand') {
+      assert.equal(phase.poseFrames, 0, 'a hand-only source must not produce a body skeleton');
+      assert.equal(phase.faceFrames, 0, 'a hand-only source must not produce a face mesh');
+    }
     assert.ok(first >= 0 && first < 8, `${name}: the expected region must reacquire within eight observed source frames`);
     assert.ok(frames.slice(-5).every(expected), `${name}: the last five frames must contain the expected region (or no geometry for blank)`);
   }

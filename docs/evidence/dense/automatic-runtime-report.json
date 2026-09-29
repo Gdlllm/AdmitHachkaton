@@ -1,0 +1,2111 @@
+{
+  "startedAt": "2026-09-28T20:59:07.877Z",
+  "scope": "Automatic Pose detection, gate, bbox and corrected mesh; camera never opened.",
+  "results": [
+    {
+      "id": "motion-front",
+      "bbox": [
+        178.90440422058106,
+        170.8227410888672,
+        389.04800743103027,
+        476.9572748565674
+      ],
+      "bboxSource": "automatic confident Pose landmarks",
+      "gate": {
+        "accepted": true,
+        "state": "full",
+        "bbox": [
+          178.90440422058106,
+          170.8227410888672,
+          389.04800743103027,
+          476.9572748565674
+        ],
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "observedRegions": {
+          "body": true,
+          "leftArm": true,
+          "rightArm": true,
+          "leftLeg": true,
+          "rightLeg": true
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": [
+            170.8227410888672,
+            450.1964975642368
+          ],
+          "bodyVisibleY": [
+            170.8227410888672,
+            317.93655646316256
+          ],
+          "sourceWidth": 576,
+          "sourceHeight": 576,
+          "limitation": "2D anchor support only; does not resolve per-pixel occlusion or prove person presence"
+        },
+        "reasons": [
+          "torso-and-both-leg-chains-supported"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            true,
+            true
+          ],
+          "arms": [
+            true,
+            true
+          ],
+          "legs": [
+            true,
+            true
+          ],
+          "headSupported": true,
+          "supportedJointIndices": [
+            11,
+            12,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            23,
+            24,
+            13,
+            15,
+            14,
+            16,
+            25,
+            27,
+            26,
+            28,
+            29,
+            31,
+            30,
+            32
+          ]
+        }
+      },
+      "samples": [
+        {
+          "preprocessMs": 7.25,
+          "inferenceMs": 105.80500000715256,
+          "postprocessMs": 0.44999998807907104,
+          "totalMs": 686.0200000405312,
+          "correctionMs": 10.805000007152557,
+          "detectorMs": 377.4399999976158,
+          "decodeMs": 14
+        }
+      ],
+      "vertexCount": 4899,
+      "jointCount": 70
+    },
+    {
+      "id": "motion-step",
+      "bbox": [
+        196.84391624450683,
+        186.18719512939452,
+        382.1948506164551,
+        479.70846908569337
+      ],
+      "bboxSource": "automatic confident Pose landmarks",
+      "gate": {
+        "accepted": true,
+        "state": "full",
+        "bbox": [
+          196.84391624450683,
+          186.18719512939452,
+          382.1948506164551,
+          479.70846908569337
+        ],
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "observedRegions": {
+          "body": true,
+          "leftArm": true,
+          "rightArm": true,
+          "leftLeg": true,
+          "rightLeg": true
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": [
+            186.18719512939452,
+            453.9696812041969
+          ],
+          "bodyVisibleY": [
+            186.18719512939452,
+            329.1154178985328
+          ],
+          "sourceWidth": 576,
+          "sourceHeight": 576,
+          "limitation": "2D anchor support only; does not resolve per-pixel occlusion or prove person presence"
+        },
+        "reasons": [
+          "torso-and-both-leg-chains-supported"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            true,
+            true
+          ],
+          "arms": [
+            true,
+            true
+          ],
+          "legs": [
+            true,
+            true
+          ],
+          "headSupported": true,
+          "supportedJointIndices": [
+            11,
+            12,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            23,
+            24,
+            13,
+            15,
+            14,
+            16,
+            25,
+            27,
+            26,
+            28,
+            29,
+            31,
+            30,
+            32
+          ]
+        }
+      },
+      "samples": [
+        {
+          "preprocessMs": 5.194999992847443,
+          "inferenceMs": 36.86500000953674,
+          "postprocessMs": 0.06999999284744263,
+          "totalMs": 91.89499998092651,
+          "correctionMs": 8.985000014305115,
+          "detectorMs": 35.77999997138977,
+          "decodeMs": 4.049999952316284
+        }
+      ],
+      "vertexCount": 4899,
+      "jointCount": 70
+    },
+    {
+      "id": "motion-raised",
+      "bbox": [
+        212.67777832031248,
+        122.70270355224609,
+        366.3153266143799,
+        485.8843421173096
+      ],
+      "bboxSource": "automatic confident Pose landmarks",
+      "gate": {
+        "accepted": true,
+        "state": "full",
+        "bbox": [
+          212.67777832031248,
+          122.70270355224609,
+          366.3153266143799,
+          485.8843421173096
+        ],
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "observedRegions": {
+          "body": true,
+          "leftArm": true,
+          "rightArm": true,
+          "leftLeg": true,
+          "rightLeg": true
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": [
+            122.70270355224609,
+            452.9929104596271
+          ],
+          "bodyVisibleY": [
+            175.12075813293455,
+            329.53579910098455
+          ],
+          "sourceWidth": 576,
+          "sourceHeight": 576,
+          "limitation": "2D anchor support only; does not resolve per-pixel occlusion or prove person presence"
+        },
+        "reasons": [
+          "torso-and-both-leg-chains-supported"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            true,
+            true
+          ],
+          "arms": [
+            true,
+            true
+          ],
+          "legs": [
+            true,
+            true
+          ],
+          "headSupported": true,
+          "supportedJointIndices": [
+            11,
+            12,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            23,
+            24,
+            13,
+            15,
+            14,
+            16,
+            25,
+            27,
+            26,
+            28,
+            29,
+            31,
+            30,
+            32
+          ]
+        }
+      },
+      "samples": [
+        {
+          "preprocessMs": 12.59500002861023,
+          "inferenceMs": 37.44499999284744,
+          "postprocessMs": 0.034999966621398926,
+          "totalMs": 100.06999999284744,
+          "correctionMs": 6.51500004529953,
+          "detectorMs": 27.62000000476837,
+          "decodeMs": 15.219999969005585
+        }
+      ],
+      "vertexCount": 4899,
+      "jointCount": 70
+    },
+    {
+      "id": "squat-standing",
+      "bbox": [
+        101.2027195930481,
+        126.00791015625,
+        576.3932081222534,
+        1105.948533630371
+      ],
+      "bboxSource": "automatic confident Pose landmarks",
+      "gate": {
+        "accepted": true,
+        "state": "full",
+        "bbox": [
+          101.2027195930481,
+          126.00791015625,
+          576.3932081222534,
+          1105.948533630371
+        ],
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "observedRegions": {
+          "body": true,
+          "leftArm": true,
+          "rightArm": true,
+          "leftLeg": true,
+          "rightLeg": true
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": [
+            126.00791015625,
+            1018.3830611112046
+          ],
+          "bodyVisibleY": [
+            126.00791015625,
+            588.1898848416733
+          ],
+          "sourceWidth": 720,
+          "sourceHeight": 1280,
+          "limitation": "2D anchor support only; does not resolve per-pixel occlusion or prove person presence"
+        },
+        "reasons": [
+          "torso-and-both-leg-chains-supported"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            true,
+            true
+          ],
+          "arms": [
+            true,
+            true
+          ],
+          "legs": [
+            true,
+            true
+          ],
+          "headSupported": true,
+          "supportedJointIndices": [
+            11,
+            12,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            23,
+            24,
+            13,
+            15,
+            14,
+            16,
+            25,
+            27,
+            26,
+            28,
+            29,
+            31,
+            30,
+            32
+          ]
+        }
+      },
+      "samples": [
+        {
+          "preprocessMs": 4.680000007152557,
+          "inferenceMs": 34.405000030994415,
+          "postprocessMs": 0.034999966621398926,
+          "totalMs": 86.56499999761581,
+          "correctionMs": 4.2799999713897705,
+          "detectorMs": 36.68000000715256,
+          "decodeMs": 2.275000035762787
+        }
+      ],
+      "vertexCount": 4899,
+      "jointCount": 70
+    },
+    {
+      "id": "squat-down",
+      "bbox": [
+        155.41911935806274,
+        231.57373046875,
+        604.3849697113037,
+        1091.9296875
+      ],
+      "bboxSource": "automatic confident Pose landmarks",
+      "gate": {
+        "accepted": true,
+        "state": "full",
+        "bbox": [
+          155.41911935806274,
+          231.57373046875,
+          604.3849697113037,
+          1091.9296875
+        ],
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "observedRegions": {
+          "body": true,
+          "leftArm": true,
+          "rightArm": true,
+          "leftLeg": true,
+          "rightLeg": true
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": [
+            231.57373046875,
+            1015.2253246944127
+          ],
+          "bodyVisibleY": [
+            231.57373046875,
+            659.7988415401159
+          ],
+          "sourceWidth": 720,
+          "sourceHeight": 1280,
+          "limitation": "2D anchor support only; does not resolve per-pixel occlusion or prove person presence"
+        },
+        "reasons": [
+          "torso-and-both-leg-chains-supported"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            true,
+            true
+          ],
+          "arms": [
+            true,
+            true
+          ],
+          "legs": [
+            true,
+            true
+          ],
+          "headSupported": true,
+          "supportedJointIndices": [
+            11,
+            12,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            23,
+            24,
+            13,
+            15,
+            14,
+            16,
+            25,
+            27,
+            26,
+            28,
+            29,
+            31,
+            30,
+            32
+          ]
+        }
+      },
+      "samples": [
+        {
+          "preprocessMs": 3.3649999499320984,
+          "inferenceMs": 35.51500004529953,
+          "postprocessMs": 0.034999966621398926,
+          "totalMs": 77.06999999284744,
+          "correctionMs": 6.230000019073486,
+          "detectorMs": 24.75,
+          "decodeMs": 6.519999980926514
+        }
+      ],
+      "vertexCount": 4899,
+      "jointCount": 70
+    },
+    {
+      "id": "squat-late",
+      "bbox": [
+        164.4328700065613,
+        371.5605102539063,
+        573.0956233978271,
+        1076.781088256836
+      ],
+      "bboxSource": "automatic confident Pose landmarks",
+      "gate": {
+        "accepted": true,
+        "state": "full",
+        "bbox": [
+          164.4328700065613,
+          371.5605102539063,
+          573.0956233978271,
+          1076.781088256836
+        ],
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "observedRegions": {
+          "body": true,
+          "leftArm": true,
+          "rightArm": true,
+          "leftLeg": true,
+          "rightLeg": true
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": [
+            371.5605102539063,
+            1014.8300003855235
+          ],
+          "bodyVisibleY": [
+            371.5605102539063,
+            741.2167954294688
+          ],
+          "sourceWidth": 720,
+          "sourceHeight": 1280,
+          "limitation": "2D anchor support only; does not resolve per-pixel occlusion or prove person presence"
+        },
+        "reasons": [
+          "torso-and-both-leg-chains-supported"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            true,
+            true
+          ],
+          "arms": [
+            true,
+            true
+          ],
+          "legs": [
+            true,
+            true
+          ],
+          "headSupported": true,
+          "supportedJointIndices": [
+            11,
+            12,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            23,
+            24,
+            13,
+            15,
+            14,
+            16,
+            25,
+            27,
+            26,
+            28,
+            29,
+            31,
+            30,
+            32
+          ]
+        }
+      },
+      "samples": [
+        {
+          "preprocessMs": 3.4449999928474426,
+          "inferenceMs": 34.90499997138977,
+          "postprocessMs": 0.04000002145767212,
+          "totalMs": 70.75499999523163,
+          "correctionMs": 3.590000033378601,
+          "detectorMs": 24.405000030994415,
+          "decodeMs": 3.824999988079071
+        }
+      ],
+      "vertexCount": 4899,
+      "jointCount": 70
+    },
+    {
+      "id": "partial-motion",
+      "bbox": [
+        30.539395958185196,
+        18.012185096740723,
+        130.94659686088562,
+        172.4062728881836
+      ],
+      "bboxSource": "automatic confident Pose landmarks",
+      "gate": {
+        "accepted": true,
+        "state": "upper",
+        "bbox": [
+          30.539395958185196,
+          18.012185096740723,
+          130.94659686088562,
+          172.4062728881836
+        ],
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "observedRegions": {
+          "body": true,
+          "leftArm": false,
+          "rightArm": false,
+          "leftLeg": false,
+          "rightLeg": false
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": [
+            18.012185096740723,
+            159.70370631336309
+          ],
+          "bodyVisibleY": [
+            28.533453941345215,
+            159.70370631336309
+          ],
+          "sourceWidth": 190,
+          "sourceHeight": 200,
+          "limitation": "2D anchor support only; does not resolve per-pixel occlusion or prove person presence"
+        },
+        "reasons": [
+          "upper-body-with-partial-lower-observation"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            true,
+            true
+          ],
+          "arms": [
+            false,
+            false
+          ],
+          "legs": [
+            false,
+            false
+          ],
+          "headSupported": true,
+          "supportedJointIndices": [
+            11,
+            12,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            23,
+            24,
+            13,
+            14
+          ]
+        }
+      },
+      "samples": [
+        {
+          "preprocessMs": 2.290000021457672,
+          "inferenceMs": 34.674999952316284,
+          "postprocessMs": 0.0350000262260437,
+          "totalMs": 75.66500002145767,
+          "correctionMs": 1.5550000071525574,
+          "detectorMs": 30.884999990463257,
+          "decodeMs": 2.1299999952316284
+        }
+      ],
+      "vertexCount": 4899,
+      "jointCount": 70
+    },
+    {
+      "id": "partial-squat",
+      "bbox": [
+        60.991660881042485,
+        44.37824063301087,
+        423.45545120239257,
+        359.4653136253357
+      ],
+      "bboxSource": "automatic confident Pose landmarks",
+      "gate": {
+        "accepted": true,
+        "state": "upper",
+        "bbox": [
+          60.991660881042485,
+          44.37824063301087,
+          423.45545120239257,
+          359.4653136253357
+        ],
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "observedRegions": {
+          "body": true,
+          "leftArm": true,
+          "rightArm": true,
+          "leftLeg": false,
+          "rightLeg": false
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": [
+            72.44629367605697,
+            331.39726058228956
+          ],
+          "bodyVisibleY": [
+            72.44629367605697,
+            331.39726058228956
+          ],
+          "sourceWidth": 520,
+          "sourceHeight": 530,
+          "limitation": "2D anchor support only; does not resolve per-pixel occlusion or prove person presence"
+        },
+        "reasons": [
+          "upper-body-with-partial-lower-observation"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            true,
+            true
+          ],
+          "arms": [
+            true,
+            true
+          ],
+          "legs": [
+            false,
+            false
+          ],
+          "headSupported": false,
+          "supportedJointIndices": [
+            11,
+            12,
+            23,
+            24,
+            13,
+            15,
+            14,
+            16
+          ]
+        }
+      },
+      "samples": [
+        {
+          "preprocessMs": 2.475000023841858,
+          "inferenceMs": 34.719999969005585,
+          "postprocessMs": 0.05500000715255737,
+          "totalMs": 81.70500004291534,
+          "correctionMs": 2.3299999833106995,
+          "detectorMs": 36.155000030994415,
+          "decodeMs": 2.1449999809265137
+        }
+      ],
+      "vertexCount": 4899,
+      "jointCount": 70
+    },
+    {
+      "id": "hand-only",
+      "bbox": null,
+      "bboxSource": "automatic confident Pose landmarks",
+      "gate": {
+        "accepted": false,
+        "state": "ambiguous",
+        "bbox": null,
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "observedRegions": {
+          "body": false,
+          "leftArm": false,
+          "rightArm": false,
+          "leftLeg": false,
+          "rightLeg": false
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": null,
+          "bodyVisibleY": null
+        },
+        "reasons": [
+          "insufficient-connected-limb-support"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            false,
+            false
+          ],
+          "arms": [
+            false,
+            false
+          ],
+          "legs": [
+            false,
+            false
+          ]
+        }
+      },
+      "samples": [
+        {
+          "detectorMs": 31.875,
+          "totalMs": 32.11500000953674
+        }
+      ],
+      "vertexCount": 0,
+      "jointCount": 0
+    },
+    {
+      "id": "blank",
+      "bbox": null,
+      "bboxSource": "automatic confident Pose landmarks",
+      "gate": {
+        "accepted": false,
+        "state": "none",
+        "bbox": null,
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "observedRegions": {
+          "body": false,
+          "leftArm": false,
+          "rightArm": false,
+          "leftLeg": false,
+          "rightLeg": false
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": null,
+          "bodyVisibleY": null
+        },
+        "reasons": [
+          "no-complete-pose-candidate"
+        ],
+        "evidence": {
+          "independentPersonDetector": false
+        }
+      },
+      "samples": [
+        {
+          "detectorMs": 16,
+          "totalMs": 16.240000009536743
+        }
+      ],
+      "vertexCount": 0,
+      "jointCount": 0
+    }
+  ],
+  "pageErrors": [],
+  "cameraRequests": 0,
+  "cleanup": {
+    "disposed": true,
+    "browserClosed": true,
+    "serverStopped": true
+  },
+  "initialization": {
+    "ready": true,
+    "mesh": true,
+    "metadata": {
+      "format": "mhr-browser-v1",
+      "lod": 3,
+      "vertexCount": 4899,
+      "jointCount": 127,
+      "modelParameterCount": 204,
+      "identityCount": 45,
+      "expressionCount": 72,
+      "jointNames": [
+        "body_world",
+        "root",
+        "l_upleg",
+        "l_lowleg",
+        "l_foot",
+        "l_talocrural",
+        "l_subtalar",
+        "l_transversetarsal",
+        "l_ball",
+        "l_lowleg_twist1_proc",
+        "l_lowleg_twist2_proc",
+        "l_lowleg_twist3_proc",
+        "l_lowleg_twist4_proc",
+        "l_upleg_twist0_proc",
+        "l_upleg_twist1_proc",
+        "l_upleg_twist2_proc",
+        "l_upleg_twist3_proc",
+        "l_upleg_twist4_proc",
+        "r_upleg",
+        "r_lowleg",
+        "r_foot",
+        "r_talocrural",
+        "r_subtalar",
+        "r_transversetarsal",
+        "r_ball",
+        "r_lowleg_twist1_proc",
+        "r_lowleg_twist2_proc",
+        "r_lowleg_twist3_proc",
+        "r_lowleg_twist4_proc",
+        "r_upleg_twist0_proc",
+        "r_upleg_twist1_proc",
+        "r_upleg_twist2_proc",
+        "r_upleg_twist3_proc",
+        "r_upleg_twist4_proc",
+        "c_spine0",
+        "c_spine1",
+        "c_spine2",
+        "c_spine3",
+        "r_clavicle",
+        "r_uparm",
+        "r_lowarm",
+        "r_wrist_twist",
+        "r_wrist",
+        "r_pinky0",
+        "r_pinky1",
+        "r_pinky2",
+        "r_pinky3",
+        "r_pinky_null",
+        "r_ring1",
+        "r_ring2",
+        "r_ring3",
+        "r_ring_null",
+        "r_middle1",
+        "r_middle2",
+        "r_middle3",
+        "r_middle_null",
+        "r_index1",
+        "r_index2",
+        "r_index3",
+        "r_index_null",
+        "r_thumb0",
+        "r_thumb1",
+        "r_thumb2",
+        "r_thumb3",
+        "r_thumb_null",
+        "r_lowarm_twist1_proc",
+        "r_lowarm_twist2_proc",
+        "r_lowarm_twist3_proc",
+        "r_lowarm_twist4_proc",
+        "r_uparm_twist0_proc",
+        "r_uparm_twist1_proc",
+        "r_uparm_twist2_proc",
+        "r_uparm_twist3_proc",
+        "r_uparm_twist4_proc",
+        "l_clavicle",
+        "l_uparm",
+        "l_lowarm",
+        "l_wrist_twist",
+        "l_wrist",
+        "l_pinky0",
+        "l_pinky1",
+        "l_pinky2",
+        "l_pinky3",
+        "l_pinky_null",
+        "l_ring1",
+        "l_ring2",
+        "l_ring3",
+        "l_ring_null",
+        "l_middle1",
+        "l_middle2",
+        "l_middle3",
+        "l_middle_null",
+        "l_index1",
+        "l_index2",
+        "l_index3",
+        "l_index_null",
+        "l_thumb0",
+        "l_thumb1",
+        "l_thumb2",
+        "l_thumb3",
+        "l_thumb_null",
+        "l_lowarm_twist1_proc",
+        "l_lowarm_twist2_proc",
+        "l_lowarm_twist3_proc",
+        "l_lowarm_twist4_proc",
+        "l_uparm_twist0_proc",
+        "l_uparm_twist1_proc",
+        "l_uparm_twist2_proc",
+        "l_uparm_twist3_proc",
+        "l_uparm_twist4_proc",
+        "c_neck",
+        "c_neck_twist1_proc",
+        "c_neck_twist0_proc",
+        "c_head",
+        "c_jaw",
+        "c_teeth",
+        "c_jaw_null",
+        "c_tongue0",
+        "c_tongue1",
+        "c_tongue2",
+        "c_tongue3",
+        "c_tongue4",
+        "r_eye",
+        "r_eye_null",
+        "l_eye",
+        "l_eye_null",
+        "c_head_null"
+      ],
+      "parameterNames": [
+        "root_tx",
+        "root_ty",
+        "root_tz",
+        "root_rx",
+        "root_ry",
+        "root_rz",
+        "spine0_rx_flexible",
+        "spine_twist0",
+        "spine0_ry_flexible",
+        "spine_lean0",
+        "spine0_rz_flexible",
+        "spine_bend0",
+        "spine1_rx_flexible",
+        "spine_twist1",
+        "spine1_ry_flexible",
+        "spine_lean1",
+        "spine1_rz_flexible",
+        "spine_bend1",
+        "spine2_rx_flexible",
+        "spine2_ry_flexible",
+        "spine2_rz_flexible",
+        "spine3_rx_flexible",
+        "spine3_ry_flexible",
+        "spine3_rz_flexible",
+        "neck_twist",
+        "neck_lean",
+        "neck_bend",
+        "head_twist",
+        "head_lean",
+        "head_bend",
+        "r_clavicle_rx",
+        "r_clavicle_ry",
+        "r_clavicle_rz",
+        "r_uparm_twist",
+        "r_uparm_ry",
+        "r_uparm_rz",
+        "r_elbow_bend",
+        "r_lowarm_twist",
+        "r_wrist_ry",
+        "r_wrist_rz",
+        "l_clavicle_rx",
+        "l_clavicle_ry",
+        "l_clavicle_rz",
+        "l_uparm_twist",
+        "l_uparm_ry",
+        "l_uparm_rz",
+        "l_elbow_bend",
+        "l_lowarm_twist",
+        "l_wrist_ry",
+        "l_wrist_rz",
+        "r_upleg_twist",
+        "r_upleg_ry",
+        "r_upleg_rz",
+        "r_knee_bend",
+        "r_lowleg_twist",
+        "r_foot_bend",
+        "r_foot_lean0",
+        "r_foot_lean1",
+        "r_ball_bend",
+        "l_upleg_twist",
+        "l_upleg_ry",
+        "l_upleg_rz",
+        "l_knee_bend",
+        "l_lowleg_twist",
+        "l_foot_bend",
+        "l_foot_lean0",
+        "l_foot_lean1",
+        "l_ball_bend",
+        "r_thumb0_ry",
+        "r_thumb0_rz",
+        "r_thumb1_rx",
+        "r_thumb1_ry",
+        "r_thumb1_rz",
+        "r_thumb2_rz",
+        "r_thumb3_rz",
+        "r_index1_ry",
+        "r_ring1_ry",
+        "r_pinky1_ry",
+        "r_middle1_ry",
+        "r_index1_rz",
+        "r_index2_rz",
+        "r_index3_rz",
+        "r_middle1_rz",
+        "r_middle2_rz",
+        "r_middle3_rz",
+        "r_ring1_rz",
+        "r_ring2_rz",
+        "r_ring3_rz",
+        "r_pinky1_rz",
+        "r_pinky2_rz",
+        "r_pinky3_rz",
+        "r_index1_rx",
+        "r_ring1_rx",
+        "r_pinky1_rx",
+        "r_middle1_rx",
+        "l_thumb0_ry",
+        "l_thumb0_rz",
+        "l_thumb1_rx",
+        "l_thumb1_ry",
+        "l_thumb1_rz",
+        "l_thumb2_rz",
+        "l_thumb3_rz",
+        "l_index1_ry",
+        "l_ring1_ry",
+        "l_pinky1_ry",
+        "l_middle1_ry",
+        "l_index1_rz",
+        "l_index2_rz",
+        "l_index3_rz",
+        "l_middle1_rz",
+        "l_middle2_rz",
+        "l_middle3_rz",
+        "l_ring1_rz",
+        "l_ring2_rz",
+        "l_ring3_rz",
+        "l_pinky1_rz",
+        "l_pinky2_rz",
+        "l_pinky3_rz",
+        "l_index1_rx",
+        "l_ring1_rx",
+        "l_pinky1_rx",
+        "l_middle1_rx",
+        "l_foot_ry_flexible",
+        "l_subtalar_rz_flexible",
+        "l_talocrural_rx_flexible",
+        "l_ball_rx_flexible",
+        "r_foot_ry_flexible",
+        "r_subtalar_rz_flexible",
+        "r_talocrural_rx_flexible",
+        "r_ball_rx_flexible",
+        "spine_length_flexible",
+        "neck_length_flexible",
+        "shoulder_width_flexible",
+        "arm_length_flexible",
+        "hip_width_flexible",
+        "leg_length_flexible",
+        "scale_eye_width",
+        "scale_eye_height",
+        "scale_eye_depth",
+        "scale_spine_length",
+        "scale_neck_length",
+        "scale_shoulder_width",
+        "scale_uparms",
+        "scale_lowarms",
+        "scale_r_hands",
+        "scale_l_hands",
+        "scale_hip_width",
+        "scale_hip_height",
+        "scale_hip_depth",
+        "scale_uplegs",
+        "scale_lowlegs",
+        "scale_knee_knock",
+        "scale_ankle_height",
+        "scale_foot_length",
+        "scale_r_index1_length",
+        "scale_r_middle1_length",
+        "scale_r_ring1_length",
+        "scale_r_pinky1_length",
+        "scale_r_thumb1_length",
+        "scale_r_index1_offset",
+        "scale_r_middle1_offset",
+        "scale_r_ring1_offset",
+        "scale_r_pinky1_offset",
+        "scale_r_thumb1_offset",
+        "scale_r_index2_length",
+        "scale_r_middle2_length",
+        "scale_r_ring2_length",
+        "scale_r_pinky2_length",
+        "scale_r_thumb2_length",
+        "scale_r_index3_length",
+        "scale_r_middle3_length",
+        "scale_r_ring3_length",
+        "scale_r_pinky3_length",
+        "scale_r_thumb3_length",
+        "scale_r_index_null_tx",
+        "scale_r_middle_null_tx",
+        "scale_r_ring_null_tx",
+        "scale_r_pinky_null_tx",
+        "scale_r_thumb_null_tx",
+        "scale_l_index1_length",
+        "scale_l_middle1_length",
+        "scale_l_ring1_length",
+        "scale_l_pinky1_length",
+        "scale_l_thumb1_length",
+        "scale_l_index1_offset",
+        "scale_l_middle1_offset",
+        "scale_l_ring1_offset",
+        "scale_l_pinky1_offset",
+        "scale_l_thumb1_offset",
+        "scale_l_index2_length",
+        "scale_l_middle2_length",
+        "scale_l_ring2_length",
+        "scale_l_pinky2_length",
+        "scale_l_thumb2_length",
+        "scale_l_index3_length",
+        "scale_l_middle3_length",
+        "scale_l_ring3_length",
+        "scale_l_pinky3_length",
+        "scale_l_thumb3_length",
+        "scale_l_index_null_tx",
+        "scale_l_middle_null_tx",
+        "scale_l_ring_null_tx",
+        "scale_l_pinky_null_tx",
+        "scale_l_thumb_null_tx"
+      ],
+      "modelParameterNames": [
+        "root_tx",
+        "root_ty",
+        "root_tz",
+        "root_rx",
+        "root_ry",
+        "root_rz",
+        "spine0_rx_flexible",
+        "spine_twist0",
+        "spine0_ry_flexible",
+        "spine_lean0",
+        "spine0_rz_flexible",
+        "spine_bend0",
+        "spine1_rx_flexible",
+        "spine_twist1",
+        "spine1_ry_flexible",
+        "spine_lean1",
+        "spine1_rz_flexible",
+        "spine_bend1",
+        "spine2_rx_flexible",
+        "spine2_ry_flexible",
+        "spine2_rz_flexible",
+        "spine3_rx_flexible",
+        "spine3_ry_flexible",
+        "spine3_rz_flexible",
+        "neck_twist",
+        "neck_lean",
+        "neck_bend",
+        "head_twist",
+        "head_lean",
+        "head_bend",
+        "r_clavicle_rx",
+        "r_clavicle_ry",
+        "r_clavicle_rz",
+        "r_uparm_twist",
+        "r_uparm_ry",
+        "r_uparm_rz",
+        "r_elbow_bend",
+        "r_lowarm_twist",
+        "r_wrist_ry",
+        "r_wrist_rz",
+        "l_clavicle_rx",
+        "l_clavicle_ry",
+        "l_clavicle_rz",
+        "l_uparm_twist",
+        "l_uparm_ry",
+        "l_uparm_rz",
+        "l_elbow_bend",
+        "l_lowarm_twist",
+        "l_wrist_ry",
+        "l_wrist_rz",
+        "r_upleg_twist",
+        "r_upleg_ry",
+        "r_upleg_rz",
+        "r_knee_bend",
+        "r_lowleg_twist",
+        "r_foot_bend",
+        "r_foot_lean0",
+        "r_foot_lean1",
+        "r_ball_bend",
+        "l_upleg_twist",
+        "l_upleg_ry",
+        "l_upleg_rz",
+        "l_knee_bend",
+        "l_lowleg_twist",
+        "l_foot_bend",
+        "l_foot_lean0",
+        "l_foot_lean1",
+        "l_ball_bend",
+        "r_thumb0_ry",
+        "r_thumb0_rz",
+        "r_thumb1_rx",
+        "r_thumb1_ry",
+        "r_thumb1_rz",
+        "r_thumb2_rz",
+        "r_thumb3_rz",
+        "r_index1_ry",
+        "r_ring1_ry",
+        "r_pinky1_ry",
+        "r_middle1_ry",
+        "r_index1_rz",
+        "r_index2_rz",
+        "r_index3_rz",
+        "r_middle1_rz",
+        "r_middle2_rz",
+        "r_middle3_rz",
+        "r_ring1_rz",
+        "r_ring2_rz",
+        "r_ring3_rz",
+        "r_pinky1_rz",
+        "r_pinky2_rz",
+        "r_pinky3_rz",
+        "r_index1_rx",
+        "r_ring1_rx",
+        "r_pinky1_rx",
+        "r_middle1_rx",
+        "l_thumb0_ry",
+        "l_thumb0_rz",
+        "l_thumb1_rx",
+        "l_thumb1_ry",
+        "l_thumb1_rz",
+        "l_thumb2_rz",
+        "l_thumb3_rz",
+        "l_index1_ry",
+        "l_ring1_ry",
+        "l_pinky1_ry",
+        "l_middle1_ry",
+        "l_index1_rz",
+        "l_index2_rz",
+        "l_index3_rz",
+        "l_middle1_rz",
+        "l_middle2_rz",
+        "l_middle3_rz",
+        "l_ring1_rz",
+        "l_ring2_rz",
+        "l_ring3_rz",
+        "l_pinky1_rz",
+        "l_pinky2_rz",
+        "l_pinky3_rz",
+        "l_index1_rx",
+        "l_ring1_rx",
+        "l_pinky1_rx",
+        "l_middle1_rx",
+        "l_foot_ry_flexible",
+        "l_subtalar_rz_flexible",
+        "l_talocrural_rx_flexible",
+        "l_ball_rx_flexible",
+        "r_foot_ry_flexible",
+        "r_subtalar_rz_flexible",
+        "r_talocrural_rx_flexible",
+        "r_ball_rx_flexible",
+        "spine_length_flexible",
+        "neck_length_flexible",
+        "shoulder_width_flexible",
+        "arm_length_flexible",
+        "hip_width_flexible",
+        "leg_length_flexible",
+        "scale_eye_width",
+        "scale_eye_height",
+        "scale_eye_depth",
+        "scale_spine_length",
+        "scale_neck_length",
+        "scale_shoulder_width",
+        "scale_uparms",
+        "scale_lowarms",
+        "scale_r_hands",
+        "scale_l_hands",
+        "scale_hip_width",
+        "scale_hip_height",
+        "scale_hip_depth",
+        "scale_uplegs",
+        "scale_lowlegs",
+        "scale_knee_knock",
+        "scale_ankle_height",
+        "scale_foot_length",
+        "scale_r_index1_length",
+        "scale_r_middle1_length",
+        "scale_r_ring1_length",
+        "scale_r_pinky1_length",
+        "scale_r_thumb1_length",
+        "scale_r_index1_offset",
+        "scale_r_middle1_offset",
+        "scale_r_ring1_offset",
+        "scale_r_pinky1_offset",
+        "scale_r_thumb1_offset",
+        "scale_r_index2_length",
+        "scale_r_middle2_length",
+        "scale_r_ring2_length",
+        "scale_r_pinky2_length",
+        "scale_r_thumb2_length",
+        "scale_r_index3_length",
+        "scale_r_middle3_length",
+        "scale_r_ring3_length",
+        "scale_r_pinky3_length",
+        "scale_r_thumb3_length",
+        "scale_r_index_null_tx",
+        "scale_r_middle_null_tx",
+        "scale_r_ring_null_tx",
+        "scale_r_pinky_null_tx",
+        "scale_r_thumb_null_tx",
+        "scale_l_index1_length",
+        "scale_l_middle1_length",
+        "scale_l_ring1_length",
+        "scale_l_pinky1_length",
+        "scale_l_thumb1_length",
+        "scale_l_index1_offset",
+        "scale_l_middle1_offset",
+        "scale_l_ring1_offset",
+        "scale_l_pinky1_offset",
+        "scale_l_thumb1_offset",
+        "scale_l_index2_length",
+        "scale_l_middle2_length",
+        "scale_l_ring2_length",
+        "scale_l_pinky2_length",
+        "scale_l_thumb2_length",
+        "scale_l_index3_length",
+        "scale_l_middle3_length",
+        "scale_l_ring3_length",
+        "scale_l_pinky3_length",
+        "scale_l_thumb3_length",
+        "scale_l_index_null_tx",
+        "scale_l_middle_null_tx",
+        "scale_l_ring_null_tx",
+        "scale_l_pinky_null_tx",
+        "scale_l_thumb_null_tx"
+      ],
+      "keypointNames": [
+        "nose",
+        "left_eye",
+        "right_eye",
+        "left_ear",
+        "right_ear",
+        "left_shoulder",
+        "right_shoulder",
+        "left_elbow",
+        "right_elbow",
+        "left_hip",
+        "right_hip",
+        "left_knee",
+        "right_knee",
+        "left_ankle",
+        "right_ankle",
+        "left_big_toe_tip",
+        "left_small_toe_tip",
+        "left_heel",
+        "right_big_toe_tip",
+        "right_small_toe_tip",
+        "right_heel",
+        "right_thumb_tip",
+        "right_thumb_first_joint",
+        "right_thumb_second_joint",
+        "right_thumb_third_joint",
+        "right_index_tip",
+        "right_index_first_joint",
+        "right_index_second_joint",
+        "right_index_third_joint",
+        "right_middle_tip",
+        "right_middle_first_joint",
+        "right_middle_second_joint",
+        "right_middle_third_joint",
+        "right_ring_tip",
+        "right_ring_first_joint",
+        "right_ring_second_joint",
+        "right_ring_third_joint",
+        "right_pinky_tip",
+        "right_pinky_first_joint",
+        "right_pinky_second_joint",
+        "right_pinky_third_joint",
+        "right_wrist",
+        "left_thumb_tip",
+        "left_thumb_first_joint",
+        "left_thumb_second_joint",
+        "left_thumb_third_joint",
+        "left_index_tip",
+        "left_index_first_joint",
+        "left_index_second_joint",
+        "left_index_third_joint",
+        "left_middle_tip",
+        "left_middle_first_joint",
+        "left_middle_second_joint",
+        "left_middle_third_joint",
+        "left_ring_tip",
+        "left_ring_first_joint",
+        "left_ring_second_joint",
+        "left_ring_third_joint",
+        "left_pinky_tip",
+        "left_pinky_first_joint",
+        "left_pinky_second_joint",
+        "left_pinky_third_joint",
+        "left_wrist",
+        "left_olecranon",
+        "right_olecranon",
+        "left_cubital_fossa",
+        "right_cubital_fossa",
+        "left_acromion",
+        "right_acromion",
+        "neck"
+      ],
+      "keypointRegressorSource": {
+        "repository": "https://github.com/mohamdev/InstantHMR",
+        "commit": "36ae38720c0008f822dc1cb278b4a41b23d76e01",
+        "file": "instanthmr_distill_train/assets/mhr_j127_to_kp70.npy",
+        "sha256": "d0a64adcec183a892167ea1df1657a8c819fcddbc721f6b8a46f6336ea90292a",
+        "kind": "dense linear regression from 127 rig positions, not a direct joint lookup"
+      },
+      "arrays": {
+        "baseShape": {
+          "byteOffset": 0,
+          "length": 14697,
+          "shape": [
+            4899,
+            3
+          ],
+          "type": "Float32Array"
+        },
+        "shapeVectors": {
+          "byteOffset": 58788,
+          "length": 1719549,
+          "shape": [
+            117,
+            4899,
+            3
+          ],
+          "type": "Float32Array"
+        },
+        "faces": {
+          "byteOffset": 6936984,
+          "length": 29382,
+          "shape": [
+            9794,
+            3
+          ],
+          "type": "Uint32Array"
+        },
+        "parents": {
+          "byteOffset": 7054512,
+          "length": 127,
+          "shape": [
+            127
+          ],
+          "type": "Int32Array"
+        },
+        "jointOffsets": {
+          "byteOffset": 7055020,
+          "length": 381,
+          "shape": [
+            127,
+            3
+          ],
+          "type": "Float32Array"
+        },
+        "prerotations": {
+          "byteOffset": 7056544,
+          "length": 508,
+          "shape": [
+            127,
+            4
+          ],
+          "type": "Float32Array"
+        },
+        "inverseBindPose": {
+          "byteOffset": 7058576,
+          "length": 1016,
+          "shape": [
+            127,
+            8
+          ],
+          "type": "Float32Array"
+        },
+        "skinIndices": {
+          "byteOffset": 7062640,
+          "length": 39192,
+          "shape": [
+            4899,
+            8
+          ],
+          "type": "Uint32Array"
+        },
+        "skinWeights": {
+          "byteOffset": 7219408,
+          "length": 39192,
+          "shape": [
+            4899,
+            8
+          ],
+          "type": "Float32Array"
+        },
+        "parameterTransformOffsets": {
+          "byteOffset": 7376176,
+          "length": 890,
+          "shape": [
+            890
+          ],
+          "type": "Uint32Array"
+        },
+        "parameterTransformIndices": {
+          "byteOffset": 7379736,
+          "length": 368,
+          "shape": [
+            368
+          ],
+          "type": "Uint32Array"
+        },
+        "parameterTransformValues": {
+          "byteOffset": 7381208,
+          "length": 368,
+          "shape": [
+            368
+          ],
+          "type": "Float32Array"
+        },
+        "correctiveActivationOffsets": {
+          "byteOffset": 7382680,
+          "length": 3001,
+          "shape": [
+            3001
+          ],
+          "type": "Uint32Array"
+        },
+        "correctiveActivationIndices": {
+          "byteOffset": 7394684,
+          "length": 53136,
+          "shape": [
+            53136
+          ],
+          "type": "Uint32Array"
+        },
+        "correctiveActivationValues": {
+          "byteOffset": 7607228,
+          "length": 53136,
+          "shape": [
+            53136
+          ],
+          "type": "Float32Array"
+        },
+        "correctiveShapeOffsets": {
+          "byteOffset": 7819772,
+          "length": 3001,
+          "shape": [
+            3001
+          ],
+          "type": "Uint32Array"
+        },
+        "correctiveShapeIndices": {
+          "byteOffset": 7831776,
+          "length": 1532952,
+          "shape": [
+            1532952
+          ],
+          "type": "Uint32Array"
+        },
+        "correctiveShapeValues": {
+          "byteOffset": 13963584,
+          "length": 1532952,
+          "shape": [
+            1532952
+          ],
+          "type": "Float32Array"
+        },
+        "keypointRegressor": {
+          "byteOffset": 20095392,
+          "length": 8890,
+          "shape": [
+            70,
+            127
+          ],
+          "type": "Float32Array"
+        }
+      },
+      "binaryFile": "mhr-lod3.bin.gz",
+      "source": {
+        "repository": "https://github.com/facebookresearch/MHR",
+        "commit": "d96fafa33bbf018647c70c3525e91f53e79d2a14",
+        "release": "https://github.com/facebookresearch/MHR/releases/tag/v1.0.1",
+        "archiveBytes": 198943157,
+        "transferredArchiveBytes": 8645721,
+        "lod": 3,
+        "files": [
+          {
+            "name": "corrective_blendshapes_lod3.npz",
+            "bytes": 176364298,
+            "sha256": "7aae0b02b6b53aa39fa7bfeef954e634d0b928b66189e2b472227573a0447bee"
+          },
+          {
+            "name": "compact_v6_1.model",
+            "bytes": 31179,
+            "sha256": "9b4e48e6216296c0a8a47e8e1d210b42ca8b194b9f61409adc5d7a3873dcf08e"
+          },
+          {
+            "name": "lod3.fbx",
+            "bytes": 2181136,
+            "sha256": "5d5fe30ba09488e96a06b2fe6306202c4048083df9e1003f1051ad541e06aafa"
+          },
+          {
+            "name": "corrective_activation.npz",
+            "bytes": 3313540,
+            "sha256": "08cce62c1aed80c0ae2a87580c0e7b73b7a1efea56daa0cec25dbed5917e4909"
+          }
+        ]
+      },
+      "units": "Source arrays are official centimetres, Y-up/Z-back. Decoder returns metres, Y-down/Z-forward; camera translation is not included.",
+      "sparseNonzeros": {
+        "parameterTransform": 368,
+        "activation": 53136,
+        "correctives": 1532952
+      },
+      "compressedBytes": 7442328,
+      "uncompressedBytes": 20130952,
+      "sha256": "eba865d2b2a0637245971732ec7b93b991d55be53fd261998d54df3e44313335"
+    }
+  },
+  "gpuDispatches": 6850,
+  "finishedAt": "2026-09-28T20:59:13.374Z"
+}

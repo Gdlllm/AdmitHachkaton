@@ -1,0 +1,17 @@
+{
+  "retrievedAt": "2026-09-28T21:02:24.009Z",
+  "files": [
+    {
+      "file": "INSTANTHMR-MODEL-CARD.md",
+      "url": "https://huggingface.co/momolesang/InstantHMR/raw/3504446fc31e7f76fdb1cd7e463189e7cf0fdd0f/README.md",
+      "bytes": 5250,
+      "sha256": "39100bda7105d9103935b85a48419ba977148efa6be6acf9f0f80c15a0a04de0"
+    },
+    {
+      "file": "LICENSE-SAM-WEIGHTS.txt",
+      "url": "https://raw.githubusercontent.com/facebookresearch/sam-3d-body/4e33ae485b2ea0ecc38328fa39b16b75dd3e79c0/LICENSE",
+      "bytes": 8204,
+      "sha256": "b3a5a0e2d973ab80e6610ccf1cffc40756050d0ace3cd4fec879b3ec290b2e9b"
+    }
+  ]
+}

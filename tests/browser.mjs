@@ -194,7 +194,8 @@ try {
       await route.fulfill({ status: 404, body: 'Fixture not found' });
     }
   });
-  await page.goto(`${base}/?test=1`);
+  // Landmark regression scope; the body surface has its own suite (test:dense).
+  await page.goto(`${base}/?test=1&surface=0`);
   await page.waitForFunction(() => window.motionCapture?.start && window.motionCapture?.subscribe);
 
   await test('test mode is idle, camera-only UI has no visible controls or text', async () => {
@@ -220,6 +221,7 @@ try {
     const result = await startVideo('hand-signs.mp4');
     assert.ok(result.frames.some(frame => frame.handCounts.some(count => count === 21)), 'hand model should detect the reference hand');
     assert.ok(result.frames.every(frame => frame.handCounts.every(count => count === 21)));
+    assert.ok(result.frames.every(frame => frame.poseCount === 0 && frame.faceCount === 0), 'hand-only source must not display a guessed body or face');
     report.fixtureReports.push({ fixture: 'hand-signs.mp4', ...result });
     return { frames: result.frames.length, detectedHands: result.frames.map(frame => frame.handCounts.length) };
   });

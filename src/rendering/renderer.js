@@ -7,7 +7,7 @@ import {
 const TAU = Math.PI * 2;
 const clamp = (value, low, high) => Math.min(high, Math.max(low, value));
 const finitePositive = value => Number.isFinite(value) && value > 0;
-const COLORS = { left: '#68e6ef', right: '#ffc393', neutral: '#e6fafa', face: '#a4ecdf' };
+const COLORS = { left: '#68e6ef', right: '#ffc393', neutral: '#e6fafa', face: '#d5fff4' };
 // Pose's six coarse hand landmarks are replaced by the detailed hand model.
 const BODY_ONLY = BODY_CONNECTIONS.filter(([a, b]) => ![a, b].some(i => i >= 17 && i <= 22));
 const BODY_INDICES = [...new Set(BODY_ONLY.flat())];
@@ -127,6 +127,9 @@ export class CaptureRenderer {
    * source is an optional ImageBitmap of the exact inference frame. The caller
    * owns/closes it. Keeping it alive until the next result avoids drawing joints
    * on a different live video frame. With no source this draws a transparent overlay.
+   * Optional frame.surfaceImage is a transparent surface overlay of any pixel
+   * size in source orientation, stretched over the image like the source.
+   * Its lifetime also belongs to the caller.
    */
   draw(frame, { videoWidth, videoHeight, mirror = true, now = performance.now(), source = null } = {}) {
     this.clear();
@@ -144,6 +147,15 @@ export class CaptureRenderer {
       ctx.translate(mirror ? viewport.x + viewport.width : viewport.x, viewport.y);
       ctx.scale(mirror ? -1 : 1, 1);
       ctx.drawImage(image, 0, 0, viewport.width, viewport.height);
+      ctx.restore();
+    }
+    const surfaceImage = frame.surfaceImage;
+    if (surfaceImage && finitePositive(surfaceImage.width) && finitePositive(surfaceImage.height)) {
+      ctx.save();
+      ctx.translate(mirror ? viewport.x + viewport.width : viewport.x, viewport.y);
+      ctx.scale(mirror ? -1 : 1, 1);
+      ctx.globalAlpha = opacity;
+      ctx.drawImage(surfaceImage, 0, 0, viewport.width, viewport.height);
       ctx.restore();
     }
     ctx.lineCap = 'round'; ctx.lineJoin = 'round';
@@ -214,10 +226,10 @@ export class CaptureRenderer {
     // visible, with the measured vertices/tessellation appearing in close-up.
     const detail = clamp((size.width - 65) / 105, 0, 1);
     if (detail > 0) {
-      this.connections(points, FACE_TESSELLATION, COLORS.face, 0.45, opacity * detail * 0.17);
+      this.connections(points, FACE_TESSELLATION, COLORS.face, 0.65, opacity * detail * 0.36);
       this.dots(points, points.map((_, index) => index), 0.63 * scale, '#e2fff6', opacity * detail * 0.60);
     }
-    this.connections(points, FACE_OVAL, COLORS.face, 0.9 * scale, opacity * 0.62);
+    this.connections(points, FACE_OVAL, COLORS.face, 1.0 * scale, opacity * 0.85);
     this.connections(points, FACE_LIPS, '#fff1e8', 0.95 * scale, opacity * 0.85);
     this.connections(points, FACE_LEFT_BROW, COLORS.face, 0.95 * scale, opacity * 0.76);
     this.connections(points, FACE_RIGHT_BROW, COLORS.face, 0.95 * scale, opacity * 0.76);

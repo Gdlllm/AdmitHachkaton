@@ -1,5 +1,6 @@
 import { FilesetResolver, PoseLandmarker, FaceLandmarker, HandLandmarker } from '@mediapipe/tasks-vision';
 import { REGION_NAMES, modelOptions, normalizeResult, compactMask } from './inference.js';
+import { fetchAsset } from '../shared/assets.js';
 
 // One captured frame is shared by independent, persistent region workers.
 // No region can block detection of another region or run on the UI thread.
@@ -11,11 +12,13 @@ function errorMessage(error) { return error?.message || String(error); }
 
 function startRegion(name) {
   const Task = { pose: PoseLandmarker, face: FaceLandmarker, hands: HandLandmarker }[name];
-  let detector, fileset, config, delegate;
+  let detector, fileset, config, delegate, modelBuffer;
   let initialized = false, busy = false, frameWidth = 0, frameHeight = 0, maskWarningSent = false;
 
   async function create(requestedDelegate) {
     const options = modelOptions(name, config);
+    // Loaded once per worker; a production build may have split large models.
+    modelBuffer ??= new Uint8Array(await fetchAsset(options.baseOptions.modelAssetPath));
     if (name === 'pose' && requestedDelegate === 'CPU' && options.outputSegmentationMasks) {
       // Pinned MediaPipe 1.0.1 CPU masks abort on a tested portrait crop. Keep
       // landmark capture operational instead of enabling that optional output.
@@ -26,7 +29,7 @@ function startRegion(name) {
       }
     }
     const instance = await Task.createFromOptions(fileset, {
-      ...options, baseOptions: { ...options.baseOptions, delegate: requestedDelegate },
+      ...options, baseOptions: { modelAssetBuffer: modelBuffer, delegate: requestedDelegate },
       canvas: new OffscreenCanvas(1280, 720),
     });
     delegate = requestedDelegate;

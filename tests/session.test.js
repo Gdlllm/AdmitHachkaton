@@ -196,3 +196,154 @@ test('a late callback from a cancelled generation cannot erase the current frame
     else globalThis.document = previousDocument;
   }
 });
+
+function asynchronousSession(onFrame) {
+  const previousDocument = globalThis.document;
+  globalThis.document = { hidden: false };
+  const video = videoStub(), workers = [];
+  const session = new CaptureSession({ video, onFrame, mediaDevices: {}, now: () => 100,
+    workerFactory: () => {
+      const worker = { messages: [], terminated: 0,
+        postMessage(message) { this.messages.push(message); }, terminate() { this.terminated++; } };
+      workers.push(worker); return worker;
+    },
+    createBitmap: async () => ({ width: 1280, height: 720, closed: 0, close() { this.closed++; } }),
+  });
+  return { session, video, workers,
+    frames: worker => worker.messages.filter(message => message.type === 'frame'),
+    finish: (worker, request) => worker.onmessage({ data: { type: 'result', frameId: request.frameId,
+      timestamp: request.timestamp, mediaTime: request.mediaTime, source: request.bitmap,
+      pose: { landmarks: [] }, face: { landmarks: [] }, hands: [], inferenceMs: 5 } }),
+    cleanup() {
+      session.stop();
+      if (previousDocument === undefined) delete globalThis.document;
+      else globalThis.document = previousDocument;
+    },
+  };
+}
+
+test('awaited frame processing retains both source images and permits only the latest decoded frame after settlement', async () => {
+  const firstProcessing = deferred(), secondProcessing = deferred();
+  const processing = [firstProcessing, secondProcessing];
+  let calls = 0, startSettled = false;
+  const h = asynchronousSession(() => processing[calls++]?.promise);
+  try {
+    const started = h.session.start({ stream: streamStub() });
+    started.then(() => { startSettled = true; });
+    await turn();
+    const worker = h.workers[0];
+    worker.onmessage({ data: { type: 'ready' } }); await turn();
+    const first = h.frames(worker)[0];
+    h.finish(worker, first);
+    h.video.emitFrame(1.04, 2); h.video.emitFrame(1.08, 3); h.video.emitFrame(1.12, 4);
+    await turn();
+    assert.equal(h.session.inFlight, true);
+    assert.equal(startSettled, false, 'startup includes the asynchronous surface stage');
+    assert.equal(h.frames(worker).length, 1, 'no inference queue while the extension owns this frame');
+    assert.equal(first.bitmap.closed, 0);
+
+    firstProcessing.resolve();
+    await started; await turn();
+    assert.equal(h.frames(worker).length, 2);
+    const second = h.frames(worker)[1];
+    assert.equal(second.mediaTime, 1.12, 'intermediate frames are skipped');
+    h.finish(worker, second); await turn();
+    assert.equal(first.bitmap.closed, 0, 'previous displayed image survives until its replacement is processed');
+    assert.equal(second.bitmap.closed, 0, 'processing image stays usable');
+    secondProcessing.resolve(); await turn();
+    assert.equal(first.bitmap.closed, 1);
+    assert.equal(second.bitmap.closed, 0);
+    assert.equal(h.session.currentFrame.source, second.bitmap);
+    assert.equal(h.session.inFlight, false);
+  } finally {
+    firstProcessing.resolve(); secondProcessing.resolve(); h.cleanup(); await turn();
+  }
+});
+
+test('late resolution or rejection after stop cannot revive the old generation or disturb a replacement session', async () => {
+  for (const settlement of ['resolve', 'reject']) {
+    const obsoleteProcessing = deferred(); let calls = 0;
+    const h = asynchronousSession(() => ++calls === 1 ? obsoleteProcessing.promise : undefined);
+    try {
+      const oldStream = streamStub(), oldStart = h.session.start({ stream: oldStream });
+      await turn();
+      const oldWorker = h.workers[0]; oldWorker.onmessage({ data: { type: 'ready' } }); await turn();
+      const oldFrame = h.frames(oldWorker)[0]; h.finish(oldWorker, oldFrame);
+      h.session.stop();
+      assert.equal(await oldStart, null);
+      assert.equal(oldStream.track.stopped, 1);
+      assert.equal(oldFrame.bitmap.closed, 1);
+
+      const activeStream = streamStub(), activeStart = h.session.start({ stream: activeStream });
+      await turn();
+      const activeWorker = h.workers[1]; activeWorker.onmessage({ data: { type: 'ready' } }); await turn();
+      const activeFrame = h.frames(activeWorker)[0]; h.finish(activeWorker, activeFrame);
+      await activeStart;
+      const generation = h.session.generation, callback = h.session.callback;
+      obsoleteProcessing[settlement](new Error('Obsolete extension failure'));
+      await turn();
+      assert.equal(h.session.generation, generation);
+      assert.equal(h.session.state, 'running');
+      assert.equal(h.session.currentFrame.source, activeFrame.bitmap);
+      assert.equal(h.session.callback, callback);
+      assert.equal(h.session.inFlight, false);
+      assert.equal(activeFrame.bitmap.closed, 0);
+      assert.equal(activeWorker.terminated, 0);
+      assert.equal(activeStream.track.stopped, 0);
+    } finally { obsoleteProcessing.resolve(); h.cleanup(); await turn(); }
+  }
+});
+
+test('asynchronous surface rejection shuts down its stream, source, worker and public startup promise', async () => {
+  const processing = deferred(), h = asynchronousSession(() => processing.promise);
+  try {
+    const stream = streamStub(), started = h.session.start({ stream });
+    await turn();
+    const worker = h.workers[0]; worker.onmessage({ data: { type: 'ready' } }); await turn();
+    const frame = h.frames(worker)[0]; h.finish(worker, frame);
+    processing.reject(new Error('Surface inference failed'));
+    await assert.rejects(started);
+    await turn();
+    assert.equal(stream.track.stopped, 1);
+    assert.equal(frame.bitmap.closed, 1);
+    assert.equal(worker.terminated, 1);
+    assert.equal(h.session.state, 'error');
+    assert.equal(h.session.lastFailure.message, 'Surface inference failed');
+    assert.equal(h.session.inFlight, false);
+    assert.equal(h.session.currentFrame, null);
+    assert.equal(h.session.workerCount, 0);
+    assert.equal(h.video.pendingFrameCallbacks.length, 0);
+  } finally { processing.resolve(); h.cleanup(); await turn(); }
+});
+
+test('stop releases the previous displayed bitmap even when its asynchronous replacement never settles', async () => {
+  const neverSettles = deferred(); let calls = 0;
+  const h = asynchronousSession(() => ++calls === 2 ? neverSettles.promise : undefined);
+  try {
+    const started = h.session.start({ stream: streamStub() }); await turn();
+    const worker = h.workers[0]; worker.onmessage({ data: { type: 'ready' } }); await turn();
+    const previous = h.frames(worker)[0]; h.finish(worker, previous); await started;
+    h.video.emitFrame(1.04, 2); await turn();
+    const replacement = h.frames(worker)[1]; h.finish(worker, replacement);
+    assert.equal(previous.bitmap.closed, 0); assert.equal(replacement.bitmap.closed, 0);
+    h.session.stop();
+    assert.equal(previous.bitmap.closed, 1, 'stop must not depend on an extension eventually resolving');
+    assert.equal(replacement.bitmap.closed, 1);
+  } finally { neverSettles.resolve(); h.cleanup(); await turn(); }
+});
+
+test('a subscriber cannot reopen the one-frame barrier by resuming during onFrame', async () => {
+  const processing = deferred();
+  let h;
+  h = asynchronousSession(() => { h.session.resume(); return processing.promise; });
+  try {
+    const started = h.session.start({ stream: streamStub() }); await turn();
+    const worker = h.workers[0]; worker.onmessage({ data: { type: 'ready' } }); await turn();
+    const first = h.frames(worker)[0];
+    h.video.emitFrame(1.04, 2); // a later decoded image is already available
+    h.finish(worker, first); await turn();
+    assert.equal(h.frames(worker).length, 1, 'reentrant resume cannot capture before async processing finishes');
+    processing.resolve(); await started; await turn();
+    assert.equal(h.frames(worker).length, 2);
+  } finally { processing.resolve(); h.cleanup(); await turn(); }
+});

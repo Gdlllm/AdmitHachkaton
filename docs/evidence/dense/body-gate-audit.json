@@ -1,0 +1,2795 @@
+{
+  "createdAt": "2026-09-28T21:01:44.462Z",
+  "policy": "Pose confidence + image bounds + connected non-degenerate chains; stateless, no independent person detector",
+  "fixtures": [
+    {
+      "id": "motion-front",
+      "expectedPerson": true,
+      "gate": {
+        "accepted": true,
+        "state": "full",
+        "bbox": [
+          178.90440422058106,
+          170.8227410888672,
+          389.04800743103027,
+          476.9572748565674
+        ],
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "observedRegions": {
+          "body": true,
+          "leftArm": true,
+          "rightArm": true,
+          "leftLeg": true,
+          "rightLeg": true
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": [
+            170.8227410888672,
+            450.1964975642368
+          ],
+          "bodyVisibleY": [
+            170.8227410888672,
+            317.93655646316256
+          ],
+          "sourceWidth": 576,
+          "sourceHeight": 576,
+          "limitation": "2D anchor support only; does not resolve per-pixel occlusion or prove person presence"
+        },
+        "reasons": [
+          "torso-and-both-leg-chains-supported"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            true,
+            true
+          ],
+          "arms": [
+            true,
+            true
+          ],
+          "legs": [
+            true,
+            true
+          ],
+          "headSupported": true,
+          "supportedJointIndices": [
+            11,
+            12,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            23,
+            24,
+            13,
+            15,
+            14,
+            16,
+            25,
+            27,
+            26,
+            28,
+            29,
+            31,
+            30,
+            32
+          ]
+        }
+      }
+    },
+    {
+      "id": "motion-step",
+      "expectedPerson": true,
+      "gate": {
+        "accepted": true,
+        "state": "full",
+        "bbox": [
+          196.84391624450683,
+          186.18719512939452,
+          382.1948506164551,
+          479.70846908569337
+        ],
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "observedRegions": {
+          "body": true,
+          "leftArm": true,
+          "rightArm": true,
+          "leftLeg": true,
+          "rightLeg": true
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": [
+            186.18719512939452,
+            453.9696812041969
+          ],
+          "bodyVisibleY": [
+            186.18719512939452,
+            329.1154178985328
+          ],
+          "sourceWidth": 576,
+          "sourceHeight": 576,
+          "limitation": "2D anchor support only; does not resolve per-pixel occlusion or prove person presence"
+        },
+        "reasons": [
+          "torso-and-both-leg-chains-supported"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            true,
+            true
+          ],
+          "arms": [
+            true,
+            true
+          ],
+          "legs": [
+            true,
+            true
+          ],
+          "headSupported": true,
+          "supportedJointIndices": [
+            11,
+            12,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            23,
+            24,
+            13,
+            15,
+            14,
+            16,
+            25,
+            27,
+            26,
+            28,
+            29,
+            31,
+            30,
+            32
+          ]
+        }
+      }
+    },
+    {
+      "id": "motion-raised",
+      "expectedPerson": true,
+      "gate": {
+        "accepted": true,
+        "state": "full",
+        "bbox": [
+          212.67777832031248,
+          122.70270355224609,
+          366.3153266143799,
+          485.8843421173096
+        ],
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "observedRegions": {
+          "body": true,
+          "leftArm": true,
+          "rightArm": true,
+          "leftLeg": true,
+          "rightLeg": true
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": [
+            122.70270355224609,
+            452.9929104596271
+          ],
+          "bodyVisibleY": [
+            175.12075813293455,
+            329.53579910098455
+          ],
+          "sourceWidth": 576,
+          "sourceHeight": 576,
+          "limitation": "2D anchor support only; does not resolve per-pixel occlusion or prove person presence"
+        },
+        "reasons": [
+          "torso-and-both-leg-chains-supported"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            true,
+            true
+          ],
+          "arms": [
+            true,
+            true
+          ],
+          "legs": [
+            true,
+            true
+          ],
+          "headSupported": true,
+          "supportedJointIndices": [
+            11,
+            12,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            23,
+            24,
+            13,
+            15,
+            14,
+            16,
+            25,
+            27,
+            26,
+            28,
+            29,
+            31,
+            30,
+            32
+          ]
+        }
+      }
+    },
+    {
+      "id": "squat-standing",
+      "expectedPerson": true,
+      "gate": {
+        "accepted": true,
+        "state": "full",
+        "bbox": [
+          101.2027195930481,
+          126.00791015625,
+          576.3932081222534,
+          1105.948533630371
+        ],
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "observedRegions": {
+          "body": true,
+          "leftArm": true,
+          "rightArm": true,
+          "leftLeg": true,
+          "rightLeg": true
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": [
+            126.00791015625,
+            1018.3830611112046
+          ],
+          "bodyVisibleY": [
+            126.00791015625,
+            588.1898848416733
+          ],
+          "sourceWidth": 720,
+          "sourceHeight": 1280,
+          "limitation": "2D anchor support only; does not resolve per-pixel occlusion or prove person presence"
+        },
+        "reasons": [
+          "torso-and-both-leg-chains-supported"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            true,
+            true
+          ],
+          "arms": [
+            true,
+            true
+          ],
+          "legs": [
+            true,
+            true
+          ],
+          "headSupported": true,
+          "supportedJointIndices": [
+            11,
+            12,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            23,
+            24,
+            13,
+            15,
+            14,
+            16,
+            25,
+            27,
+            26,
+            28,
+            29,
+            31,
+            30,
+            32
+          ]
+        }
+      }
+    },
+    {
+      "id": "squat-down",
+      "expectedPerson": true,
+      "gate": {
+        "accepted": true,
+        "state": "full",
+        "bbox": [
+          155.41911935806274,
+          231.57373046875,
+          604.3849697113037,
+          1091.9296875
+        ],
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "observedRegions": {
+          "body": true,
+          "leftArm": true,
+          "rightArm": true,
+          "leftLeg": true,
+          "rightLeg": true
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": [
+            231.57373046875,
+            1015.2253246944127
+          ],
+          "bodyVisibleY": [
+            231.57373046875,
+            659.7988415401159
+          ],
+          "sourceWidth": 720,
+          "sourceHeight": 1280,
+          "limitation": "2D anchor support only; does not resolve per-pixel occlusion or prove person presence"
+        },
+        "reasons": [
+          "torso-and-both-leg-chains-supported"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            true,
+            true
+          ],
+          "arms": [
+            true,
+            true
+          ],
+          "legs": [
+            true,
+            true
+          ],
+          "headSupported": true,
+          "supportedJointIndices": [
+            11,
+            12,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            23,
+            24,
+            13,
+            15,
+            14,
+            16,
+            25,
+            27,
+            26,
+            28,
+            29,
+            31,
+            30,
+            32
+          ]
+        }
+      }
+    },
+    {
+      "id": "squat-late",
+      "expectedPerson": true,
+      "gate": {
+        "accepted": true,
+        "state": "full",
+        "bbox": [
+          164.4328700065613,
+          371.5605102539063,
+          573.0956233978271,
+          1076.781088256836
+        ],
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "observedRegions": {
+          "body": true,
+          "leftArm": true,
+          "rightArm": true,
+          "leftLeg": true,
+          "rightLeg": true
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": [
+            371.5605102539063,
+            1014.8300003855235
+          ],
+          "bodyVisibleY": [
+            371.5605102539063,
+            741.2167954294688
+          ],
+          "sourceWidth": 720,
+          "sourceHeight": 1280,
+          "limitation": "2D anchor support only; does not resolve per-pixel occlusion or prove person presence"
+        },
+        "reasons": [
+          "torso-and-both-leg-chains-supported"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            true,
+            true
+          ],
+          "arms": [
+            true,
+            true
+          ],
+          "legs": [
+            true,
+            true
+          ],
+          "headSupported": true,
+          "supportedJointIndices": [
+            11,
+            12,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            23,
+            24,
+            13,
+            15,
+            14,
+            16,
+            25,
+            27,
+            26,
+            28,
+            29,
+            31,
+            30,
+            32
+          ]
+        }
+      }
+    },
+    {
+      "id": "partial-motion",
+      "expectedPerson": true,
+      "gate": {
+        "accepted": true,
+        "state": "upper",
+        "bbox": [
+          30.539395958185196,
+          18.012185096740723,
+          130.94659686088562,
+          172.4062728881836
+        ],
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "observedRegions": {
+          "body": true,
+          "leftArm": false,
+          "rightArm": false,
+          "leftLeg": false,
+          "rightLeg": false
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": [
+            18.012185096740723,
+            159.70370631336309
+          ],
+          "bodyVisibleY": [
+            28.533453941345215,
+            159.70370631336309
+          ],
+          "sourceWidth": 190,
+          "sourceHeight": 200,
+          "limitation": "2D anchor support only; does not resolve per-pixel occlusion or prove person presence"
+        },
+        "reasons": [
+          "upper-body-with-partial-lower-observation"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            true,
+            true
+          ],
+          "arms": [
+            false,
+            false
+          ],
+          "legs": [
+            false,
+            false
+          ],
+          "headSupported": true,
+          "supportedJointIndices": [
+            11,
+            12,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            23,
+            24,
+            13,
+            14
+          ]
+        }
+      }
+    },
+    {
+      "id": "partial-squat",
+      "expectedPerson": true,
+      "gate": {
+        "accepted": true,
+        "state": "upper",
+        "bbox": [
+          60.991660881042485,
+          44.37824063301087,
+          423.45545120239257,
+          359.4653136253357
+        ],
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "observedRegions": {
+          "body": true,
+          "leftArm": true,
+          "rightArm": true,
+          "leftLeg": false,
+          "rightLeg": false
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": [
+            72.44629367605697,
+            331.39726058228956
+          ],
+          "bodyVisibleY": [
+            72.44629367605697,
+            331.39726058228956
+          ],
+          "sourceWidth": 520,
+          "sourceHeight": 530,
+          "limitation": "2D anchor support only; does not resolve per-pixel occlusion or prove person presence"
+        },
+        "reasons": [
+          "upper-body-with-partial-lower-observation"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            true,
+            true
+          ],
+          "arms": [
+            true,
+            true
+          ],
+          "legs": [
+            false,
+            false
+          ],
+          "headSupported": false,
+          "supportedJointIndices": [
+            11,
+            12,
+            23,
+            24,
+            13,
+            15,
+            14,
+            16
+          ]
+        }
+      }
+    },
+    {
+      "id": "hand-only",
+      "expectedPerson": false,
+      "gate": {
+        "accepted": false,
+        "state": "ambiguous",
+        "bbox": null,
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "observedRegions": {
+          "body": false,
+          "leftArm": false,
+          "rightArm": false,
+          "leftLeg": false,
+          "rightLeg": false
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": null,
+          "bodyVisibleY": null
+        },
+        "reasons": [
+          "insufficient-connected-limb-support"
+        ],
+        "evidence": {
+          "independentPersonDetector": false,
+          "shoulders": true,
+          "torso": true,
+          "upperArms": [
+            false,
+            false
+          ],
+          "arms": [
+            false,
+            false
+          ],
+          "legs": [
+            false,
+            false
+          ]
+        }
+      }
+    },
+    {
+      "id": "blank",
+      "expectedPerson": false,
+      "gate": {
+        "accepted": false,
+        "state": "none",
+        "bbox": null,
+        "bboxFormat": "xyxy-source-pixels",
+        "observedJoints": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "observedRegions": {
+          "body": false,
+          "leftArm": false,
+          "rightArm": false,
+          "leftLeg": false,
+          "rightLeg": false
+        },
+        "clipPolicy": {
+          "mode": "observed-patches",
+          "coordinateSpace": "source-pixels",
+          "visibleY": null,
+          "bodyVisibleY": null
+        },
+        "reasons": [
+          "no-complete-pose-candidate"
+        ],
+        "evidence": {
+          "independentPersonDetector": false
+        }
+      }
+    }
+  ],
+  "challengingHandNegatives": [
+    {
+      "id": "hand-clip-2.015274",
+      "accepted": true,
+      "state": "upper",
+      "reasons": [
+        "upper-body-with-partial-lower-observation"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          true,
+          false
+        ],
+        "headSupported": true,
+        "supportedJointIndices": [
+          11,
+          12,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          23,
+          24,
+          25,
+          27,
+          29,
+          31
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.374726,
+          "maxX": 0.772741,
+          "minY": 0.363508,
+          "maxY": 0.604813
+        },
+        "supportBounds": {
+          "minX": 0.336219516719647,
+          "maxX": 0.811247483280353,
+          "minY": 0.3414024262649826,
+          "maxY": 0.6269185737350175
+        },
+        "paddingPx": 23.874019633818847,
+        "poseCoverage": 1,
+        "rejectedFace": true,
+        "faceReason": "face-contained-over-palm",
+        "faceHandIndex": 0
+      }
+    },
+    {
+      "id": "hand-clip-2.377557",
+      "accepted": true,
+      "state": "upper",
+      "reasons": [
+        "upper-body-with-partial-lower-observation"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          true,
+          false
+        ],
+        "headSupported": true,
+        "supportedJointIndices": [
+          11,
+          12,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          23,
+          24,
+          25,
+          27,
+          29,
+          31
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.380413,
+          "maxX": 0.642244,
+          "minY": 0.321013,
+          "maxY": 0.607292
+        },
+        "supportBounds": {
+          "minX": 0.33742565849217343,
+          "maxX": 0.6852313415078266,
+          "minY": 0.2963350817269884,
+          "maxY": 0.6319699182730116
+        },
+        "paddingPx": 26.652151734852488,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-clip-2.438186",
+      "accepted": true,
+      "state": "upper",
+      "reasons": [
+        "upper-body-with-partial-lower-observation"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          true,
+          false
+        ],
+        "headSupported": true,
+        "supportedJointIndices": [
+          11,
+          12,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          23,
+          24,
+          25,
+          27,
+          29,
+          31
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.37888,
+          "maxX": 0.641352,
+          "minY": 0.322875,
+          "maxY": 0.608493
+        },
+        "supportBounds": {
+          "minX": 0.33577703153093313,
+          "maxX": 0.6844549684690668,
+          "minY": 0.29813070328627644,
+          "maxY": 0.6332372967137235
+        },
+        "paddingPx": 26.723840450821445,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-clip-2.475239",
+      "accepted": true,
+      "state": "upper",
+      "reasons": [
+        "upper-body-with-partial-lower-observation"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          true,
+          false
+        ],
+        "headSupported": true,
+        "supportedJointIndices": [
+          11,
+          12,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          23,
+          24,
+          25,
+          27,
+          29,
+          31
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.37633,
+          "maxX": 0.638211,
+          "minY": 0.323063,
+          "maxY": 0.608437
+        },
+        "supportBounds": {
+          "minX": 0.333209450902231,
+          "maxX": 0.681331549097769,
+          "minY": 0.2983086107031326,
+          "maxY": 0.6331913892968675
+        },
+        "paddingPx": 26.734740440616804,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-clip-2.511963",
+      "accepted": true,
+      "state": "upper",
+      "reasons": [
+        "upper-body-with-partial-lower-observation"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          true,
+          false
+        ],
+        "headSupported": true,
+        "supportedJointIndices": [
+          11,
+          12,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          23,
+          24,
+          25,
+          27,
+          29,
+          31
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.370909,
+          "maxX": 0.636648,
+          "minY": 0.323759,
+          "maxY": 0.609581
+        },
+        "supportBounds": {
+          "minX": 0.3278113937838278,
+          "maxX": 0.6797456062161722,
+          "minY": 0.2990177816166419,
+          "maxY": 0.6343222183833581
+        },
+        "paddingPx": 26.72051585402677,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-clip-3.786946",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          true,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.385756,
+          "maxX": 0.594204,
+          "minY": 0.389113,
+          "maxY": 0.612985
+        },
+        "supportBounds": {
+          "minX": 0.34175093434386455,
+          "maxX": 0.6382090656561354,
+          "minY": 0.3638508326788852,
+          "maxY": 0.6382471673211148
+        },
+        "paddingPx": 27.283140706803984,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-clip-3.831441",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          true,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.385867,
+          "maxX": 0.594499,
+          "minY": 0.388327,
+          "maxY": 0.611804
+        },
+        "supportBounds": {
+          "minX": 0.34178599951953226,
+          "maxX": 0.6385800004804678,
+          "minY": 0.36302124046491663,
+          "maxY": 0.6371097595350834
+        },
+        "paddingPx": 27.330220297890026,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-clip-3.861986",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          true,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.388874,
+          "maxX": 0.598122,
+          "minY": 0.392115,
+          "maxY": 0.614559
+        },
+        "supportBounds": {
+          "minX": 0.34430645430334406,
+          "maxX": 0.642689545696656,
+          "minY": 0.3665299274704382,
+          "maxY": 0.6401440725295617
+        },
+        "paddingPx": 27.6318783319267,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-clip-3.922364",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          true,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.392586,
+          "maxX": 0.603569,
+          "minY": 0.392068,
+          "maxY": 0.615238
+        },
+        "supportBounds": {
+          "minX": 0.3481313434596512,
+          "maxX": 0.6480236565403488,
+          "minY": 0.3665477342083183,
+          "maxY": 0.6407582657916817
+        },
+        "paddingPx": 27.561887055016246,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-clip-4.815339",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.400449,
+          "maxX": 0.615546,
+          "minY": 0.388502,
+          "maxY": 0.614009
+        },
+        "supportBounds": {
+          "minX": 0.356041320088365,
+          "maxX": 0.6599536799116351,
+          "minY": 0.36300870227295023,
+          "maxY": 0.6395022977270498
+        },
+        "paddingPx": 27.53276154521373,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-clip-4.853195",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.396082,
+          "maxX": 0.62218,
+          "minY": 0.381805,
+          "maxY": 0.612254
+        },
+        "supportBounds": {
+          "minX": 0.3518742839661042,
+          "maxX": 0.6663877160338958,
+          "minY": 0.35642649635091167,
+          "maxY": 0.6376325036490883
+        },
+        "paddingPx": 27.4087839410154,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-clip-6.955434",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          true,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.357778,
+          "maxX": 0.56674,
+          "minY": 0.400567,
+          "maxY": 0.627236
+        },
+        "supportBounds": {
+          "minX": 0.31301473335294416,
+          "maxX": 0.6115032666470559,
+          "minY": 0.37486956914706054,
+          "maxY": 0.6529334308529394
+        },
+        "paddingPx": 27.75322532117461,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-clip-8.061744",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.357159,
+          "maxX": 0.577942,
+          "minY": 0.398868,
+          "maxY": 0.629167
+        },
+        "supportBounds": {
+          "minX": 0.3128070173076476,
+          "maxX": 0.6222939826923524,
+          "minY": 0.37340667660253846,
+          "maxY": 0.6546283233974616
+        },
+        "paddingPx": 27.4982292692585,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-clip-11.50351",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.387721,
+          "maxX": 0.622937,
+          "minY": 0.418738,
+          "maxY": 0.629848
+        },
+        "supportBounds": {
+          "minX": 0.3416695654662661,
+          "maxX": 0.6689884345337338,
+          "minY": 0.3923010653602639,
+          "maxY": 0.656284934639736
+        },
+        "paddingPx": 28.551889410915,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-clip-11.620639",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.388882,
+          "maxX": 0.619157,
+          "minY": 0.420361,
+          "maxY": 0.631031
+        },
+        "supportBounds": {
+          "minX": 0.3433588893787886,
+          "maxX": 0.6646801106212114,
+          "minY": 0.3942273624211564,
+          "maxY": 0.6571646375788436
+        },
+        "paddingPx": 28.22432858515107,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-clip-11.656382",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.382957,
+          "maxX": 0.619461,
+          "minY": 0.420988,
+          "maxY": 0.631758
+        },
+        "supportBounds": {
+          "minX": 0.3374081008768247,
+          "maxX": 0.6650098991231753,
+          "minY": 0.39483955791076975,
+          "maxY": 0.6579064420892303
+        },
+        "paddingPx": 28.240317456368658,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-clip-12.299149",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.407705,
+          "maxX": 0.640176,
+          "minY": 0.424722,
+          "maxY": 0.635069
+        },
+        "supportBounds": {
+          "minX": 0.3613690365008407,
+          "maxX": 0.6865119634991592,
+          "minY": 0.39812172465789003,
+          "maxY": 0.66166927534211
+        },
+        "paddingPx": 28.72829736947876,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-clip-12.349898",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.406834,
+          "maxX": 0.637955,
+          "minY": 0.425292,
+          "maxY": 0.634876
+        },
+        "supportBounds": {
+          "minX": 0.36070712593830584,
+          "maxX": 0.6840818740616942,
+          "minY": 0.3988117574831015,
+          "maxY": 0.6613562425168985
+        },
+        "paddingPx": 28.59866191825037,
+        "poseCoverage": 0.9090909090909091
+      }
+    },
+    {
+      "id": "hand-clip-12.423891",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.40602,
+          "maxX": 0.637462,
+          "minY": 0.425568,
+          "maxY": 0.635287
+        },
+        "supportBounds": {
+          "minX": 0.35982551331611984,
+          "maxX": 0.6836564866838801,
+          "minY": 0.3990489428296244,
+          "maxY": 0.6618060571703757
+        },
+        "paddingPx": 28.640581744005686,
+        "poseCoverage": 0.9090909090909091
+      }
+    },
+    {
+      "id": "hand-clip-12.5059",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.403059,
+          "maxX": 0.634517,
+          "minY": 0.427629,
+          "maxY": 0.636725
+        },
+        "supportBounds": {
+          "minX": 0.3568274036401405,
+          "maxX": 0.6807485963598595,
+          "minY": 0.4010886391267473,
+          "maxY": 0.6632653608732527
+        },
+        "paddingPx": 28.663589743112915,
+        "poseCoverage": 0.9
+      }
+    },
+    {
+      "id": "hand-clip-12.552089",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.402099,
+          "maxX": 0.633206,
+          "minY": 0.428475,
+          "maxY": 0.637917
+        },
+        "supportBounds": {
+          "minX": 0.3556036354520722,
+          "maxX": 0.6797013645479278,
+          "minY": 0.4017832166484118,
+          "maxY": 0.6646087833515881
+        },
+        "paddingPx": 28.827126019715248,
+        "poseCoverage": 0.8888888888888888
+      }
+    },
+    {
+      "id": "hand-clip-12.818959",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.400356,
+          "maxX": 0.631814,
+          "minY": 0.429225,
+          "maxY": 0.642669
+        },
+        "supportBounds": {
+          "minX": 0.3536618453193307,
+          "maxX": 0.6785081546806693,
+          "minY": 0.4024190963870232,
+          "maxY": 0.6694749036129769
+        },
+        "paddingPx": 28.950375902014954,
+        "poseCoverage": 0.875
+      }
+    },
+    {
+      "id": "hand-clip-12.864874",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.400361,
+          "maxX": 0.631949,
+          "minY": 0.429693,
+          "maxY": 0.64253
+        },
+        "supportBounds": {
+          "minX": 0.3536803720721939,
+          "maxX": 0.6786296279278061,
+          "minY": 0.4028948617451483,
+          "maxY": 0.6693281382548517
+        },
+        "paddingPx": 28.94198931523982,
+        "poseCoverage": 0.8571428571428571
+      }
+    },
+    {
+      "id": "hand-clip-12.902118",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.401063,
+          "maxX": 0.632038,
+          "minY": 0.430024,
+          "maxY": 0.642173
+        },
+        "supportBounds": {
+          "minX": 0.35445100181483596,
+          "maxX": 0.678649998185164,
+          "minY": 0.40326526030110954,
+          "maxY": 0.6689317396988904
+        },
+        "paddingPx": 28.899438874801707,
+        "poseCoverage": 0.875
+      }
+    },
+    {
+      "id": "hand-clip-12.939005",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.400502,
+          "maxX": 0.631329,
+          "minY": 0.429676,
+          "maxY": 0.642271
+        },
+        "supportBounds": {
+          "minX": 0.35393683372912793,
+          "maxX": 0.6778941662708722,
+          "minY": 0.4029441452889438,
+          "maxY": 0.6690028547110562
+        },
+        "paddingPx": 28.8704030879407,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-clip-12.976196",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.401058,
+          "maxX": 0.632729,
+          "minY": 0.429403,
+          "maxY": 0.641872
+        },
+        "supportBounds": {
+          "minX": 0.35431661404093373,
+          "maxX": 0.6794703859590663,
+          "minY": 0.40256998213461004,
+          "maxY": 0.6687050178653899
+        },
+        "paddingPx": 28.97965929462111,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "enlarged-palm-face",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.381519,
+          "maxX": 0.636185,
+          "minY": 0.161023,
+          "maxY": 0.659269
+        },
+        "supportBounds": {
+          "minX": 0.35626997375352554,
+          "maxX": 0.6614340262464745,
+          "minY": 0.11613584222848984,
+          "maxY": 0.7041561577715102
+        },
+        "paddingPx": 32.318753595487316,
+        "poseCoverage": 1,
+        "rejectedFace": true,
+        "faceReason": "face-contained-over-palm",
+        "faceHandIndex": 0
+      }
+    },
+    {
+      "id": "enlarged-coarse-head-pose",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "torso-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.395285,
+          "maxX": 0.621842,
+          "minY": 0.079247,
+          "maxY": 0.681912
+        },
+        "supportBounds": {
+          "minX": 0.37066639616098224,
+          "maxX": 0.6464606038390177,
+          "minY": 0.03548059317507953,
+          "maxY": 0.7256784068249205
+        },
+        "paddingPx": 31.511812913942734,
+        "poseCoverage": 1
+      }
+    },
+    {
+      "id": "hand-whole-12.2",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "head-and-shoulders-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.410977,
+          "maxX": 0.641852,
+          "minY": 0.424936,
+          "maxY": 0.638813
+        },
+        "poseAmbiguous": true,
+        "poseCoverage": 0.8333333333333334
+      }
+    },
+    {
+      "id": "hand-whole-12.44",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "head-and-shoulders-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.405702,
+          "maxX": 0.636214,
+          "minY": 0.426006,
+          "maxY": 0.635295
+        },
+        "poseAmbiguous": true,
+        "poseCoverage": 0.6666666666666666
+      }
+    },
+    {
+      "id": "hand-whole-12.48",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "head-and-shoulders-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.403698,
+          "maxX": 0.634529,
+          "minY": 0.427758,
+          "maxY": 0.637028
+        },
+        "poseAmbiguous": true,
+        "poseCoverage": 0.6666666666666666
+      }
+    },
+    {
+      "id": "hand-whole-12.52",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "head-and-shoulders-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.402832,
+          "maxX": 0.633986,
+          "minY": 0.42773,
+          "maxY": 0.637462
+        },
+        "poseAmbiguous": true,
+        "poseCoverage": 0.6153846153846154
+      }
+    },
+    {
+      "id": "hand-whole-12.56",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "head-and-shoulders-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.401089,
+          "maxX": 0.63182,
+          "minY": 0.429521,
+          "maxY": 0.639173
+        },
+        "poseAmbiguous": true,
+        "poseCoverage": 0.6153846153846154
+      }
+    },
+    {
+      "id": "hand-whole-12.6",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "head-and-shoulders-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.397627,
+          "maxX": 0.629901,
+          "minY": 0.428652,
+          "maxY": 0.640235
+        },
+        "poseAmbiguous": true,
+        "poseCoverage": 0.6153846153846154
+      }
+    },
+    {
+      "id": "hand-whole-12.92",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "head-and-shoulders-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.401148,
+          "maxX": 0.632584,
+          "minY": 0.429532,
+          "maxY": 0.641726
+        },
+        "poseAmbiguous": true,
+        "poseCoverage": 0.7272727272727273
+      }
+    },
+    {
+      "id": "hand-whole-12.96",
+      "accepted": false,
+      "state": "ambiguous",
+      "reasons": [
+        "insufficient-connected-limb-support"
+      ],
+      "evidence": {
+        "independentPersonDetector": false,
+        "shoulders": true,
+        "torso": true,
+        "upperArms": [
+          false,
+          false
+        ],
+        "arms": [
+          false,
+          false
+        ],
+        "legs": [
+          false,
+          false
+        ]
+      },
+      "afterFusionAccepted": false,
+      "fusion": {
+        "rejectedPose": true,
+        "reason": "head-and-shoulders-contained-in-hand",
+        "handIndex": 0,
+        "handBounds": {
+          "minX": 0.399984,
+          "maxX": 0.631246,
+          "minY": 0.429471,
+          "maxY": 0.642279
+        },
+        "poseAmbiguous": true,
+        "poseCoverage": 0.7
+      }
+    }
+  ],
+  "summary": {
+    "fixturePositives": 8,
+    "fixturePositiveAccepted": 8,
+    "fixtureNegatives": 2,
+    "fixtureNegativeAccepted": 0,
+    "challengingNegatives": 36,
+    "challengingNegativeAccepted": 5,
+    "challengingNegativeAcceptedAfterFusion": 0
+  },
+  "limitation": "Pose-only gate is an ambiguity/support policy, not an independently validated person detector. Confident skeletal hallucinations can pass. Existing cross-model hand fusion is still needed for those cases."
+}
