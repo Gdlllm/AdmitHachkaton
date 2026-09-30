@@ -1,0 +1,38 @@
+	
+
+	Car Kit (3.1)
+
+	Created/distributed by Kenney (www.kenney.nl)
+	Creation date: 02-04-2026 14:03
+	
+			------------------------------
+
+	License: (Creative Commons Zero, CC0)
+	http://creativecommons.org/publicdomain/zero/1.0/
+
+	You can use this content for personal, educational, and commercial purposes.
+
+	Support by crediting 'Kenney' or 'www.kenney.nl' (this is not a requirement)
+
+			------------------------------
+
+	• Website : www.kenney.nl
+	• Donate  : www.kenney.nl/donate
+
+	• Patreon : patreon.com/kenney
+	
+	Follow on social media for updates:
+
+	• Twitter:	 twitter.com/KenneyNL
+	• BlueSky:	 kenney.bsky.social
+	• Instagram: instagram.com/kenney_nl
+------------------------------
+sounds/engine-sweep.m4a: cut from "Import car revs on Chassis Dyno with Turbo.wav" by editboy23,
+https://freesound.org/s/496171/ — CC0 (public domain).
+sounds/brake.wav: cut from "Chrysler LHS tire squeal 03 (04-25-2009).wav" by audible-edge,
+https://freesound.org/s/71738/ — CC0 (public domain).
+sounds/crowd-loop.m4a, applause.m4a, cheer.m4a, whoosh.wav: cut from Freesound CC0 recordings — "tennis match" (s/114052),
+"Crowd Cheer" (s/397434), "RoaringCrowd" (s/130568), "Tennis racket_whoosh" (s/235727).
+sounds/pp-*.wav: cut from Freesound CC0 recordings — "Ping pong ball hit" (s/269718), "Table Tennis Volley" (s/376508),
+"Ping Pong - Ball on Table" (s/628637), "Ping pong impact the table" (s/418555).
+sounds/club-loop.wav: cut from "University indoor gymnasium ambient at friday (badminton area)" by lastraindrop, https://freesound.org/s/734893/ — CC0.

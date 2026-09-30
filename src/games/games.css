@@ -1,0 +1,126 @@
+/* Game centre: the game fills the screen, the camera sits in a corner. */
+body.games { --ink: #f4f1ff; --muted: #b9b3d6; --accent: #7cf2d8; --warm: #ffb45e; --danger: #ff4d5e; --panel: rgba(18, 16, 40, .72);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--ink); }
+body.games .game-stage { position: fixed; inset: 0; z-index: 1; }
+body.games .game-canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; }
+/* The camera view (video + skeleton overlay) as picture-in-picture; same aspect as the window keeps them aligned. */
+/* !important: the capture renderer sizes its canvas inline to the window. */
+body.games video, body.games canvas#overlay { inset: auto 16px 16px auto; width: 26.4vw !important; height: 26.4vh !important; min-width: 216px; min-height: 122px; z-index: 5;
+  border-radius: 12px; background: #000; }
+body.games video { box-shadow: 0 8px 28px rgba(0, 0, 0, .45); outline: 1px solid rgba(255, 255, 255, .18); }
+.game-ui { position: fixed; inset: 0; z-index: 10; pointer-events: none; }
+.game-ui button { pointer-events: auto; }
+.game-menu { position: absolute; inset: 0; display: grid; align-content: center; justify-items: center; gap: 14px; padding: 24px 16px 22vh; text-align: center; }
+.game-eyebrow { margin: 0; font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.game-menu h1 { margin: 0; font-size: clamp(38px, 6vw, 72px); font-weight: 900; letter-spacing: -.02em; line-height: 1; }
+.game-lead { margin: 0 0 12px; color: var(--muted); font-size: 18px; }
+.game-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 260px)); gap: 20px; }
+@media (max-width: 820px) { .game-cards { grid-template-columns: 1fr; width: min(100%, 420px); } }
+.game-card { position: relative; display: grid; gap: 10px; align-content: start; text-align: left; min-height: 200px; padding: 22px; border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, .16); background: var(--panel); color: var(--ink); font: inherit; cursor: pointer; overflow: hidden;
+  transition: transform .18s ease, border-color .18s ease; }
+.game-card:disabled { opacity: .45; cursor: default; }
+.game-card.hover { transform: translateY(-4px); border-color: var(--accent); }
+.game-card-title { font-size: 30px; font-weight: 900; }
+.game-card-text { color: var(--muted); font-size: 15px; line-height: 1.45; }
+.game-card-foot { margin-top: auto; font-weight: 700; color: var(--accent); }
+.game-ring { position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: conic-gradient(var(--accent) calc(var(--p, 0) * 360deg), transparent 0); opacity: .22; }
+.game-cursor { position: fixed; left: -14px; top: -14px; width: 28px; height: 28px; border-radius: 50%; z-index: 20; pointer-events: none;
+  border: 3px solid var(--accent); box-shadow: 0 0 18px var(--accent); background: rgba(124, 242, 216, .25); }
+.game-hint { position: fixed; left: 50%; top: 18px; transform: translateX(-50%); z-index: 15; max-width: min(760px, calc(100vw - 32px));
+  padding: 14px 22px; border-radius: 14px; background: rgba(255, 77, 94, .94); color: #fff; font-weight: 700; font-size: 20px; text-align: center;
+  box-shadow: 0 10px 30px rgba(255, 77, 94, .35); }
+.race-hud { position: absolute; left: 16px; top: 16px; display: grid; gap: 10px; }
+.race-stats { display: flex; gap: 10px; flex-wrap: wrap; }
+.race-stats span { padding: 8px 14px; border-radius: 12px; background: var(--panel); font-weight: 800; font-size: 20px; font-variant-numeric: tabular-nums; }
+.race-nitro { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--muted); }
+.race-nitro i { width: 180px; height: 10px; border-radius: 6px; background: rgba(255, 255, 255, .15); overflow: hidden; }
+.race-nitro b { display: block; height: 100%; background: linear-gradient(90deg, #6fb7ff, #b4f0ff); }
+.race-hud.boost .race-nitro { color: #b4f0ff; }
+.race-wheel { position: absolute; left: 50%; bottom: 14px; width: 92px; height: 92px; margin-left: -46px; transition: opacity .2s; }
+.race-wheel svg { width: 100%; height: 100%; filter: drop-shadow(0 6px 12px rgba(0,0,0,.55)); }
+.race-wheel.lost { opacity: .35; }
+.race-legend { margin: 0; max-width: min(460px, 60vw); color: var(--muted); font-size: 13px; padding: 7px 11px; border-radius: 10px; background: var(--panel); }
+.race-center { position: absolute; inset: 0; display: grid; place-items: center; padding: 16px; }
+.race-call { margin: 0; padding: 18px 26px; border-radius: 16px; background: var(--panel); font-size: 26px; font-weight: 800; text-align: center; }
+.race-count { margin: 0; font-size: clamp(90px, 16vw, 200px); font-weight: 900; text-shadow: 0 8px 40px rgba(0,0,0,.6); }
+.game-results { pointer-events: auto; display: grid; gap: 12px; justify-items: center; min-width: min(460px, 100%); padding: 28px; border-radius: 22px;
+  background: rgba(18, 16, 40, .88); border: 1px solid rgba(255, 255, 255, .16); text-align: center; }
+.game-results h2 { margin: 0; font-size: 54px; font-weight: 900; }
+.game-facts { display: grid; grid-template-columns: auto auto; gap: 6px 20px; margin: 4px 0; }
+.game-facts dt { color: var(--muted); text-align: right; }
+.game-facts dd { margin: 0; font-weight: 800; text-align: left; font-variant-numeric: tabular-nums; }
+.game-advice { margin: 0; color: var(--warm); max-width: 40ch; }
+.game-actions { display: flex; gap: 14px; margin-top: 6px; }
+.game-button { position: relative; overflow: hidden; padding: 16px 30px; border-radius: 14px; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.08);
+  color: var(--ink); font: 800 20px system-ui, sans-serif; cursor: pointer; }
+.game-button.hover { border-color: var(--accent); }
+@media (prefers-reduced-motion: reduce) { .game-card { transition: none; } }
+
+/* The small wheel between the hands, over the camera window. */
+.cam-wheel { position: fixed; left: 0; top: 0; z-index: 7; pointer-events: none; transform-origin: 50% 50%; }
+.cam-wheel svg { width: 100%; height: 100%; filter: drop-shadow(0 0 5px rgba(0,0,0,.7)); }
+.game-sound { position: fixed; right: 16px; top: 88px; z-index: 16; padding: 8px 12px; border-radius: 10px; background: var(--panel); color: var(--muted); font-size: 13px; }
+
+/* Analog speedometer, bottom left. */
+.race-speedo { position: absolute; left: 16px; bottom: 16px; width: 176px; height: 176px; }
+.race-speedo svg { width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 8px 18px rgba(0,0,0,.5)); }
+.race-speedo .face { fill: rgba(12, 12, 24, .82); stroke: rgba(255,255,255,.22); stroke-width: 1.2; }
+.race-speedo line { stroke: #d8d6e8; stroke-width: .9; }
+.race-speedo line.major { stroke-width: 1.8; }
+.race-speedo line.red { stroke: #ff4d5e; }
+.race-speedo text { fill: #d8d6e8; font: 700 6.5px system-ui, sans-serif; text-anchor: middle; }
+.race-speedo .needle { stroke: #ff4d5e; stroke-width: 2.4; stroke-linecap: round; transition: transform .08s linear; }
+.race-speedo .cap { fill: #ff4d5e; }
+.race-speedo .value { font-size: 15px; font-weight: 900; fill: #fff; font-variant-numeric: tabular-nums; }
+.race-speedo .unit { font-size: 5.5px; fill: #a9a6c2; }
+.race-speedo.boost .face { stroke: #8fd3ff; stroke-width: 2.4; }
+.race-speedo .gear { font-size: 13px; font-weight: 900; fill: #7cf2d8; }
+.race-speedo.redline .gear { fill: #ff4d5e; }
+
+/* Tennis: TV scoreboard, timing meter, radar gun, calls, the racket in the camera window. */
+.tn-hud { position: absolute; left: 16px; top: 16px; display: grid; gap: 10px; justify-items: start; }
+.tn-board { display: grid; border-radius: 10px; overflow: hidden; background: rgba(12, 18, 38, .88); box-shadow: 0 8px 24px rgba(0,0,0,.35); font-variant-numeric: tabular-nums; }
+.tn-row { display: grid; grid-template-columns: 14px 86px 34px 44px; align-items: center; gap: 6px; padding: 7px 10px; font-size: 19px; }
+.tn-row + .tn-row { border-top: 1px solid rgba(255,255,255,.1); }
+.tn-name { font-weight: 800; letter-spacing: .02em; }
+.tn-games { text-align: center; color: var(--muted); }
+.tn-points { text-align: center; padding: 2px 0; border-radius: 6px; background: #f4f1ff; color: #121833; }
+.tn-serve { width: 8px; height: 8px; border-radius: 50%; }
+.tn-row.serving .tn-serve { background: #dcef3c; box-shadow: 0 0 8px #dcef3c; }
+.tn-timing { position: absolute; left: 50%; bottom: 18px; width: min(420px, 60vw); transform: translateX(-50%); height: 34px; display: grid; grid-template-columns: 41fr 18fr 41fr;
+  border-radius: 10px; overflow: hidden; background: var(--panel); font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.tn-timing span { display: grid; place-items: center; position: relative; z-index: 1; }
+.tn-timing span:nth-child(2) { background: rgba(124, 242, 216, .22); color: var(--accent); }
+.tn-window { position: absolute; left: 25%; right: 25%; top: 0; bottom: 0; background: rgba(255,255,255,.07); }
+.tn-mark { position: absolute; top: 3px; bottom: 3px; left: 50%; width: 4px; margin-left: -2px; border-radius: 2px; background: #fff; opacity: 0; transition: left .12s ease-out, opacity .2s; z-index: 2; }
+.tn-mark.good, .tn-mark.early, .tn-mark.late { opacity: 1; }
+.tn-mark.good { background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+.tn-mark.early, .tn-mark.late { background: var(--warm); }
+.tn-radar { position: absolute; left: 16px; bottom: 16px; display: grid; justify-items: start; padding: 10px 14px; border-radius: 12px; background: var(--panel); }
+.tn-radar span { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+.tn-radar b { font-size: 40px; font-weight: 900; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.tn-radar small { color: var(--muted); }
+.tn-radar.pop b { animation: tn-pop .5s ease-out; }
+@keyframes tn-pop { from { color: #dcef3c; transform: scale(1.25); } to { color: inherit; transform: none; } }
+.tn-call { position: absolute; left: 50%; top: 24%; transform: translateX(-50%); padding: 12px 24px; border-radius: 14px; background: var(--panel); font-size: clamp(24px, 3.4vw, 40px); font-weight: 900; white-space: nowrap; }
+.tn-call.good { color: var(--accent); }
+.tn-call.bad, .tn-call.early, .tn-call.late { color: var(--warm); }
+.cam-racket { position: fixed; left: 0; top: 0; z-index: 7; pointer-events: none; }
+.cam-racket svg { width: 100%; height: 100%; filter: drop-shadow(0 0 4px rgba(0,0,0,.7)); }
+
+/* Pause: the corner button (fills while both hands are up) and the dimmed overlay. */
+.game-pause { position: fixed; right: 16px; top: 16px; z-index: 16; display: grid; justify-items: end; gap: 2px; padding: 9px 14px; border-radius: 12px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.22); background: var(--panel); color: var(--ink); font: inherit; cursor: pointer; }
+.game-pause b { font-size: 16px; font-weight: 800; }
+.game-pause small { font-size: 11px; color: var(--muted); }
+.game-pause:hover { border-color: var(--accent); }
+.game-pause-layer { position: fixed; inset: 0; z-index: 18; display: grid; place-items: center; padding: 16px; background: rgba(8, 10, 24, .55); backdrop-filter: blur(4px); }
+.game-pause-layer .game-results h2 { font-size: 48px; }
+.game-pause-layer .game-lead { margin: 4px 0 0; font-size: 14px; }
+
+/* Ping-pong: the bat sweeps the lower half of the screen, so the camera goes small into the top-right corner. */
+body.games.pp-mode video, body.games.pp-mode canvas#overlay { inset: 16px 16px auto auto; width: 18vw !important; height: 18vh !important; min-width: 170px; min-height: 96px; }
+body.games.pp-mode .game-pause { top: calc(max(18vh, 96px) + 28px); }
+body.games.pp-mode .game-sound { top: auto; bottom: 16px; }

@@ -23,7 +23,9 @@ const defaultModel = ['full', 'heavy', 'lite'].includes(params.get('model')) ? p
 // Body surface: on wherever WebGPU can run it, switched on by a full body in
 // view. ?surface=0 turns it off; ?surface=1 also allows the slow CPU fallback.
 // Data Saver skips the ~115 MB download unless it is requested explicitly.
-const defaultSurface = { 0: false, 1: 'force' }[params.get('surface')] ?? (navigator.connection?.saveData ? false : 'auto');
+// The game centre (?games=1) needs hands and face only: the surface stays off unless asked for.
+const games = params.get('games') === '1';
+const defaultSurface = { 0: false, 1: 'force' }[params.get('surface')] ?? (games || navigator.connection?.saveData ? false : 'auto');
 let lastFrame = null, lastDrawn = null, paused = false, retryOptions = {};
 let renderMs = 0, stabilizeMs = 0;
 let dense = null, denseLoading = null, denseError = null, surfaceMode = false, startGeneration = 0;
@@ -163,6 +165,8 @@ window.motionCapture = Object.freeze({
   async voice(on = true) { const v = await loadVoice(); if (!v) return false; v.enabled = on; return v.enabled; },
   subscribe(listener) { if (typeof listener !== 'function') throw new TypeError('A callback is required.'); listeners.add(listener); return () => listeners.delete(listener); },
 });
+
+if (games) import('../games/index.js').then(({ mountGames }) => mountGames(window.motionCapture));
 
 function tick() {
   if (lastFrame && !paused) {
