@@ -88,6 +88,17 @@ test('close-up at a laptop: head and shoulders with the body leaving the frame n
   assert.equal(run(p, { face: [] }).reason, 'close-up-without-face');
   const covered = p.map((point, i) => [23, 24, 13, 14].includes(i) ? { ...point, y: 0.9 } : point);
   assert.equal(run(covered, { face }).reason, 'needs-hips-or-elbows', 'hidden inside the frame is not a close-up');
+  assert.equal(g.face, true); assert.equal(run(p, { face: [] }).face, false);
+});
+
+test('a close-up confirmed by a face continues without it (turning away), but not under a covering hand', () => {
+  const p = person().map((point, i) => ({ ...point, y: point.y + 0.45 }));
+  for (const i of [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, ...LEGS]) p[i].visibility = 0.1;
+  const kept = run(p, { face: [], confirmed: true });
+  assert.equal(kept.level, 'upper'); assert.equal(kept.reason, 'close-up-kept'); assert.equal(kept.enough, true);
+  assert.equal(run(p, { face: [], confirmed: false }).reason, 'close-up-without-face');
+  const hand = [{ landmarks: Array.from({ length: 21 }, (_, i) => ({ x: .37 + .26 * (i % 7) / 6, y: .7 + .2 * Math.floor(i / 7) / 2 })) }];
+  assert.equal(run(p, { face: [], confirmed: true, hands: hand }).enough, false, 'a hand over the shoulders still needs the face');
 });
 
 test('stabilizer-hidden points count as unseen regardless of their raw visibility', () => {

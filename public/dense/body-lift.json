@@ -1,0 +1,301 @@
+{
+ "format": "body-sense-v1",
+ "config": {
+  "features": 208,
+  "channels": 128,
+  "dilations": [
+   1,
+   2,
+   4,
+   8
+  ],
+  "kernel": 3,
+  "facePoints": false,
+  "netJoints": true,
+  "lift": true
+ },
+ "tensors": [
+  {
+   "name": "inp.weight",
+   "shape": [
+    128,
+    208
+   ],
+   "offset": 0,
+   "length": 26624
+  },
+  {
+   "name": "inp.bias",
+   "shape": [
+    128
+   ],
+   "offset": 26624,
+   "length": 128
+  },
+  {
+   "name": "blocks.0.norm.weight",
+   "shape": [
+    128
+   ],
+   "offset": 26752,
+   "length": 128
+  },
+  {
+   "name": "blocks.0.norm.bias",
+   "shape": [
+    128
+   ],
+   "offset": 26880,
+   "length": 128
+  },
+  {
+   "name": "blocks.0.conv.weight",
+   "shape": [
+    128,
+    128,
+    3
+   ],
+   "offset": 27008,
+   "length": 49152
+  },
+  {
+   "name": "blocks.0.conv.bias",
+   "shape": [
+    128
+   ],
+   "offset": 76160,
+   "length": 128
+  },
+  {
+   "name": "blocks.0.proj.weight",
+   "shape": [
+    128,
+    128
+   ],
+   "offset": 76288,
+   "length": 16384
+  },
+  {
+   "name": "blocks.0.proj.bias",
+   "shape": [
+    128
+   ],
+   "offset": 92672,
+   "length": 128
+  },
+  {
+   "name": "blocks.1.norm.weight",
+   "shape": [
+    128
+   ],
+   "offset": 92800,
+   "length": 128
+  },
+  {
+   "name": "blocks.1.norm.bias",
+   "shape": [
+    128
+   ],
+   "offset": 92928,
+   "length": 128
+  },
+  {
+   "name": "blocks.1.conv.weight",
+   "shape": [
+    128,
+    128,
+    3
+   ],
+   "offset": 93056,
+   "length": 49152
+  },
+  {
+   "name": "blocks.1.conv.bias",
+   "shape": [
+    128
+   ],
+   "offset": 142208,
+   "length": 128
+  },
+  {
+   "name": "blocks.1.proj.weight",
+   "shape": [
+    128,
+    128
+   ],
+   "offset": 142336,
+   "length": 16384
+  },
+  {
+   "name": "blocks.1.proj.bias",
+   "shape": [
+    128
+   ],
+   "offset": 158720,
+   "length": 128
+  },
+  {
+   "name": "blocks.2.norm.weight",
+   "shape": [
+    128
+   ],
+   "offset": 158848,
+   "length": 128
+  },
+  {
+   "name": "blocks.2.norm.bias",
+   "shape": [
+    128
+   ],
+   "offset": 158976,
+   "length": 128
+  },
+  {
+   "name": "blocks.2.conv.weight",
+   "shape": [
+    128,
+    128,
+    3
+   ],
+   "offset": 159104,
+   "length": 49152
+  },
+  {
+   "name": "blocks.2.conv.bias",
+   "shape": [
+    128
+   ],
+   "offset": 208256,
+   "length": 128
+  },
+  {
+   "name": "blocks.2.proj.weight",
+   "shape": [
+    128,
+    128
+   ],
+   "offset": 208384,
+   "length": 16384
+  },
+  {
+   "name": "blocks.2.proj.bias",
+   "shape": [
+    128
+   ],
+   "offset": 224768,
+   "length": 128
+  },
+  {
+   "name": "blocks.3.norm.weight",
+   "shape": [
+    128
+   ],
+   "offset": 224896,
+   "length": 128
+  },
+  {
+   "name": "blocks.3.norm.bias",
+   "shape": [
+    128
+   ],
+   "offset": 225024,
+   "length": 128
+  },
+  {
+   "name": "blocks.3.conv.weight",
+   "shape": [
+    128,
+    128,
+    3
+   ],
+   "offset": 225152,
+   "length": 49152
+  },
+  {
+   "name": "blocks.3.conv.bias",
+   "shape": [
+    128
+   ],
+   "offset": 274304,
+   "length": 128
+  },
+  {
+   "name": "blocks.3.proj.weight",
+   "shape": [
+    128,
+    128
+   ],
+   "offset": 274432,
+   "length": 16384
+  },
+  {
+   "name": "blocks.3.proj.bias",
+   "shape": [
+    128
+   ],
+   "offset": 290816,
+   "length": 128
+  },
+  {
+   "name": "norm.weight",
+   "shape": [
+    128
+   ],
+   "offset": 290944,
+   "length": 128
+  },
+  {
+   "name": "norm.bias",
+   "shape": [
+    128
+   ],
+   "offset": 291072,
+   "length": 128
+  },
+  {
+   "name": "head.weight",
+   "shape": [
+    218,
+    128
+   ],
+   "offset": 291200,
+   "length": 27904
+  },
+  {
+   "name": "head.bias",
+   "shape": [
+    218
+   ],
+   "offset": 319104,
+   "length": 218
+  }
+ ],
+ "bytes": 638644,
+ "sha256": "df458494677596382a65d0fbff7b06b95a8e3b96b53ef560d6e00b476388951c",
+ "parameters": 319322,
+ "trainedSteps": 12000,
+ "validation": {
+  "back_acc": 0.9775,
+  "back_front": 0.9996,
+  "back_side": 0.9171,
+  "back_back": 0.9983,
+  "labels_back_acc": 0.7722,
+  "net_back_acc": 0.816,
+  "shoulder_swap_acc": 0.9978,
+  "all_pairs_acc": 0.9386,
+  "no_fix_all_pairs_acc": 0.7301,
+  "angle_deg": 7.7809,
+  "joint_err_hidden": 0.1126,
+  "joint_err_visible": 0.0664,
+  "loss": -0.0137,
+  "mpjpe_mm": 74.2669,
+  "mpjpe_vis_mm": 68.9827,
+  "mpjpe_hid_mm": 81.9603,
+  "mpjpe_tight_mm": 82.9864,
+  "net_mpjpe_mm": 173.7211,
+  "accel_mm": 27.4326,
+  "lift_back_acc": 0.977,
+  "lift_mpjpe_net_joints_mm": 69.6113
+ },
+ "source": "Trained in ml/body-sense on CMU Graphics Lab motion capture (mocap.cs.cmu.edu), synthetic cameras and simulated MediaPipe errors."
+}

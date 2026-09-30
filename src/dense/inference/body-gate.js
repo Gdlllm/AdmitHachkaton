@@ -3,8 +3,10 @@
  * (shoulders, hips, knees and ankles) or an upper body: both shoulders plus
  * both hips or both elbows (standing close, sitting at a desk), or a close-up
  * where only head and shoulders are in view and the body leaves the frame at
- * the bottom; a close-up always needs the Face Landmarker's face around the
- * Pose nose. Without legs, Pose readily fits a body into a close hand: when a
+ * the bottom; a close-up needs the Face Landmarker's face around the Pose nose
+ * to start. Once a face has confirmed the track (`options.confirmed`), it
+ * continues without one, e.g. when the person turns away from a laptop, unless
+ * a hand covers the shoulders. Without legs, Pose readily fits a body into a close hand: when a
  * detected hand spans both shoulders, any upper body needs that face. For an
  * upper body the surface is
  * hidden below the lowest visible joint, unless the body simply continues past
@@ -105,7 +107,9 @@ function handOverShoulders(landmarks, hands) {
 
 /** Stateless per-frame evidence. `enough` (full or upper body) switches the
  * surface on; `tracked` (confident shoulders) keeps an active surface alive.
- * `options.face` / `options.hands` are the frame's face landmarks and hands. */
+ * `options.face` / `options.hands` are the frame's face landmarks and hands;
+ * `options.confirmed`: a face already matched this track's Pose (see above).
+ * `face` in the result: this frame's face matches the Pose head. */
 export function assessBody(landmarks, width, height, options = {}) {
   const { enter, keep, edge, minExtent, minShoulder, hands } = { ...DEFAULTS, ...options };
   const none = { level: 'none', full: false, enough: false, tracked: false, missing: [...FULL_BODY_JOINTS], extent: 0, bbox: null, clipY: null, clipKnown: false };
@@ -129,9 +133,11 @@ export function assessBody(landmarks, width, height, options = {}) {
   const leavesFrame = [...HIPS, ...ELBOWS].some(i => !seen(i) && landmarks[i].y > BOTTOM);
   const face = faceAgrees(landmarks, options.face);
   const upper = upperShape && (face || !handOverShoulders(landmarks, hands));
-  const closeUp = !full && !upperShape && shoulders && leavesFrame && face;
+  const closeShape = !full && !upperShape && shoulders && leavesFrame;
+  const kept = closeShape && !face && Boolean(options.confirmed) && !handOverShoulders(landmarks, hands);
+  const closeUp = closeShape && (face || kept);
   const level = full ? 'full' : upper || closeUp ? 'upper' : 'none';
-  const reason = full ? 'full-body' : upper ? 'upper-body' : closeUp ? 'close-up'
+  const reason = full ? 'full-body' : upper ? 'upper-body' : closeUp ? (kept ? 'close-up-kept' : 'close-up')
     : upperShape ? 'hand-over-shoulders-without-face'
     : !SHOULDERS.every(seen) ? 'shoulders-missing' : shoulderWidth < minSegment ? 'degenerate-body'
     : shoulderWidth < minShoulder * size ? 'body-too-small' : leavesFrame ? 'close-up-without-face' : 'needs-hips-or-elbows';
@@ -139,7 +145,7 @@ export function assessBody(landmarks, width, height, options = {}) {
   // Any incomplete body is clipped, also while an active surface waits out a
   // moment with too little visible. `clipKnown` false: keep the previous line.
   const clip = full ? { known: true, y: null } : tracked ? clipBelow(landmarks, score, width, height, enter) : { known: false, y: null };
-  return { level, full, enough: level !== 'none', tracked, missing, extent, reason,
+  return { level, full, enough: level !== 'none', tracked, face, missing, extent, reason,
     bbox: tracked ? personBox(landmarks, width, height, { toBottom: !full && clip.known && clip.y === null }) : null,
     clipY: clip.y, clipKnown: clip.known };
 }

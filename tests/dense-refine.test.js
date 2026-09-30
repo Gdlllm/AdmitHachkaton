@@ -120,3 +120,19 @@ test('a warm start from the previous frame keeps the trust region and regulariza
   for (let i = 0; i < 6; i++) assert.equal(warm.mhrParams[i], prior[i], 'root stays with the prior');
   assert.throws(() => refine(prior, targets, { initial: new Float32Array(10) }), /204/);
 });
+
+test('a hidden arm follows 3D skeleton targets when the image has no points for it', () => {
+  const prior = neutral(), truth = changed({ l_elbow_bend: .6, l_uparm_rz: .4 });
+  // The image sees everything except the left elbow and wrist (hand behind the back).
+  const targets = targetsFrom(truth, body.filter(k => k !== 7 && k !== 62));
+  const points = decoder.decodeSkeleton(truth).keypoints70;
+  const root = [0, 1, 2].map(c => (points[9 * 3 + c] + points[10 * 3 + c]) / 2);
+  const targets3d = [5, 6, 7, 62, 9, 10].map(keypoint => ({ keypoint, weight: .5,
+    x: points[keypoint * 3] - root[0], y: points[keypoint * 3 + 1] - root[1], z: points[keypoint * 3 + 2] - root[2] }));
+  const without = refine(prior, targets), withSkeleton = refine(prior, targets, { targets3d, maxAngleChange: .8, iterations: 6 });
+  const error = parameters => {
+    const p = decoder.decodeSkeleton(parameters).keypoints70;
+    return Math.hypot(p[62 * 3] - points[62 * 3], p[62 * 3 + 1] - points[62 * 3 + 1], p[62 * 3 + 2] - points[62 * 3 + 2]);
+  };
+  assert.ok(error(withSkeleton.mhrParams) < error(without.mhrParams) * .5, `${error(withSkeleton.mhrParams)} vs ${error(without.mhrParams)}`);
+});

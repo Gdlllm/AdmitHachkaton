@@ -2,7 +2,7 @@
 // hidden anatomy from one camera. Scale, root and finger parameters stay fixed.
 // Pose index -> MHR70 keypoint. Eyes and ears anchor close-ups where only the
 // head and shoulders are in view.
-const POSE_TO_MHR = [[0,0],[2,1],[5,2],[7,3],[8,4],[11,5],[12,6],[13,7],[14,8],[15,62],[16,41],[23,9],[24,10],[25,11],[26,12],[27,13],[28,14],[29,17],[30,20],[31,15],[32,18]];
+export const POSE_TO_MHR = [[0,0],[2,1],[5,2],[7,3],[8,4],[11,5],[12,6],[13,7],[14,8],[15,62],[16,41],[23,9],[24,10],[25,11],[26,12],[27,13],[28,14],[29,17],[30,20],[31,15],[32,18]];
 const ELIGIBLE = /^(spine_(lean|bend|twist)[01]|[lr]_clavicle_r[xyz]|[lr]_uparm_r[yz]|[lr]_elbow_bend|[lr]_upleg_r[yz]|[lr]_knee_bend|[lr]_foot_bend)$/;
 
 export function poseTargets(pose, width, height, minConfidence = .65) {
@@ -44,8 +44,11 @@ function project(points, targets, camera) {
 }
 
 /** `initial` warm-starts the solve (e.g. from the previous video frame); the
- * trust region and regularization stay centred on the `mhrParams` prior. */
-export function refineBodyPose({ decoder, mhrParams, camera, targets, iterations = 4, maxAngleChange = .45, bodyHeight, initial }) {
+ * trust region and regularization stay centred on the `mhrParams` prior.
+ * `targets3d` [{keypoint, x, y, z, weight}]: root-relative (mid-hip, MHR 9/10)
+ * camera-axes positions in metres, e.g. the body-sense skeleton, hidden joints
+ * included; their residuals count in pixels at the body's depth. */
+export function refineBodyPose({ decoder, mhrParams, camera, targets, iterations = 4, maxAngleChange = .45, bodyHeight, initial, targets3d = [] }) {
   const began = performance.now();
   if (!Number.isInteger(iterations) || iterations < 0 || iterations > 12 || !Number.isFinite(maxAngleChange) || maxAngleChange < 0 || maxAngleChange > 1) throw new RangeError('Invalid refinement trust region');
   if (!mhrParams || mhrParams.length !== 204 || !Array.from(mhrParams).every(Number.isFinite)) throw new TypeError('204 finite MHR parameters required');
@@ -61,9 +64,14 @@ export function refineBodyPose({ decoder, mhrParams, camera, targets, iterations
     if (!unique.has(target.keypoint)) unique.set(target.keypoint, target);
   }
   targets = [...unique.values()];
-  if (targets.length < 6) return { mhrParams: prior, accepted: false, reason: 'insufficient-visible-anchors', timings: { refineMs: performance.now() - began } };
+  const deep = new Map();
+  for (const t of targets3d ?? []) {
+    if (Number.isInteger(t?.keypoint) && t.keypoint >= 0 && t.keypoint < 70 && [t.x, t.y, t.z, t.weight ?? 1].every(Number.isFinite) && (t.weight ?? 1) > 0) deep.set(t.keypoint, t);
+  }
+  targets3d = [...deep.values()];
+  if (targets.length + targets3d.length < 6) return { mhrParams: prior, accepted: false, reason: 'insufficient-visible-anchors', timings: { refineMs: performance.now() - began } };
   const names = decoder.metadata.modelParameterNames ?? decoder.metadata.parameterNames;
-  const has = (...keys) => keys.every(key => unique.has(key));
+  const has = (...keys) => keys.every(key => unique.has(key) || deep.has(key));
   // A segment is adjusted only when both of its ends are observed: an upper arm
   // (hand behind the head) needs shoulder + elbow, the elbow bend also a wrist.
   const supported = name => {
@@ -84,23 +92,35 @@ export function refineBodyPose({ decoder, mhrParams, camera, targets, iterations
   const huber = Math.max(3, scale * .035);
   const regularization = scale * scale * .0015;
   const damping = scale * scale * .0002;
-  const keypoints = targets.map(target => target.keypoint);
+  const keypoints = [...new Set([...targets.map(target => target.keypoint), ...(targets3d.length ? [9, 10, ...targets3d.map(t => t.keypoint)] : [])])];
+  // Metres at the body's depth → pixels, so both kinds of residual share one scale.
+  const depth = Math.max(.3, camera.translation[2]);
+  const pxPerMetre = camera.focal / depth;
   const evaluate = parameters => {
     const points = decoder.decodeKeypoints ? decoder.decodeKeypoints(parameters, keypoints) : decoder.decodeSkeleton(parameters).keypoints70;
     const pixels = project(points, targets, camera);
     let cost = 0;
-    const distances = [];
+    const distances = [], deep3 = [];
     for (let i = 0; i < targets.length; i++) {
-      if (!pixels[i]) return { cost: Infinity, pixels, distances: [] };
+      if (!pixels[i]) return { cost: Infinity, pixels, distances: [], deep3: [] };
       const distance = Math.hypot(pixels[i].x - targets[i].x, pixels[i].y - targets[i].y);
       distances.push(distance);
       cost += (targets[i].weight ?? 1) * (distance <= huber ? distance * distance : 2 * huber * distance - huber * huber);
     }
+    if (targets3d.length) {
+      const root = [0, 1, 2].map(c => (points[9 * 3 + c] + points[10 * 3 + c]) / 2);
+      for (const t of targets3d) {
+        const r = [t.x - (points[t.keypoint * 3] - root[0]), t.y - (points[t.keypoint * 3 + 1] - root[1]), t.z - (points[t.keypoint * 3 + 2] - root[2])].map(v => v * pxPerMetre);
+        deep3.push(r);
+        const distance = Math.hypot(r[0], r[1], r[2]);
+        cost += (t.weight ?? 1) * (distance <= huber ? distance * distance : 2 * huber * distance - huber * huber);
+      }
+    }
     for (const index of indices) cost += regularization * (parameters[index] - prior[index]) ** 2;
-    return { cost, pixels, distances, points };
+    return { cost, pixels, distances, deep3, points };
   };
   let state = evaluate(current);
-  const beforeError = state.distances.reduce((a,b) => a+b,0) / targets.length;
+  const beforeError = targets.length ? state.distances.reduce((a,b) => a+b,0) / targets.length : 0;
   let completed = 0;
   if (!Number.isFinite(state.cost)) return { mhrParams: prior, accepted: false, reason: 'invalid-initial-projection', timings: { refineMs: performance.now() - began } };
   for (let step = 0; step < iterations; step++) {
@@ -111,7 +131,9 @@ export function refineBodyPose({ decoder, mhrParams, camera, targets, iterations
       const perturbed = Float32Array.from(current); perturbed[index] += epsilon;
       const other = evaluate(perturbed);
       if (!Number.isFinite(other.cost)) break;
-      jacobian.push(other.pixels.flatMap((p, i) => [(p.x-state.pixels[i].x)/epsilon,(p.y-state.pixels[i].y)/epsilon]));
+      // Residual derivatives: 2D rows (pixel), then 3D rows (residual = target - model, so the sign flips).
+      jacobian.push([...other.pixels.flatMap((p, i) => [(p.x-state.pixels[i].x)/epsilon,(p.y-state.pixels[i].y)/epsilon]),
+        ...other.deep3.flatMap((r, i) => r.map((v, c) => -(v - state.deep3[i][c]) / epsilon))]);
     }
     if (jacobian.length !== n) break;
     const normal = Array.from({length:n}, () => new Float64Array(n));
@@ -123,6 +145,19 @@ export function refineBodyPose({ decoder, mhrParams, camera, targets, iterations
         const ax = jacobian[a][p*2], ay = jacobian[a][p*2+1];
         rhs[a] += weight * (ax * residual[0] + ay * residual[1]);
         for (let b = 0; b < n; b++) normal[a][b] += weight * (ax*jacobian[b][p*2]+ay*jacobian[b][p*2+1]);
+      }
+    }
+    const base = targets.length * 2;
+    for (let q = 0; q < targets3d.length; q++) {
+      const r = state.deep3[q], d = Math.hypot(r[0], r[1], r[2]);
+      const weight = (targets3d[q].weight ?? 1) * Math.min(1, huber / Math.max(1e-8, d));
+      for (let a = 0; a < n; a++) {
+        const ja = jacobian[a];
+        for (let c = 0; c < 3; c++) {
+          const jac = ja[base + q * 3 + c];
+          rhs[a] += weight * jac * r[c];
+          for (let b = 0; b < n; b++) normal[a][b] += weight * jac * jacobian[b][base + q * 3 + c];
+        }
       }
     }
     for (let i = 0; i < n; i++) {
@@ -145,7 +180,7 @@ export function refineBodyPose({ decoder, mhrParams, camera, targets, iterations
     if (!improved) break;
     completed++;
   }
-  const meanErrorPx = state.distances.reduce((a,b)=>a+b,0) / targets.length;
+  const meanErrorPx = targets.length ? state.distances.reduce((a,b)=>a+b,0) / targets.length : 0;
   return { mhrParams: current, accepted: completed > 0, reason: completed ? 'bounded-visible-joint-fit' : 'no-improvement', anchorCount: targets.length,
     beforeErrorPx: beforeError, meanErrorPx, maxErrorPx: Math.max(...state.distances), normalizedError: meanErrorPx / scale,
     iterations: completed, adjustableParameters: indices.length,

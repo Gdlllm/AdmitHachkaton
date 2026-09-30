@@ -1,0 +1,35 @@
+{
+ "note": "Facing of the person, labelled by eye once per second on Mixkit stock videos (F front, B back, S side/unclear; S is not scored). Times are video seconds.",
+ "mixkit-23056": {
+  "start": 0.5,
+  "labels": "FFFFFFSSSBBBBBBBBB"
+ },
+ "mixkit-25012": {
+  "start": 0.5,
+  "labels": "FFFFSSSBBBBSSSSSFFF"
+ },
+ "mixkit-4823": {
+  "start": 0.5,
+  "labels": "BBBBBBBBBB"
+ },
+ "mixkit-52000": {
+  "start": 0.5,
+  "labels": "BBBBBBBSFFFF"
+ },
+ "mixkit-40766": {
+  "start": 0.5,
+  "labels": "BBBBBBBBBBBB"
+ },
+ "mixkit-43210": {
+  "start": 0.5,
+  "labels": "SSSSSSSSSBBBS"
+ },
+ "mixkit-5122": {
+  "start": 0.5,
+  "labels": "BBBBBBBBBBBBBBB"
+ },
+ "mixkit-39945": {
+  "start": 0.5,
+  "labels": "FFFFFFFFFFSSSSFFFFFFFFF"
+ }
+}

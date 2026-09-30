@@ -13,6 +13,30 @@ const BODY_ONLY = BODY_CONNECTIONS.filter(([a, b]) => ![a, b].some(i => i >= 17 
 const BODY_INDICES = [...new Set(BODY_ONLY.flat())];
 const LEFT_BODY = new Set([11, 13, 15, 23, 25, 27, 29, 31]);
 const RIGHT_BODY = new Set([12, 14, 16, 24, 26, 28, 30, 32]);
+const MISTAKE = '#ff4d5e';
+const GUESS = '#b9a2ff';                 // joints the model filled in (hidden or out of frame)
+const POSE_PAIRS = [[1, 4], [2, 5], [3, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20], [21, 22],
+  [23, 24], [25, 26], [27, 28], [29, 30], [31, 32]];
+
+/** Body points to draw: MediaPipe's where it sees the joint (labels corrected by
+ * the model), the model's own estimate where it does not. Returns {points, guessed}. */
+export function modelBodyPoints(frame, viewport, mirror) {
+  const sense = frame?.surface?.active ? frame.surface.sense : null;
+  const model = sense?.joints2d, landmarks = frame?.pose?.landmarks;
+  if (!model || model.length < 66 || !Array.isArray(landmarks) || landmarks.length < 33) return null;
+  const pose = landmarks.slice();
+  (sense.swappedPairs ?? []).forEach((swap, i) => { if (swap) { const [a, b] = POSE_PAIRS[i]; pose[a] = landmarks[b]; pose[b] = landmarks[a]; } });
+  const guessed = new Set(), points = [];
+  for (let i = 0; i < 33; i++) {
+    const p = pose[i];
+    if (isDrawableLandmark(p, { pose: true })) { points.push(projectLandmark(p, viewport, mirror)); continue; }
+    // Face points are only drawn when seen: the model places the head from the body alone.
+    if (i <= 10) { points.push(null); continue; }
+    points.push(projectLandmark({ x: model[i * 2], y: model[i * 2 + 1] }, viewport, mirror));
+    guessed.add(i);
+  }
+  return { points, guessed };
+}
 const FINGERTIPS = new Set([4, 8, 12, 16, 20]);
 
 /** CSS pixel rectangle that exactly matches object-fit: contain. */
@@ -94,6 +118,18 @@ function handednessLabel(hand) {
   return String(value?.categoryName ?? value?.displayName ?? '').toLowerCase();
 }
 
+// Pose joints of the named body parts in frame.motion.highlight (see src/motion/kinematics.js BODY_PARTS).
+const PART_JOINTS = {
+  leftKnee: [23, 25, 27], rightKnee: [24, 26, 28], leftHip: [11, 23, 25], rightHip: [12, 24, 26],
+  leftArm: [11, 13, 15], rightArm: [12, 14, 16], leftElbow: [11, 13, 15], rightElbow: [12, 14, 16],
+  leftLeg: [23, 25, 27, 29, 31], rightLeg: [24, 26, 28, 30, 32], leftFoot: [27, 29, 31], rightFoot: [28, 30, 32],
+  torso: [11, 12, 23, 24], back: [11, 12, 23, 24], shoulders: [11, 12], hips: [23, 24],
+};
+function highlightJoints(parts) {
+  if (!Array.isArray(parts) || !parts.length) return null;
+  return new Set(parts.flatMap(part => PART_JOINTS[part] ?? []));
+}
+
 export class CaptureRenderer {
   constructor(canvas) {
     this.canvas = canvas;
@@ -161,11 +197,12 @@ export class CaptureRenderer {
     ctx.lineCap = 'round'; ctx.lineJoin = 'round';
     const project = (landmarks, pose = false) => (landmarks ?? []).map(point =>
       isDrawableLandmark(point, { pose }) ? projectLandmark(point, viewport, mirror) : null);
-    const bodyPoints = project(frame.pose?.landmarks, true);
+    const model = modelBodyPoints(frame, viewport, mirror);
+    const bodyPoints = model ? model.points : project(frame.pose?.landmarks, true);
     for (const match of matchBodyWrists(frame.pose?.landmarks, frame.hands, videoWidth, videoHeight)) {
-      bodyPoints[match.poseIndex] = projectLandmark(frame.hands[match.handIndex].landmarks[0], viewport, mirror);
+      if (!model?.guessed.has(match.poseIndex)) bodyPoints[match.poseIndex] = projectLandmark(frame.hands[match.handIndex].landmarks[0], viewport, mirror);
     }
-    this.drawBody(bodyPoints, opacity);
+    this.drawBody(bodyPoints, opacity, highlightJoints(frame.motion?.highlight), model?.guessed ?? null);
     this.drawFace(project(frame.face?.landmarks), opacity);
     for (const hand of frame.hands ?? []) {
       const side = handednessLabel(hand);
@@ -205,39 +242,55 @@ export class CaptureRenderer {
     }
   }
 
-  drawBody(points, opacity) {
-    const torso = BODY_ONLY.filter(([a, b]) => LEFT_BODY.has(a) !== LEFT_BODY.has(b));
-    const left = BODY_ONLY.filter(([a, b]) => LEFT_BODY.has(a) && LEFT_BODY.has(b));
-    const right = BODY_ONLY.filter(([a, b]) => RIGHT_BODY.has(a) && RIGHT_BODY.has(b));
+  drawBody(points, opacity, highlight = null, guessed = null) {
+    // With the model's skeleton (guessed set) the bones are bolder, and the
+    // filled-in ones are dashed amber so it is clear what the camera did not see.
+    const bold = guessed ? 1.7 : 1;
+    const known = guessed ? BODY_ONLY.filter(([a, b]) => !guessed.has(a) && !guessed.has(b)) : BODY_ONLY;
+    const torso = known.filter(([a, b]) => LEFT_BODY.has(a) !== LEFT_BODY.has(b));
+    const left = known.filter(([a, b]) => LEFT_BODY.has(a) && LEFT_BODY.has(b));
+    const right = known.filter(([a, b]) => RIGHT_BODY.has(a) && RIGHT_BODY.has(b));
     // A restrained dark underlay keeps thin bones legible on bright clothing.
-    this.connections(points, BODY_ONLY, '#092127', 3.3, opacity * 0.30);
-    this.connections(points, torso, COLORS.neutral, 1.65, opacity * 0.82);
-    this.connections(points, left, COLORS.left, 1.8, opacity * 0.95);
-    this.connections(points, right, COLORS.right, 1.8, opacity * 0.95);
-    this.dots(points, BODY_INDICES, 2.6, '#10282a', opacity * 0.50);
-    this.dots(points, BODY_INDICES, 1.7, COLORS.neutral, opacity * 0.96);
+    this.connections(points, BODY_ONLY, '#092127', 3.3 * bold, opacity * 0.30);
+    this.connections(points, torso, COLORS.neutral, 1.65 * bold, opacity * 0.82);
+    this.connections(points, left, COLORS.left, 1.8 * bold, opacity * 0.95);
+    this.connections(points, right, COLORS.right, 1.8 * bold, opacity * 0.95);
+    if (guessed?.size) {
+      const ctx = this.context;
+      ctx.save(); ctx.setLineDash([6, 5]);
+      this.connections(points, BODY_ONLY.filter(([a, b]) => guessed.has(a) || guessed.has(b)), GUESS, 2.2, opacity * 0.85);
+      ctx.restore();
+      this.dots(points, [...guessed], 3, GUESS, opacity * 0.9);
+    }
+    const shown = guessed ? BODY_INDICES.filter(i => !guessed.has(i)) : BODY_INDICES;
+    this.dots(points, shown, 2.6 * bold, '#10282a', opacity * 0.50);
+    this.dots(points, shown, 1.7 * bold, COLORS.neutral, opacity * 0.96);
+    if (!highlight?.size) return;
+    // Body parts with a mistake: thick red bones with a soft glow.
+    const bones = BODY_ONLY.filter(([a, b]) => highlight.has(a) && highlight.has(b));
+    const ctx = this.context;
+    ctx.save(); ctx.shadowColor = MISTAKE; ctx.shadowBlur = 12;
+    this.connections(points, bones, MISTAKE, 5, opacity * 0.9);
+    ctx.restore();
+    this.dots(points, [...highlight].filter(i => BODY_INDICES.includes(i)), 4, MISTAKE, opacity);
   }
 
   drawFace(points, opacity) {
     const size = bounds(points);
     if (!size) return;
     const scale = clamp(size.width / 260, 0.65, 1.25);
-    // At a distance a triangle mesh becomes a solid mask. Actual contours remain
-    // visible, with the measured vertices/tessellation appearing in close-up.
-    const detail = clamp((size.width - 65) / 105, 0, 1);
-    if (detail > 0) {
-      this.connections(points, FACE_TESSELLATION, COLORS.face, 0.65, opacity * detail * 0.36);
-      this.dots(points, points.map((_, index) => index), 0.63 * scale, '#e2fff6', opacity * detail * 0.60);
+    // Small dots only (no mesh lines); the pupils are tracked with a ring and a centre.
+    const face = points.slice(0, 468).map((_, index) => index);
+    this.dots(points, face, 0.9 * scale, '#e2fff6', opacity * 0.7);
+    const ctx = this.context;
+    for (const [centre, ring, color] of [[468, [469, 470, 471, 472], COLORS.right], [473, [474, 475, 476, 477], COLORS.left]]) {
+      const c = points[centre], rim = ring.map(i => points[i]).filter(Boolean);
+      if (!c || rim.length < 3) continue;
+      const radius = rim.reduce((sum, p) => sum + Math.hypot(p.x - c.x, p.y - c.y), 0) / rim.length;
+      ctx.beginPath(); ctx.arc(c.x, c.y, Math.max(1.5, radius), 0, TAU);
+      ctx.strokeStyle = color; ctx.lineWidth = 1.4 * scale; ctx.globalAlpha = opacity * 0.95; ctx.stroke(); ctx.globalAlpha = 1;
     }
-    this.connections(points, FACE_OVAL, COLORS.face, 1.0 * scale, opacity * 0.85);
-    this.connections(points, FACE_LIPS, '#fff1e8', 0.95 * scale, opacity * 0.85);
-    this.connections(points, FACE_LEFT_BROW, COLORS.face, 0.95 * scale, opacity * 0.76);
-    this.connections(points, FACE_RIGHT_BROW, COLORS.face, 0.95 * scale, opacity * 0.76);
-    this.connections(points, FACE_LEFT_EYE, '#f0fff8', 1.05 * scale, opacity * 0.90);
-    this.connections(points, FACE_RIGHT_EYE, '#f0fff8', 1.05 * scale, opacity * 0.90);
-    this.connections(points, FACE_LEFT_IRIS, COLORS.left, 1.25 * scale, opacity * 0.95);
-    this.connections(points, FACE_RIGHT_IRIS, COLORS.right, 1.25 * scale, opacity * 0.95);
-    this.dots(points, [468, 473], 1.1 * scale, '#ffffff', opacity * 0.95);
+    this.dots(points, [468, 473], 1.6 * scale, '#ffffff', opacity);
   }
 
   drawHand(points, color, opacity) {

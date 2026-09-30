@@ -3,6 +3,7 @@ import { CaptureSession } from './session.js';
 import { reconcileDetections } from '../tracking/fusion.js';
 import { CaptureStabilizer } from '../tracking/stabilizer.js';
 import { CaptureRenderer, containViewport } from '../rendering/renderer.js';
+import { createMotionAnalyzer } from '../motion/index.js';
 
 const video = document.getElementById('camera');
 const notice = document.getElementById('notice');
@@ -10,6 +11,14 @@ const renderer = new CaptureRenderer(document.getElementById('overlay'));
 const stabilizer = new CaptureStabilizer();
 const listeners = new Set();
 const params = new URLSearchParams(location.search);
+// What the body is doing (angles, gestures, exercise reps and hints); ?exercise=squat starts one.
+const motion = createMotionAnalyzer();
+if (params.get('exercise')) try { motion.setExercise(params.get('exercise')); } catch (error) { console.warn(error.message); }
+let hud = null, voice = null;
+if (params.get('hud') === '1') import('../motion/hud.js').then(({ createHud }) => { hud = createHud(document.body); });
+// Spoken rep count and hints: ?voice=1 or motionCapture.voice(true).
+const loadVoice = () => import('../motion/voice.js').then(({ createVoice }) => { voice ??= createVoice(); return voice; });
+if (params.get('voice') === '1') loadVoice();
 const defaultModel = ['full', 'heavy', 'lite'].includes(params.get('model')) ? params.get('model') : 'full';
 // Body surface: on wherever WebGPU can run it, switched on by a full body in
 // view. ?surface=0 turns it off; ?surface=1 also allows the slow CPU fallback.
@@ -35,7 +44,8 @@ function loadDense(mode) {
   denseError = null;
   const loading = denseLoading = import('../dense/controller.js').then(({ createDenseSurface }) => {
     if (loading !== denseLoading) return;
-    dense = createDenseSurface({ mode });
+    // The body mesh is optional (?mesh=1); by default the model's skeleton is drawn instead.
+    dense = createDenseSurface({ mode, sense: params.get('sense') !== '0', lift: params.get('lift') !== '0', drawMesh: params.get('mesh') === '1' });
     return dense.ready;
   }).catch(error => {
     if (loading !== denseLoading) return;
@@ -64,6 +74,9 @@ function flushHeld() { const frame = held; held = null; if (frame) finishPublish
 
 function finishPublish(frame) {
   if (dense && surfaceMode) { frame.surface = dense.getDiagnostics(); frame.bodySurface = dense.geometry(); }
+  try { frame.motion = motion.update(frame); } catch (error) { frame.motion = null; console.error('Motion analysis failed:', error); }
+  hud?.update(frame);
+  if (voice?.enabled && frame.motion) voice.events(frame.motion.events);
   lastFrame = frame;
   drawFrame(lastFrame); lastDrawn = lastFrame;
   const token = session.generation;
@@ -74,6 +87,12 @@ function finishPublish(frame) {
   window.dispatchEvent(new CustomEvent('motionframe', { detail: lastFrame }));
 }
 
+// Body parts named in motion hints → regions of the body surface.
+const REGION_OF = { leftKnee: 'leftLeg', leftHip: 'leftLeg', leftLeg: 'leftLeg', leftFoot: 'leftLeg', rightKnee: 'rightLeg', rightHip: 'rightLeg',
+  rightLeg: 'rightLeg', rightFoot: 'rightLeg', leftArm: 'leftArm', leftElbow: 'leftArm', rightArm: 'rightArm', rightElbow: 'rightArm',
+  torso: 'body', back: 'body', shoulders: 'body', hips: 'body' };
+const meshRegions = parts => [...new Set((parts ?? []).map(part => REGION_OF[part]).filter(Boolean))];
+
 function drawFrame(frame) {
   const started = performance.now();
   renderer.setSize(innerWidth, innerHeight, Math.min(devicePixelRatio || 1, 2));
@@ -82,7 +101,7 @@ function drawFrame(frame) {
   if (frame && dense && surfaceMode) {
     // One CSS pixel per wireframe line; the renderer applies contain/mirror.
     const viewport = containViewport(innerWidth, innerHeight, videoWidth, videoHeight);
-    if (viewport) surfaceImage = dense.render(Math.round(viewport.width), Math.round(viewport.height), started);
+    if (viewport) surfaceImage = dense.render(Math.round(viewport.width), Math.round(viewport.height), started, meshRegions(frame.motion?.highlight));
   }
   renderer.draw(surfaceImage ? { ...frame, surfaceImage } : frame, { videoWidth, videoHeight, mirror: true, now: started });
   renderMs = performance.now() - started;
@@ -134,6 +153,14 @@ function getDiagnostics() {
 // no recording and no network export. A subscriber must not close frame.source.
 window.motionCapture = Object.freeze({
   start, stop, getDiagnostics,
+  /** Exercise names → titles. exercise(name) starts counting (null stops) and returns the previous summary. */
+  exercises: motion.exercises,
+  exercise(name) { return motion.setExercise(name ?? null, lastFrame); },
+  summary() { return motion.summary(); },
+  /** Takes the current standing posture as upright (for a tilted camera). */
+  calibrate() { return motion.calibrate(lastFrame); },
+  /** Spoken rep count and hints on/off; resolves to false where the browser cannot speak. */
+  async voice(on = true) { const v = await loadVoice(); if (!v) return false; v.enabled = on; return v.enabled; },
   subscribe(listener) { if (typeof listener !== 'function') throw new TypeError('A callback is required.'); listeners.add(listener); return () => listeners.delete(listener); },
 });
 

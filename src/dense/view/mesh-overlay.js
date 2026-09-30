@@ -40,6 +40,7 @@ export class MeshOverlay {
     gl.deleteShader(vs); gl.deleteShader(fs);
     if (!gl.getProgramParameter(this.program, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(this.program));
     this.vertices = gl.createBuffer(); this.faces = gl.createBuffer(); this.edges = gl.createBuffer();
+    this.litFaces = gl.createBuffer(); this.litEdges = gl.createBuffer(); this.litKey = null;
     this.position = gl.getAttribLocation(this.program, 'position');
     this.uniforms = Object.fromEntries(['translation', 'viewport', 'focal', 'color', 'clip'].map(name => [name, gl.getUniformLocation(this.program, name)]));
     this.faceRef = null;
@@ -49,8 +50,9 @@ export class MeshOverlay {
   /** mesh.faces only occlude (depth pass); `edges` are the drawn lines.
    * camera: source width/height/focal/translation. Output is width x height
    * pixels; alpha fades the whole wireframe; lines fade out towards `clipY`
-   * (source pixels) and are not drawn below it. */
-  draw(mesh, edges, camera, { width = camera.width, height = camera.height, alpha = 1, clipY = null } = {}) {
+   * (source pixels) and are not drawn below it. `highlight` {key, faces,
+   * edges}: a body part with a mistake, tinted and outlined red. */
+  draw(mesh, edges, camera, { width = camera.width, height = camera.height, alpha = 1, clipY = null, highlight = null } = {}) {
     const gl = this.gl;
     width = Math.max(1, Math.round(width)); height = Math.max(1, Math.round(height));
     if (this.canvas.width !== width) this.canvas.width = width;
@@ -77,8 +79,21 @@ export class MeshOverlay {
     gl.disable(gl.POLYGON_OFFSET_FILL); gl.colorMask(true, true, true, true);
     gl.enable(gl.BLEND);
     gl.blendFuncSeparate(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-    gl.depthMask(false); gl.uniform4f(this.uniforms.color, .82, 1, .97, .9 * Math.max(0, Math.min(1, alpha)));
+    const a = Math.max(0, Math.min(1, alpha));
+    gl.depthMask(false); gl.uniform4f(this.uniforms.color, .82, 1, .97, .9 * a);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.edges); gl.drawElements(gl.LINES, edges.length, gl.UNSIGNED_INT, 0);
+    if (highlight?.faces?.length) {
+      if (this.litKey !== highlight.key) {
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.litFaces); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, highlight.faces, gl.DYNAMIC_DRAW);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.litEdges); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, highlight.edges, gl.DYNAMIC_DRAW);
+        this.litKey = highlight.key;
+      }
+      // A translucent red skin over the part, then its lines in red on top.
+      gl.uniform4f(this.uniforms.color, 1, .3, .37, .22 * a);
+      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.litFaces); gl.drawElements(gl.TRIANGLES, highlight.faces.length, gl.UNSIGNED_INT, 0);
+      gl.uniform4f(this.uniforms.color, 1, .3, .37, .95 * a);
+      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.litEdges); gl.drawElements(gl.LINES, highlight.edges.length, gl.UNSIGNED_INT, 0);
+    }
     gl.depthMask(true);
     return this.canvas;
   }
@@ -88,6 +103,8 @@ export class MeshOverlay {
     if (this.vertices) gl.deleteBuffer(this.vertices);
     if (this.faces) gl.deleteBuffer(this.faces);
     if (this.edges) gl.deleteBuffer(this.edges);
+    if (this.litFaces) gl.deleteBuffer(this.litFaces);
+    if (this.litEdges) gl.deleteBuffer(this.litEdges);
     if (this.program) gl.deleteProgram(this.program);
     gl.getExtension('WEBGL_lose_context')?.loseContext();
   }

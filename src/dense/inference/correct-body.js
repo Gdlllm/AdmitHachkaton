@@ -15,7 +15,7 @@ export function projectBodyPoints(points, camera) {
 // `warm` ({mhrParams, translation}) is the previous frame's fit: between network
 // runs it starts both solves near the current pose, while the trust region and
 // regularization stay centred on the network prior.
-export function correctBody({ decoder, result, pose, bodyHeight, warm = null, maxAngleChange, iterations }) {
+export function correctBody({ decoder, result, pose, bodyHeight, warm = null, maxAngleChange, iterations, targets3d = [] }) {
   const start = performance.now();
   const targets = poseTargets(pose, result.sourceWidth, result.sourceHeight);
   const startParams = warm?.mhrParams ?? result.mhrParams;
@@ -32,7 +32,7 @@ export function correctBody({ decoder, result, pose, bodyHeight, warm = null, ma
     // anchors (shoulders, head, visible limbs) decide the scale.
     depthRatio: [.4, 2.5], maxPixelShift: Math.max(result.sourceWidth, result.sourceHeight) * .2 });
   const camera = { width: result.sourceWidth, height: result.sourceHeight, focal: result.focal, translation: cameraFit.translation };
-  const refinement = refineBodyPose({ decoder, mhrParams: result.mhrParams, camera, targets, bodyHeight,
+  const refinement = refineBodyPose({ decoder, mhrParams: result.mhrParams, camera, targets, bodyHeight, targets3d,
     ...(warm?.mhrParams ? { initial: warm.mhrParams } : {}),
     ...(maxAngleChange !== undefined ? { maxAngleChange } : {}), ...(iterations !== undefined ? { iterations } : {}) });
   const skeleton = decoder.decodeSkeleton(refinement.mhrParams);

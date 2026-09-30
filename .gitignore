@@ -8,3 +8,4 @@ public/dense/ort/
 .DS_Store
 tests/artifacts/
 tests/fixtures/
+ml/**/__pycache__/

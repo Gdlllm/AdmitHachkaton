@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createDenseSurface } from '../src/dense/controller.js';
+import { createMotionAnalyzer } from '../src/motion/index.js';
 
 // Surface controller with scripted workers: activation, scheduling, frame sync
 // and ownership. Actual ORT/WebGL/browser integration is in tests/dense-browser.mjs.
@@ -175,6 +176,28 @@ test('an upper body with its face switches the surface on, clipped below the vis
   assert.equal(suspicious.surface.getDiagnostics().active, false, 'a hand over the shoulders needs a matching face');
 });
 
+test('a close-up confirmed by its face stays on when the face turns away, an unconfirmed one never starts', async () => {
+  const h = harness(); await h.ready();
+  // Head and shoulders low in the frame, the rest of the body below the bottom edge.
+  const closeUp = () => person().map((p, i) => ({ ...p, y: p.y + .45,
+    visibility: [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32].includes(i) ? .1 : p.visibility }));
+  const face = pose => ({ landmarks: Array.from({ length: 478 }, (_, i) => ({ x: pose[0].x + .04 * Math.cos(i), y: pose[0].y + .04 * Math.sin(i) })) });
+  const at = (t, withFace) => { const pose = closeUp(); h.setClock(t); return h.surface.update({ ...h.frame(t, pose), face: withFace ? face(pose) : null }); };
+  for (let t = 0; t <= 2000; t += 33) at(t, false);
+  assert.equal(h.surface.getDiagnostics().active, false, 'no face, no close-up');
+  assert.equal(h.surface.getDiagnostics().reason, 'close-up-without-face');
+  for (let t = 2033; t <= 2300; t += 33) at(t, true);
+  assert.equal(h.surface.getDiagnostics().active, true);
+  for (let t = 2333; t <= 5000; t += 33) at(t, false);
+  assert.equal(h.surface.getDiagnostics().active, true, 'turned away for 2.7 s: still on');
+  assert.equal(h.surface.getDiagnostics().reason, 'close-up-kept');
+  // Losing the shoulders ends the confirmation.
+  h.setClock(5033); h.surface.update(h.frame(5033, closeUp().map((p, i) => i === 11 || i === 12 ? { ...p, visibility: .1 } : p)));
+  for (let t = 5066; t <= 7000; t += 33) at(t, false);
+  assert.equal(h.surface.getDiagnostics().active, false);
+  h.surface.dispose();
+});
+
 test('a crop that resolves after the track ended is closed instead of sent', async () => {
   const h = harness(); await h.ready();
   h.setClock(0); h.surface.update(h.frame(0));
@@ -232,9 +255,9 @@ function appHarness({ search = '?test=1', saveData = false } = {}) {
       reset() { this.resets++; }, async dispose() { this.disposed++; } };
     surfaces.push(surface); return surface;
   } }); };
-  const load = new Function('CaptureSession', 'reconcileDetections', 'CaptureStabilizer', 'CaptureRenderer', 'containViewport', 'document', 'window', 'location', 'navigator', 'requestAnimationFrame', 'denseModule', 'performance', 'innerWidth', 'innerHeight', 'devicePixelRatio', 'CustomEvent',
+  const load = new Function('CaptureSession', 'reconcileDetections', 'CaptureStabilizer', 'CaptureRenderer', 'containViewport', 'createMotionAnalyzer', 'document', 'window', 'location', 'navigator', 'requestAnimationFrame', 'denseModule', 'performance', 'innerWidth', 'innerHeight', 'devicePixelRatio', 'CustomEvent',
     source + '\nreturn { session };');
-  const hooks = load(Session, frame => frame, Stabilizer, Renderer, () => ({ x: 0, y: 0, width: 1280, height: 720 }), document, window, { search }, { connection: { saveData } }, () => {},
+  const hooks = load(Session, frame => frame, Stabilizer, Renderer, () => ({ x: 0, y: 0, width: 1280, height: 720 }), createMotionAnalyzer, document, window, { search }, { connection: { saveData } }, () => {},
     denseModule, { now: () => 0 }, 1280, 720, 1, class { constructor(type, { detail }) { this.type = type; this.detail = detail; } });
   return { ...hooks, api: window.motionCapture, events, draws, counts, surfaces, run: value => hooks.session.pending.resolve(value) };
 }

@@ -2,6 +2,7 @@ import { assessBody } from './inference/body-gate.js';
 import { SurfaceActivation } from './inference/temporal.js';
 import { cropFromBox, INPUT_SIZE } from './inference/preprocess.js';
 import { MeshOverlay } from './view/mesh-overlay.js';
+import { faceForward } from './inference/body-sense.js';
 
 // The network runs at most this often and keeps the GPU at most ~half busy;
 // every camera frame in between is re-fitted by the fit worker.
@@ -26,6 +27,11 @@ function edgesOf(faces) {
 // Only what the fit needs; points hidden by the stabilizer count as unseen.
 const compactPose = landmarks => landmarks.slice(0, 33).map(p => ({ x: p.x, y: p.y,
   visibility: p.drawConfidence === 0 ? 0 : p.visibility, presence: p.presence }));
+// Which way a found face looks (camera axes), for the body-sense model.
+const faceCue = face => {
+  const forward = face?.landmarks?.length ? faceForward(face.transformationMatrix) : null;
+  return forward ? { forward } : null;
+};
 
 const defaultWorkers = () => ({
   model: new Worker(new URL('./model-worker.js', import.meta.url), { type: 'module', name: 'motion-surface-model' }),
@@ -39,7 +45,7 @@ const defaultWorkers = () => ({
  * The original Pose/Face/Hands observations remain the source of gesture data;
  * inferred vertices are not observed landmarks.
  */
-export function createDenseSurface({ mode = 'auto', workerFactory = defaultWorkers, overlayFactory = () => new MeshOverlay(),
+export function createDenseSurface({ mode = 'auto', sense = true, lift = true, drawMesh = true, workerFactory = defaultWorkers, overlayFactory = () => new MeshOverlay(),
   createBitmap = (...args) => createImageBitmap(...args), now = () => performance.now(), setTimer = setTimeout, clearTimer = clearTimeout } = {}) {
   const activation = new SurfaceActivation();
   let workers = workerFactory();
@@ -49,6 +55,7 @@ export function createDenseSurface({ mode = 'auto', workerFactory = defaultWorke
   let poseBusy = false, pendingPose = null, inferBusy = false, inflight = null, lastInferAt = -Infinity;
   let mesh = null, meshSerial = 0, shown = null, shownSerial = -1, drawn = null;
   let visibility = 0, lastRender = null, badFits = 0, fitOk = true, clipY = null, clipTarget = null;
+  let senseState = null, confirmed = false, regions = {};
   let lastBody = null, lastStep = { state: 'idle', active: false, changed: null };
   const waiting = new Map(); // frame timestamp -> resolve, for frames held for their own surface
   const stats = { inferences: 0, inferenceMs: null, lastInferenceMs: null, fits: 0, fitMs: null, errors: 0, lastError: null, lateFrames: 0 };
@@ -99,6 +106,8 @@ export function createDenseSurface({ mode = 'auto', workerFactory = defaultWorke
     if (data.type === 'ready') {
       faces = data.faces; depthFaces = data.allFaces ?? data.faces; edges = edgesOf(faces);
       names = { jointNames: data.jointNames, keypointNames: data.keypointNames };
+      senseState = data.sense ?? null;
+      regions = data.regionFaces ? Object.fromEntries(Object.entries(data.regionFaces).map(([name, list]) => [name, { faces: list, edges: edgesOf(list) }])) : {};
       fitReady = true; becomeReady(); return;
     }
     if (data.type === 'error') { fail(new Error(data.message || 'Surface fit worker failed')); return; }
@@ -141,7 +150,7 @@ export function createDenseSurface({ mode = 'auto', workerFactory = defaultWorke
   const onWorkerError = event => { event.preventDefault?.(); fail(new Error(event.message || 'Surface worker failed')); };
   workers.model.onerror = onWorkerError; workers.fit.onerror = onWorkerError;
   workers.model.postMessage({ type: 'init', mode });
-  workers.fit.postMessage({ type: 'init' });
+  workers.fit.postMessage({ type: 'init', sense, lift, mesh: drawMesh });
 
   function requestInference(frame, bbox, width, height) {
     let crop;
@@ -169,7 +178,9 @@ export function createDenseSurface({ mode = 'auto', workerFactory = defaultWorke
     if (state !== 'ready' || closed || !frame || !Number.isFinite(frame.timestamp)) return { wait: null };
     const width = frame.sourceWidth, height = frame.sourceHeight;
     const landmarks = frame.pose?.landmarks;
-    lastBody = assessBody(landmarks, width, height, { face: frame.face?.landmarks, hands: frame.hands });
+    lastBody = assessBody(landmarks, width, height, { face: frame.face?.landmarks, hands: frame.hands, confirmed });
+    // A face confirms the person once; the confirmation lasts while the shoulders stay tracked.
+    confirmed = lastBody.tracked && (confirmed || lastBody.face);
     lastStep = activation.update(lastBody, frame.timestamp);
     // The last known clip line holds through frames that cannot place one
     // (e.g. shoulders briefly lost); a full body or a frame edge lifts it.
@@ -178,7 +189,7 @@ export function createDenseSurface({ mode = 'auto', workerFactory = defaultWorke
     else if (lastStep.changed === 'off') restartTrack();
     if (!lastStep.active || !Array.isArray(landmarks) || landmarks.length < 33) return { wait: null };
     if (!inferBusy && lastBody.bbox && frame.source && inferenceDue()) requestInference(frame, lastBody.bbox, width, height);
-    sendPose({ pose: compactPose(landmarks), width, height, timestamp: frame.timestamp });
+    sendPose({ pose: compactPose(landmarks), width, height, timestamp: frame.timestamp, face: faceCue(frame.face) });
     if (!mesh && !shown) return { wait: null }; // nothing to keep in sync yet
     const timestamp = frame.timestamp;
     const wait = new Promise(resolve => {
@@ -189,19 +200,20 @@ export function createDenseSurface({ mode = 'auto', workerFactory = defaultWorke
   }
 
   function geometry() {
-    if (!lastStep.active || !fitOk || !mesh) return null;
+    if (!lastStep.active || !fitOk || !mesh || mesh.skeletonOnly) return null;
     return { vertices: mesh.vertices, faces, skeleton: { positions: mesh.skeleton, jointNames: names.jointNames },
       keypoints70: mesh.keypoints70, keypointNames: names.keypointNames, camera: mesh.camera,
       timestamp: mesh.timestamp, units: 'metres', axes: 'X-right/Y-down/Z-forward', inferred: true,
       representation: 'Estimated MHR anatomical surface; not a measured clothed contour' };
   }
 
-  /** Wireframe for the on-screen video rectangle, or null. */
-  function render(width, height, time = now()) {
+  /** Wireframe for the on-screen video rectangle, or null. `highlight`: body
+   * regions (body, leftArm, rightArm, leftLeg, rightLeg) drawn red. */
+  function render(width, height, time = now(), highlight = []) {
     if (!overlay || closed) return null;
     const elapsed = lastRender === null ? 0 : Math.max(0, time - lastRender);
     lastRender = time;
-    const target = lastStep.active && fitOk && mesh;
+    const target = lastStep.active && fitOk && mesh && !mesh.skeletonOnly;
     if (target && shownSerial !== meshSerial) { shown = mesh; shownSerial = meshSerial; }
     visibility = target ? Math.min(1, visibility + elapsed / FADE_IN_MS) : Math.max(0, visibility - elapsed / FADE_OUT_MS);
     if (!shown || visibility <= 0) {
@@ -211,12 +223,25 @@ export function createDenseSurface({ mode = 'auto', workerFactory = defaultWorke
     // The clip line glides; with no clip it moves out below the frame.
     const clipTo = clipTarget ?? shown.camera.height * 1.5;
     clipY = clipY === null ? clipTo : clipY + (clipTo - clipY) * (1 - Math.exp(-elapsed / CLIP_MS));
-    const key = `${shownSerial}:${width}x${height}:${visibility.toFixed(3)}:${clipY.toFixed(1)}`;
+    const lit = [...new Set(highlight)].filter(name => regions[name]).sort();
+    const key = `${shownSerial}:${width}x${height}:${visibility.toFixed(3)}:${clipY.toFixed(1)}:${lit.join(',')}`;
     if (drawn !== key) {
-      overlay.draw({ vertices: shown.vertices, faces: depthFaces }, edges, shown.camera, { width, height, alpha: visibility, clipY });
+      overlay.draw({ vertices: shown.vertices, faces: depthFaces }, edges, shown.camera, { width, height, alpha: visibility, clipY,
+        highlight: lit.length ? highlightOf(lit) : null });
       drawn = key;
     }
     return overlay.canvas;
+  }
+
+  // Faces and edges of the lit regions, joined once per combination.
+  const highlightCache = new Map();
+  function highlightOf(names) {
+    const key = names.join(',');
+    if (!highlightCache.has(key)) {
+      const join = field => { const parts = names.map(n => regions[n][field]); const out = new Uint32Array(parts.reduce((a, b) => a + b.length, 0)); let at = 0; for (const p of parts) { out.set(p, at); at += p.length; } return out; };
+      highlightCache.set(key, { key, faces: join('faces'), edges: join('edges') });
+    }
+    return highlightCache.get(key);
   }
 
   function getDiagnostics() {
@@ -225,6 +250,7 @@ export function createDenseSurface({ mode = 'auto', workerFactory = defaultWorke
       body: lastBody?.level ?? 'none', reason: lastBody?.reason ?? null, missingJoints: lastBody?.missing ?? null,
       clipY: clipTarget,
       fitOk, fit: mesh?.fit ?? null, meshAgeMs: mesh ? now() - mesh.receivedAt : null,
+      sense: { state: senseState, ...(mesh?.sense ?? {}) },
       inference: { count: stats.inferences, averageMs: stats.inferenceMs, lastMs: stats.lastInferenceMs },
       fits: stats.fits, fitMs: stats.fitMs, lateFrames: stats.lateFrames, errors: stats.errors, lastError: stats.lastError,
       representation: 'Estimated MHR anatomical surface; not a measured clothed contour' };
@@ -234,7 +260,7 @@ export function createDenseSurface({ mode = 'auto', workerFactory = defaultWorke
     ready, update, geometry, render, getDiagnostics,
     /** New capture session: forget the person, keep the loaded models. */
     reset() {
-      activation.reset(); lastStep = { state: 'idle', active: false, changed: null }; lastBody = null;
+      activation.reset(); lastStep = { state: 'idle', active: false, changed: null }; lastBody = null; confirmed = false;
       if (state === 'ready') restartTrack();
       releaseWaiting();
       shown = null; visibility = 0; lastRender = null; drawn = null; clipY = null; clipTarget = null;
