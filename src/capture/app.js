@@ -166,7 +166,8 @@ window.motionCapture = Object.freeze({
   subscribe(listener) { if (typeof listener !== 'function') throw new TypeError('A callback is required.'); listeners.add(listener); return () => listeners.delete(listener); },
 });
 
-if (games) import('../games/index.js').then(({ mountGames }) => mountGames(window.motionCapture));
+if (games && params.get('calibrate') === 'gaze') import('../games/gaze-lab.js').then(({ mountGazeLab }) => mountGazeLab(window.motionCapture));
+else if (games) import('../games/index.js').then(({ mountGames }) => mountGames(window.motionCapture));
 
 function tick() {
   if (lastFrame && !paused) {

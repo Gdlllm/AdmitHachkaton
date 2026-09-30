@@ -9,3 +9,4 @@ public/dense/ort/
 tests/artifacts/
 tests/fixtures/
 ml/**/__pycache__/
+ml/gaze/data/
