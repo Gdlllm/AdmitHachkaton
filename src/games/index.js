@@ -11,7 +11,7 @@ import { createSound } from './sound.js';
 const GAMES = [
   { id: 'racer', title: 'Руль', text: 'Городская гонка на 90 секунд. Рули двумя руками, открой рот для нитро, закрой один глаз, чтобы тормознуть.', ready: true },
   { id: 'pingpong', title: 'Пинг-понг', text: 'Настольный теннис в клубе. Ракетка — твоя рука: подставь её туда, куда летит мяч. Игра до 11.', ready: true },
-  { id: 'gaze', title: 'Взгляд', text: 'Целься глазами, моргай, чтобы стрелять.', ready: false },
+  { id: 'gaze', title: 'Космический лазер', text: 'Астероиды летят на станцию. Смотри на астероид — лазер жжёт его взглядом. Открой рот — ударная волна.', ready: true },
 ];
 
 const STORE = 'motion-games-records';
@@ -90,31 +90,32 @@ export function mountGames(capture) {
   }
   function setButtons(buttons) { dwell = createDwellSelector(targetsOf(buttons)); dwell.buttons = buttons; }
 
-  let pingpong = null, paused = false;
-  const inGame = () => !paused && ((race && ['wait', 'countdown', 'race'].includes(phase)) || Boolean(pingpong?.playing));
+  let arcade = null, paused = false;
+  const inGame = () => !paused && ((race && ['wait', 'countdown', 'race'].includes(phase)) || Boolean(arcade?.playing));
 
-  function pauseGame() {
+  let pausedBy = null;
+  function pauseGame(reason = 'button') {
     if (!inGame()) return;
-    paused = true; pausedAt = performance.now();
-    sound.engineAt(null); pingpong?.pause(true); showHint(null);
+    paused = true; pausedAt = performance.now(); pausedBy = reason;
+    sound.engineAt(null); arcade?.pause(true); showHint(null);
     const card = html('section', 'game-results');
-    card.append(html('p', 'game-eyebrow', race ? 'Руль' : 'Пинг-понг'), html('h2', null, 'Пауза'));
+    card.append(html('p', 'game-eyebrow', race ? 'Руль' : 'Игра'), html('h2', null, 'Пауза'));
     const row = html('div', 'game-actions');
     const button = (id, text, action) => { const b = html('button', 'game-button', text); b.type = 'button'; b.dataset.id = id; b.append(html('span', 'game-ring')); b.addEventListener('click', () => { sound.ui.confirm(); action(); }); row.append(b); return b; };
     const buttons = [
       button('resume', 'Продолжить', resume),
-      button('finish', 'Закончить', () => { resume(); if (race) finishRace(); else pingpong?.finishNow(); }),
+      button('finish', 'Закончить', () => { resume(); if (race) finishRace(); else arcade?.finishNow(); }),
       button('menu', 'В меню', () => { closePause(); showMenu(); }),
     ];
-    card.append(row, html('p', 'game-lead', 'Наведи ладонь на кнопку и подержи'));
+    card.append(row, html('p', 'game-lead', reason === 'wheel' ? 'Руль отпущен. Возьмись за него двумя руками — поедем дальше' : 'Наведи ладонь на кнопку и подержи'));
     pauseLayer.replaceChildren(card); pauseLayer.hidden = false;
     requestAnimationFrame(() => setButtons(buttons));
   }
-  function closePause() { paused = false; pauseLayer.hidden = true; pauseLayer.replaceChildren(); dwell = null; pauseArmed = false; }
+  function closePause() { paused = false; pausedBy = null; handsBackSince = null; pauseLayer.hidden = true; pauseLayer.replaceChildren(); dwell = null; pauseArmed = false; }
   function resume() {
     if (!paused) return;
     const away = performance.now() - pausedAt;
-    closePause(); pingpong?.pause(false);
+    closePause(); arcade?.pause(false);
     if (phase === 'countdown') { countdownUntil += away; lastCount = null; }
   }
   pauseButton.addEventListener('click', () => { sound.ui.confirm(); pauseGame(); });
@@ -123,8 +124,8 @@ export function mountGames(capture) {
   function leaveRace() {
     sound.menuMusic(false); sound.ui.charge(0); if (paused) closePause();
     if (race) { race.dispose(); race = null; } sound.engineAt(null); raceUi = null; camWheel.hidden = true;
-    if (pingpong) { pingpong.dispose(); pingpong = null; }
-    document.body.classList.remove('pp-mode');
+    if (arcade) { arcade.dispose(); arcade = null; }
+    document.body.classList.remove('cam-corner');
   }
 
   function showMenu() {
@@ -146,15 +147,17 @@ export function mountGames(capture) {
     requestAnimationFrame(() => setButtons(buttons));
   }
 
-  function open(id) { if (id === 'racer') startRace(); else if (id === 'pingpong') openPingPong(); }
+  function open(id) { if (id === 'racer') startRace(); else if (id === 'pingpong' || id === 'gaze') openArcade(id); }
 
-  async function openPingPong() {
+  // Ping-pong and the space laser share one slot: the camera window goes small into the top-right corner.
+  async function openArcade(id) {
     leaveRace();
-    phase = 'pingpong'; ui.replaceChildren(); dwell = null; showHint(null); menuCanvas.hidden = true;
-    document.body.classList.add('pp-mode');
-    const { startPingPong } = await import('./pingpong-game.js');
-    if (phase !== 'pingpong') return;
-    pingpong = startPingPong({ stage, ui, sound, html, showHint, setButtons, showMenu, saveRecord, video, autopilot, restart: openPingPong });
+    phase = 'arcade'; ui.replaceChildren(); dwell = null; showHint(null); menuCanvas.hidden = true;
+    document.body.classList.add('cam-corner');
+    const module = id === 'gaze' ? await import('./space-game.js') : await import('./pingpong-game.js');
+    if (phase !== 'arcade') return;
+    const start = id === 'gaze' ? module.startSpace : module.startPingPong;
+    arcade = start({ stage, ui, sound, html, showHint, setButtons, clearButtons: () => { dwell = null; }, showMenu, saveRecord, video, autopilot, restart: () => openArcade(id) });
   }
 
   async function startRace() {
@@ -163,7 +166,7 @@ export function mountGames(capture) {
     const hud = html('div', 'race-hud');
     hud.innerHTML = `<div class="race-stats"><span data-k="time"></span><span data-k="score"></span></div>
       <div class="race-nitro"><span>Нитро</span><i><b></b></i></div>
-      <p class="race-legend">Руль: две руки · Нитро: открой рот · Тормоз: закрой один глаз · Пауза: обе руки выше лица</p>`;
+      <p class="race-legend">Руль: две руки · Нитро: открой рот · Тормоз: закрой один глаз · Пауза: отпусти руль</p>`;
     const wheel = html('div', 'race-wheel'); wheel.innerHTML = WHEEL_SVG;
     const speedo = html('div', 'race-speedo'); speedo.innerHTML = speedometerSvg();
     const center = html('div', 'race-center'); center.append(html('p', 'race-call', 'Загружаю город…'));
@@ -202,7 +205,7 @@ export function mountGames(capture) {
 
   function showHint(text) {
     if (text === lastHint) return;
-    if (text && (phase === 'race' || phase === 'pingpong')) sound.play('hint', { volume: .5 });
+    if (text && (phase === 'race' || phase === 'arcade')) sound.play('hint', { volume: .5 });
     lastHint = text; hint.textContent = text ?? ''; hint.hidden = !text;
   }
 
@@ -218,21 +221,32 @@ export function mountGames(capture) {
     camWheel.style.transform = `translate(${cx - size / 2}px, ${cy - size / 2}px) rotate(${wheel.angle}rad)`;
   }
 
-  let handsUpSince = null, lastHover = null, brakeHeld = 0, pausedAt = 0, pauseArmed = true;
+  let handsUpSince = null, lastHover = null, brakeHeld = 0, pausedAt = 0, pauseArmed = true, noHandsSince = null, handsBackSince = null;
   function loop(now) {
     const dt = (now - lastTick) / 1000; lastTick = now;
     const frame = lastFrame, t = frame?.timestamp ?? now;
     soundNote.hidden = !sound.needsUnlock;
     sound.tick();
     // Pause gesture: both hands raised above the face for a moment (hands must come down between two pauses).
+    // Not while driving: a wheel held high looks just like it. There, letting go of the wheel
+    // for a moment pauses, and taking it again with both hands goes on.
     pauseButton.hidden = !inGame();
-    const up = !autopilot && handsAboveShoulders(frame);
+    pauseButton.querySelector('small').textContent = race ? 'отпусти руль · Esc' : 'обе руки выше лица · Esc';
+    const up = !autopilot && !race && handsAboveShoulders(frame);
     if (!up) { pauseArmed = true; handsUpSince = null; }
     if (up && pauseArmed && inGame()) {
       handsUpSince ??= now;
       if (now - handsUpSince > 1200) { pauseArmed = false; handsUpSince = null; sound.ui.confirm(); pauseGame(); }
     }
-    pauseButton.style.setProperty('--p', handsUpSince && inGame() ? Math.min(1, (now - handsUpSince) / 1200) : 0);
+    const wheelNow = race && !autopilot ? readWheel(frame) : null;
+    if (wheelNow && phase === 'race' && !paused) {
+      if (wheelNow.hands === 0) { noHandsSince ??= now; if (now - noHandsSince > 2500) { noHandsSince = null; sound.ui.confirm(); pauseGame('wheel'); } } else noHandsSince = null;
+    } else noHandsSince = null;
+    if (paused && pausedBy === 'wheel' && wheelNow) {
+      if (wheelNow.hands === 2 && !wheelNow.edge) { handsBackSince ??= now; if (now - handsBackSince > 1000) { sound.ui.confirm(); resume(); } } else handsBackSince = null;
+    }
+    const pauseProgress = handsUpSince ? (now - handsUpSince) / 1200 : noHandsSince && now - noHandsSince > 800 ? (now - noHandsSince) / 2500 : 0;
+    pauseButton.style.setProperty('--p', inGame() ? Math.min(1, pauseProgress) : 0);
     const pointer = handCursor.update(frame, t);
     if (dwell && pointer) {
       cursor.hidden = false;
@@ -244,7 +258,7 @@ export function mountGames(capture) {
       if (selected) dwell.buttons.find(b => b.dataset.id === selected)?.click();
     } else { cursor.hidden = true; if (lastHover) { sound.ui.charge(0); lastHover = null; } }
 
-    if (pingpong) pingpong.tick(frame, now);
+    if (arcade) arcade.tick(frame, now);
     else if (race && paused) race.draw();
     else if (race && raceUi && phase !== 'loading') {
       // ?autopilot=1 (tests, demo recordings): both hands on a centred wheel, no face actions.
@@ -292,7 +306,7 @@ export function mountGames(capture) {
         race.draw();
         if (phase !== 'results') showHint(phase === 'wait' && !problem ? null : problem?.text ?? null);
       }
-    } else if (!race && phase !== 'pingpong') {
+    } else if (!race && phase !== 'arcade') {
       camWheel.hidden = true;
       const ctx = menuCanvas.getContext('2d'), g = ctx.createLinearGradient(0, 0, 0, menuCanvas.height);
       g.addColorStop(0, '#141a2e'); g.addColorStop(1, '#2b2140');
