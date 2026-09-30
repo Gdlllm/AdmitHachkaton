@@ -12,7 +12,7 @@
  * everything is silent and `needsUnlock` is true. */
 import { createMenuMusic } from './music.js';
 
-const FILES = ['nitro', 'brake.wav', 'crash', 'crash2', 'tick', 'go', 'hint', 'select', 'finish', 'engine-sweep.m4a',
+const FILES = ['nitro', 'brake.wav', 'space-explode1', 'space-explode2', 'space-boom', 'space-shield', 'space-zap', 'space-hum', 'space-hit', 'crash', 'crash2', 'tick', 'go', 'hint', 'select', 'finish', 'engine-sweep.m4a',
   // Table tennis (Freesound, CC0): paddle hits, table and floor bounces, a whoosh, the crowd.
   ...['pp-hit1', 'pp-hit2', 'pp-hit3', 'pp-table1', 'pp-table2', 'pp-table3', 'pp-floor', 'whoosh', 'club-loop'].map(n => `${n}.wav`),
   ...['crowd-loop', 'applause', 'cheer'].map(n => `${n}.m4a`)];
@@ -206,7 +206,32 @@ export function createSound(base = '/games/sounds') {
     },
   };
 
-  return { loaded, play, loop, engineAt, shift, menuMusic, ui,
+  // Space laser: a buzzing hum while the beams burn, rising with the heat of the rock.
+  let laserNodes = null;
+  function laser(on, heat = 0) {
+    if (!running()) return;
+    const now = ctx.currentTime;
+    if (!laserNodes && on) {
+      // Two stages: `g` switches the beam on and off; `buzz` flutters 30 times a second.
+      // (The flutter must not feed `g`: added to a gain of 0 it would never go silent.)
+      const g = ctx.createGain(); g.gain.value = 0;
+      const buzz = ctx.createGain(); buzz.gain.value = .65;
+      const band = ctx.createBiquadFilter(); band.type = 'bandpass'; band.frequency.value = 1400; band.Q.value = 1.2;
+      const a = ctx.createOscillator(), b = ctx.createOscillator(), lfo = ctx.createOscillator(), depth = ctx.createGain();
+      a.type = 'sawtooth'; b.type = 'square'; b.detune.value = 9; lfo.frequency.value = 31; depth.gain.value = .35;
+      lfo.connect(depth).connect(buzz.gain);
+      a.connect(band); b.connect(band); band.connect(buzz).connect(g).connect(master);
+      a.start(); b.start(); lfo.start();
+      laserNodes = { g, a, b, band };
+    }
+    if (!laserNodes) return;
+    const { g, a, b, band } = laserNodes;
+    g.gain.setTargetAtTime(on ? .09 : 0, now, on ? .02 : .05);
+    a.frequency.setTargetAtTime(150 + heat * 220, now, .05); b.frequency.setTargetAtTime(300 + heat * 440, now, .05);
+    band.frequency.setTargetAtTime(1200 + heat * 1800, now, .08);
+  }
+
+  return { loaded, play, loop, engineAt, shift, menuMusic, ui, laser,
     /** Called every frame: starts the music once the browser lets audio play. */
     tick() { if (wantMusic && running() && !music?.playing) menuMusic(true); }, get needsUnlock() { return Boolean(ctx) && ctx.state !== 'running'; }, unlock };
 }

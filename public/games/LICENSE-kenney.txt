@@ -36,3 +36,4 @@ sounds/crowd-loop.m4a, applause.m4a, cheer.m4a, whoosh.wav: cut from Freesound C
 sounds/pp-*.wav: cut from Freesound CC0 recordings — "Ping pong ball hit" (s/269718), "Table Tennis Volley" (s/376508),
 "Ping Pong - Ball on Table" (s/628637), "Ping pong impact the table" (s/418555).
 sounds/club-loop.wav: cut from "University indoor gymnasium ambient at friday (badminton area)" by lastraindrop, https://freesound.org/s/734893/ — CC0.
+sounds/space-*.ogg: Kenney "Sci-fi Sounds" (CC0), www.kenney.nl.
